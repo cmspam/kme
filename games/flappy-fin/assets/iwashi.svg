@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="186 22 356 322" width="356" height="322">
+  <defs>
+    <linearGradient id="fishBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaf7ff"/><stop offset=".26" stop-color="#c3e3f7"/>
+      <stop offset=".54" stop-color="#82b8e1"/><stop offset=".8" stop-color="#4d82b2"/><stop offset="1" stop-color="#2e5478"/>
+    </linearGradient>
+    <linearGradient id="fishBelly" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#eaf6ff"/><stop offset="1" stop-color="#c4dcef"/>
+    </linearGradient>
+    <linearGradient id="finGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d3ebfb"/><stop offset="1" stop-color="#5e93c2"/>
+    </linearGradient>
+    <radialGradient id="fishSheen" cx=".42" cy=".22" r=".7">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".9"/><stop offset=".45" stop-color="#ffffff" stop-opacity=".12"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="whip" cx=".4" cy=".26" r=".85">
+      <stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#fff4ef"/><stop offset="1" stop-color="#ffd6cb"/>
+    </radialGradient>
+    <radialGradient id="cherry" cx=".36" cy=".30" r=".75">
+      <stop offset="0" stop-color="#ff8a93"/><stop offset=".4" stop-color="#ec2740"/><stop offset="1" stop-color="#8e0d22"/>
+    </radialGradient>
+  </defs>
+  <!-- tail + fins -->
+  <path d="M 250 222 L 198 178 L 226 222 L 198 268 Z" fill="url(#finGrad)" stroke="#2e5478" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M 350 162 Q 376 130 414 134 Q 400 162 392 182 Z" fill="url(#finGrad)" stroke="#2e5478" stroke-width="3" stroke-linejoin="round"/>
+  <!-- body -->
+  <path d="M 240 222 Q 274 168 372 162 Q 488 158 522 214 Q 540 256 504 288 Q 446 312 360 308 Q 280 304 252 280 Q 232 256 240 222 Z"
+        fill="url(#fishBody)" stroke="#2e5478" stroke-width="4.5" stroke-linejoin="round"/>
+  <path d="M 286 290 Q 370 312 470 296 Q 510 286 516 256 Q 450 280 360 280 Q 300 280 286 290 Z" fill="url(#fishBelly)" opacity=".85"/>
+  <path d="M 256 232 Q 372 220 510 234" stroke="#356a99" stroke-width="2.5" fill="none" opacity=".55"/>
+  <g opacity=".42" stroke="#3a6e9c" stroke-width="1.6" fill="none">
+    <path d="M 296 204 Q 306 216 296 228"/><path d="M 328 196 Q 338 210 328 224"/><path d="M 360 192 Q 370 206 360 222"/>
+  </g>
+  <path d="M 240 222 Q 274 168 372 162 Q 488 158 522 214 Q 446 188 360 188 Q 280 190 240 222 Z" fill="url(#fishSheen)"/>
+  <path d="M 372 288 Q 362 322 338 332 Q 348 300 358 282 Z" fill="url(#finGrad)" stroke="#2e5478" stroke-width="3" stroke-linejoin="round"/>
+  <!-- face: cheeks, googly eyes, lids, toothy grin (the real parfait iwashi) -->
+  <ellipse cx="476" cy="262" rx="22" ry="13" fill="#ff9aa2" opacity=".5"/>
+  <ellipse cx="398" cy="266" rx="20" ry="12" fill="#ff9aa2" opacity=".45"/>
+  <g><ellipse cx="430" cy="216" rx="31" ry="34" fill="#ffffff" stroke="#2e5478" stroke-width="3.5"/>
+    <circle cx="440" cy="210" r="15.5" fill="#3a2a1a"/><circle cx="440" cy="210" r="7.5" fill="#0a0805"/>
+    <circle cx="435" cy="204" r="4.6" fill="#ffffff"/><circle cx="446" cy="216" r="2.2" fill="#ffffff" opacity=".8"/></g>
+  <g><ellipse cx="500" cy="226" rx="30" ry="32" fill="#ffffff" stroke="#2e5478" stroke-width="3.5"/>
+    <circle cx="491" cy="220" r="15" fill="#3a2a1a"/><circle cx="491" cy="220" r="7" fill="#0a0805"/>
+    <circle cx="486" cy="214" r="4.4" fill="#ffffff"/><circle cx="496" cy="226" r="2" fill="#ffffff" opacity=".8"/></g>
+  <path d="M 401 200 Q 430 184 462 200" stroke="#2e5478" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M 472 214 Q 500 198 528 216" stroke="#2e5478" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <g><path d="M 446 270 Q 488 304 534 272 Q 512 258 490 258 Q 466 258 446 270 Z" fill="#7a2230" stroke="#2e5478" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M 454 272 Q 488 290 526 272 Q 506 280 488 280 Q 470 280 454 272 Z" fill="#d4536a"/>
+    <path d="M 460 268 L 466 277 L 472 268 Z" fill="#fff"/><path d="M 478 266 L 484 277 L 490 266 Z" fill="#fff"/>
+    <path d="M 496 266 L 502 277 L 508 266 Z" fill="#fff"/><path d="M 514 268 L 520 276 L 526 268 Z" fill="#fff"/></g>
+  <!-- cream swirl + cherry crown on the head -->
+  <path d="M 356 168 Q 342 150 358 140 Q 346 122 366 116 Q 358 98 380 96 Q 393 80 410 86 Q 426 80 430 98 Q 450 100 444 120 Q 460 126 446 140 Q 460 152 440 160 Q 450 174 426 178 Q 392 184 356 168 Z"
+        fill="url(#whip)" stroke="#e9b8aa" stroke-width="2.5"/>
+  <path d="M 372 162 Q 392 156 412 162" stroke="#fff" stroke-width="3" fill="none" opacity=".8"/>
+  <path d="M 366 142 Q 388 134 416 142" stroke="#f3c8bd" stroke-width="2.5" fill="none" opacity=".6"/>
+  <path d="M 372 122 Q 392 114 414 122" stroke="#fff" stroke-width="2.5" fill="none" opacity=".7"/>
+  <g transform="translate(434,116) rotate(34)"><path d="M 0 0 Q -8 -16 0 -30 Q 8 -16 0 0 Z" fill="#3fae44" stroke="#1c6e26" stroke-width="1.6"/><line x1="0" y1="-3" x2="0" y2="-26" stroke="#1c6e26" stroke-width="1.4"/></g>
+  <path d="M 392 76 Q 408 40 442 30" stroke="#3f7a32" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <circle cx="392" cy="82" r="23" fill="url(#cherry)" stroke="#6e0a1a" stroke-width="3"/>
+  <ellipse cx="384" cy="74" rx="8" ry="6" fill="#ffffff" opacity=".8"/>
+</svg>

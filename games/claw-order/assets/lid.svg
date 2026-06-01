@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 86" width="260" height="86">
+  <defs>
+    <linearGradient id="lk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3ce92"/><stop offset="1" stop-color="#cf9c54"/>
+    </linearGradient>
+  </defs>
+  <!-- two closed flaps -->
+  <path d="M24 58 L130 44 L130 70 L34 80 Q26 70 24 58 Z" fill="url(#lk)" stroke="#7a4f1c" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M236 58 L130 44 L130 70 L226 80 Q234 70 236 58 Z" fill="url(#lk)" stroke="#7a4f1c" stroke-width="7" stroke-linejoin="round"/>
+  <!-- center seam + tape -->
+  <line x1="130" y1="44" x2="130" y2="72" stroke="#9c6c2e" stroke-width="4"/>
+  <rect x="116" y="40" width="28" height="40" fill="#e9dcc4" opacity=".55"/>
+  <!-- top highlight -->
+  <path d="M40 58 Q130 46 220 58" stroke="#ffffff" stroke-width="3" fill="none" opacity=".4"/>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 150" width="180" height="150">
+  <defs>
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#aeb8c8"/><stop offset=".28" stop-color="#f4f8ff"/>
+      <stop offset=".5" stop-color="#c4cedd"/><stop offset=".72" stop-color="#8893a6"/><stop offset="1" stop-color="#5d6678"/>
+    </linearGradient>
+    <linearGradient id="hub" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef3fb"/><stop offset="1" stop-color="#7a8497"/>
+    </linearGradient>
+  </defs>
+  <!-- hub -->
+  <rect x="74" y="6" width="32" height="26" rx="7" fill="url(#hub)" stroke="#4b5366" stroke-width="4"/>
+  <ellipse cx="90" cy="34" rx="40" ry="14" fill="url(#chrome)" stroke="#4b5366" stroke-width="4"/>
+  <!-- three prongs -->
+  <path d="M62 38 Q40 78 30 132 Q44 138 52 130 Q60 86 80 50 Z" fill="url(#chrome)" stroke="#4b5366" stroke-width="4.5" stroke-linejoin="round"/>
+  <path d="M90 44 L90 138 Q98 142 106 138 L100 44 Z" fill="url(#chrome)" stroke="#4b5366" stroke-width="4.5" stroke-linejoin="round"/>
+  <path d="M118 38 Q140 78 150 132 Q136 138 128 130 Q120 86 100 50 Z" fill="url(#chrome)" stroke="#4b5366" stroke-width="4.5" stroke-linejoin="round"/>
+  <!-- prong tips -->
+  <circle cx="40" cy="132" r="9" fill="#cfd8e6" stroke="#4b5366" stroke-width="4"/>
+  <circle cx="97" cy="138" r="9" fill="#cfd8e6" stroke="#4b5366" stroke-width="4"/>
+  <circle cx="140" cy="132" r="9" fill="#cfd8e6" stroke="#4b5366" stroke-width="4"/>
+  <!-- highlight -->
+  <path d="M80 40 Q86 70 84 120" stroke="#ffffff" stroke-width="3" fill="none" opacity=".55" stroke-linecap="round"/>
+</svg>

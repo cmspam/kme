@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <defs>
+    <radialGradient id="db" cx=".45" cy=".35" r=".8"><stop offset="0" stop-color="#e7b878"/><stop offset=".6" stop-color="#c8904c"/><stop offset="1" stop-color="#9c6a2e"/></radialGradient>
+    <linearGradient id="de" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a87440"/><stop offset="1" stop-color="#6e4620"/></linearGradient>
+  </defs>
+  <!-- body (sitting) -->
+  <path d="M44 150 Q34 92 60 84 Q96 78 116 96 Q132 120 124 150 Z" fill="url(#db)" stroke="#5e3c18" stroke-width="6" stroke-linejoin="round"/>
+  <!-- front legs -->
+  <rect x="66" y="120" width="20" height="34" rx="9" fill="url(#db)" stroke="#5e3c18" stroke-width="5"/>
+  <rect x="96" y="120" width="20" height="34" rx="9" fill="url(#db)" stroke="#5e3c18" stroke-width="5"/>
+  <!-- head -->
+  <circle cx="74" cy="64" r="44" fill="url(#db)" stroke="#5e3c18" stroke-width="6"/>
+  <!-- ears -->
+  <path d="M40 36 Q26 70 44 88 Q54 64 56 44 Z" fill="url(#de)" stroke="#5e3c18" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M108 36 Q122 70 104 88 Q94 64 92 44 Z" fill="url(#de)" stroke="#5e3c18" stroke-width="5" stroke-linejoin="round"/>
+  <!-- snout -->
+  <ellipse cx="74" cy="82" rx="24" ry="18" fill="#f7e6c8"/>
+  <ellipse cx="74" cy="72" rx="9" ry="7" fill="#3a2614"/>
+  <path d="M74 80 Q74 92 64 94 M74 80 Q74 92 84 94" fill="none" stroke="#5e3c18" stroke-width="3" stroke-linecap="round"/>
+  <!-- eyes -->
+  <circle cx="56" cy="56" r="9" fill="#fff" stroke="#5e3c18" stroke-width="3"/><circle cx="58" cy="58" r="4.5" fill="#16263a"/>
+  <circle cx="92" cy="56" r="9" fill="#fff" stroke="#5e3c18" stroke-width="3"/><circle cx="90" cy="58" r="4.5" fill="#16263a"/>
+</svg>

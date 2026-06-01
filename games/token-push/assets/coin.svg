@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<defs>
+  <radialGradient id="cn_f" cx="0.4" cy="0.34" r="0.8"><stop offset="0" stop-color="#ffe9a0"/><stop offset="0.6" stop-color="#f4c64a"/><stop offset="1" stop-color="#c9952a"/></radialGradient>
+  <linearGradient id="cn_r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7d869"/><stop offset="1" stop-color="#9c6f18"/></linearGradient>
+</defs>
+<circle cx="50" cy="50" r="49" fill="url(#cn_r)" stroke="#6e4d10" stroke-width="3"/>
+<g stroke="#9c7016" stroke-width="2.4" stroke-linecap="round"><line x1="95.0" y1="50.0" x2="99.0" y2="50.0"/><line x1="93.5" y1="61.6" x2="97.3" y2="62.7"/><line x1="89.0" y1="72.5" x2="92.4" y2="74.5"/><line x1="81.8" y1="81.8" x2="84.6" y2="84.6"/><line x1="72.5" y1="89.0" x2="74.5" y2="92.4"/><line x1="61.6" y1="93.5" x2="62.7" y2="97.3"/><line x1="50.0" y1="95.0" x2="50.0" y2="99.0"/><line x1="38.4" y1="93.5" x2="37.3" y2="97.3"/><line x1="27.5" y1="89.0" x2="25.5" y2="92.4"/><line x1="18.2" y1="81.8" x2="15.4" y2="84.6"/><line x1="11.0" y1="72.5" x2="7.6" y2="74.5"/><line x1="6.5" y1="61.6" x2="2.7" y2="62.7"/><line x1="5.0" y1="50.0" x2="1.0" y2="50.0"/><line x1="6.5" y1="38.4" x2="2.7" y2="37.3"/><line x1="11.0" y1="27.5" x2="7.6" y2="25.5"/><line x1="18.2" y1="18.2" x2="15.4" y2="15.4"/><line x1="27.5" y1="11.0" x2="25.5" y2="7.6"/><line x1="38.4" y1="6.5" x2="37.3" y2="2.7"/><line x1="50.0" y1="5.0" x2="50.0" y2="1.0"/><line x1="61.6" y1="6.5" x2="62.7" y2="2.7"/><line x1="72.5" y1="11.0" x2="74.5" y2="7.6"/><line x1="81.8" y1="18.2" x2="84.6" y2="15.4"/><line x1="89.0" y1="27.5" x2="92.4" y2="25.5"/><line x1="93.5" y1="38.4" x2="97.3" y2="37.3"/></g>
+<circle cx="50" cy="50" r="40" fill="url(#cn_f)" stroke="#a9791c" stroke-width="2.5"/>
+<circle cx="50" cy="50" r="33" fill="none" stroke="#d8a83a" stroke-width="2" opacity="0.7"/>
+<ellipse cx="38" cy="34" rx="15" ry="9" fill="#fff" opacity="0.4"/>
+</svg>

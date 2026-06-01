@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="260" height="200">
+  <defs>
+    <linearGradient id="kf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0c98a"/><stop offset=".5" stop-color="#dca85e"/><stop offset="1" stop-color="#b97f38"/>
+    </linearGradient>
+    <linearGradient id="kside" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c79454"/><stop offset="1" stop-color="#9c6c2e"/>
+    </linearGradient>
+    <radialGradient id="mouth" cx=".5" cy=".3" r=".8">
+      <stop offset="0" stop-color="#5a3c18"/><stop offset="1" stop-color="#3a2710"/>
+    </radialGradient>
+  </defs>
+  <!-- inner opening (dark) -->
+  <path d="M40 40 L220 40 L236 60 L24 60 Z" fill="url(#mouth)"/>
+  <ellipse cx="130" cy="52" rx="98" ry="16" fill="#43300f"/>
+  <!-- back rim -->
+  <path d="M24 60 L236 60 L236 52 Q130 32 24 52 Z" fill="#caa05c"/>
+  <!-- front face -->
+  <path d="M24 60 L236 60 L226 188 Q130 200 34 188 Z" fill="url(#kf)" stroke="#7a4f1c" stroke-width="7" stroke-linejoin="round"/>
+  <!-- side shading -->
+  <path d="M236 60 L226 188 Q214 191 204 192 L214 62 Z" fill="url(#kside)" opacity=".7"/>
+  <!-- top front rim edge -->
+  <path d="M24 60 L236 60" stroke="#7a4f1c" stroke-width="7" stroke-linecap="round"/>
+  <!-- flap fold lines + tape -->
+  <path d="M130 64 L130 190" stroke="#9c6c2e" stroke-width="4" opacity=".6"/>
+  <path d="M70 62 Q74 120 80 186" stroke="#c79454" stroke-width="3" opacity=".5" fill="none"/>
+  <path d="M190 62 Q186 120 180 186" stroke="#c79454" stroke-width="3" opacity=".5" fill="none"/>
+  <rect x="116" y="60" width="28" height="130" fill="#e9dcc4" opacity=".5"/>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" width="240" height="150">
+  <defs>
+    <linearGradient id="body" x1="0.2" y1="0.1" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#dff1fb"/>
+      <stop offset="0.45" stop-color="#86c2e8"/>
+      <stop offset="1" stop-color="#3d83bd"/>
+    </linearGradient>
+    <linearGradient id="belly" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.0"/>
+      <stop offset="1" stop-color="#f3fbff" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="fin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7fb6e0"/>
+      <stop offset="1" stop-color="#356faa"/>
+    </linearGradient>
+    <radialGradient id="sheen" cx="0.32" cy="0.24" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- tail -->
+  <path d="M44 75 L8 40 Q4 75 8 110 Z" fill="#6aa9d6" stroke="#245a82" stroke-width="6" stroke-linejoin="round"/>
+  <!-- dorsal fin -->
+  <path d="M120 36 Q150 6 176 30 Q150 40 132 48 Z" fill="#6aa9d6" stroke="#245a82" stroke-width="6" stroke-linejoin="round"/>
+  <!-- pectoral fin -->
+  <path d="M120 96 Q132 124 158 120 Q146 100 140 92 Z" fill="#5e9fce" stroke="#245a82" stroke-width="6" stroke-linejoin="round"/>
+  <!-- body -->
+  <path d="M40 75 Q90 22 168 30 Q224 38 232 75 Q224 112 168 120 Q90 128 40 75 Z"
+        fill="url(#body)" stroke="#245a82" stroke-width="7" stroke-linejoin="round"/>
+  <!-- belly sheen -->
+  <path d="M64 96 Q120 124 196 104 Q150 120 96 112 Q72 106 64 96 Z" fill="url(#belly)"/>
+  <!-- gill -->
+  <path d="M150 46 Q140 75 150 104" fill="none" stroke="#2f6f9e" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+  <!-- top sheen -->
+  <ellipse cx="120" cy="58" rx="60" ry="20" fill="url(#sheen)"/>
+  <!-- eye -->
+  <circle cx="196" cy="66" r="16" fill="#ffffff" stroke="#245a82" stroke-width="4"/>
+  <circle cx="200" cy="68" r="8" fill="#1e2c3a"/>
+  <circle cx="197" cy="64" r="3" fill="#ffffff"/>
+  <!-- cheek -->
+  <circle cx="182" cy="92" r="9" fill="#ff9bbf" opacity="0.7"/>
+</svg>

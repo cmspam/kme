@@ -1,0 +1,258 @@
+<svg class="boss-art" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;display:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 640" width="760" height="640">
+  <defs>
+    <!-- Body radial gradient: glossy pink with 3+ stops -->
+    <radialGradient id="tako_takoHead" cx=".40" cy=".30" r=".85">
+      <stop offset="0" stop-color="#ffe1ee"/>
+      <stop offset=".30" stop-color="#ffb3d6"/>
+      <stop offset=".70" stop-color="#ff7bbb"/>
+      <stop offset="1" stop-color="#e23f8f"/>
+    </radialGradient>
+    <radialGradient id="tako_takoBelly" cx=".5" cy=".35" r=".8">
+      <stop offset="0" stop-color="#fff0f6"/>
+      <stop offset=".55" stop-color="#ffc9e2"/>
+      <stop offset="1" stop-color="#ff8fc4"/>
+    </radialGradient>
+    <linearGradient id="tako_tentGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffb0d6"/>
+      <stop offset=".5" stop-color="#ff79ba"/>
+      <stop offset="1" stop-color="#d63785"/>
+    </linearGradient>
+    <radialGradient id="tako_suckGrad" cx=".5" cy=".4" r=".7">
+      <stop offset="0" stop-color="#ffe6f1"/>
+      <stop offset=".6" stop-color="#ffb6d8"/>
+      <stop offset="1" stop-color="#e86aa8"/>
+    </radialGradient>
+    <radialGradient id="tako_eyeWhite" cx=".42" cy=".38" r=".75">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".75" stop-color="#f3f6ff"/>
+      <stop offset="1" stop-color="#cdd6ea"/>
+    </radialGradient>
+    <radialGradient id="tako_iris" cx=".5" cy=".45" r=".6">
+      <stop offset="0" stop-color="#7a4a2a"/>
+      <stop offset=".55" stop-color="#5a3115"/>
+      <stop offset="1" stop-color="#2e1607"/>
+    </radialGradient>
+    <linearGradient id="tako_hatGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".5" stop-color="#f3f4f8"/>
+      <stop offset="1" stop-color="#cfd3e0"/>
+    </linearGradient>
+    <linearGradient id="tako_beakGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe08a"/>
+      <stop offset="1" stop-color="#e89a2c"/>
+    </linearGradient>
+    <radialGradient id="tako_mouthInner" cx=".5" cy=".3" r=".8">
+      <stop offset="0" stop-color="#a01f55"/>
+      <stop offset="1" stop-color="#5a0e2e"/>
+    </radialGradient>
+    <radialGradient id="tako_coreGrad" cx=".4" cy=".35" r=".75">
+      <stop offset="0" stop-color="#fff6c0"/>
+      <stop offset=".5" stop-color="#ffd24d"/>
+      <stop offset="1" stop-color="#e8851a"/>
+    </radialGradient>
+    <radialGradient id="tako_floorShadow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#000000" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- floor shadow -->
+  <ellipse cx="380" cy="560" rx="230" ry="42" fill="url(#tako_floorShadow)"/>
+
+  <!-- ============ TENTACLES (behind body) ============ -->
+  <!-- helper sucker rows are drawn inline per tentacle -->
+
+  <!-- back tentacles -->
+  <g id="tako_P-t1">
+    <path d="M300 380 C240 430 200 470 150 470 C110 470 100 430 130 410 C170 384 230 390 300 360 Z"
+          fill="url(#tako_tentGrad)" stroke="#c22d77" stroke-width="3"/>
+    <path d="M298 372 C248 414 210 450 168 452" fill="none" stroke="#ffd0e8" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+    <g fill="url(#tako_suckGrad)" stroke="#cf5f97" stroke-width="1.5">
+      <circle cx="258" cy="430" r="9"/><circle cx="220" cy="448" r="8"/><circle cx="184" cy="452" r="7"/><circle cx="150" cy="448" r="6"/>
+    </g>
+  </g>
+
+  <g id="tako_P-t6">
+    <path d="M468 380 C528 430 568 472 618 470 C658 468 666 428 636 410 C596 384 540 390 468 360 Z"
+          fill="url(#tako_tentGrad)" stroke="#c22d77" stroke-width="3"/>
+    <path d="M470 372 C520 414 558 450 600 452" fill="none" stroke="#ffd0e8" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+    <g fill="url(#tako_suckGrad)" stroke="#cf5f97" stroke-width="1.5">
+      <circle cx="510" cy="430" r="9"/><circle cx="548" cy="448" r="8"/><circle cx="584" cy="452" r="7"/><circle cx="618" cy="448" r="6"/>
+    </g>
+  </g>
+
+  <!-- mid tentacles curling forward -->
+  <g id="tako_P-t2">
+    <path d="M318 400 C288 470 250 520 200 540 C160 556 138 520 162 498 C200 466 258 470 320 380 Z"
+          fill="url(#tako_tentGrad)" stroke="#c22d77" stroke-width="3"/>
+    <path d="M316 392 C290 456 256 500 214 524" fill="none" stroke="#ffd0e8" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+    <g fill="url(#tako_suckGrad)" stroke="#cf5f97" stroke-width="1.5">
+      <circle cx="286" cy="466" r="9"/><circle cx="256" cy="500" r="8"/><circle cx="222" cy="522" r="7"/><circle cx="190" cy="528" r="6"/>
+    </g>
+  </g>
+
+  <g id="tako_P-t5">
+    <path d="M450 400 C480 470 520 522 572 540 C612 556 634 518 610 496 C572 464 510 470 448 380 Z"
+          fill="url(#tako_tentGrad)" stroke="#c22d77" stroke-width="3"/>
+    <path d="M452 392 C480 456 514 500 556 524" fill="none" stroke="#ffd0e8" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+    <g fill="url(#tako_suckGrad)" stroke="#cf5f97" stroke-width="1.5">
+      <circle cx="482" cy="466" r="9"/><circle cx="514" cy="500" r="8"/><circle cx="548" cy="522" r="7"/><circle cx="580" cy="528" r="6"/>
+    </g>
+  </g>
+
+  <!-- front inner tentacles, dynamic curls -->
+  <g id="tako_P-t3">
+    <path d="M348 410 C338 480 320 540 350 580 C372 608 408 596 402 564 C396 520 372 470 366 400 Z"
+          fill="url(#tako_tentGrad)" stroke="#c22d77" stroke-width="3"/>
+    <path d="M350 404 C340 470 326 528 348 568" fill="none" stroke="#ffd0e8" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+    <g fill="url(#tako_suckGrad)" stroke="#cf5f97" stroke-width="1.5">
+      <circle cx="344" cy="470" r="8"/><circle cx="338" cy="510" r="7"/><circle cx="346" cy="546" r="6.5"/><circle cx="364" cy="574" r="6"/>
+    </g>
+  </g>
+
+  <g id="tako_P-t4">
+    <path d="M422 410 C432 480 450 540 420 580 C398 608 362 596 368 564 C374 520 398 470 404 400 Z"
+          fill="url(#tako_tentGrad)" stroke="#c22d77" stroke-width="3"/>
+    <path d="M420 404 C430 470 444 528 422 568" fill="none" stroke="#ffd0e8" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+    <g fill="url(#tako_suckGrad)" stroke="#cf5f97" stroke-width="1.5">
+      <circle cx="426" cy="470" r="8"/><circle cx="432" cy="510" r="7"/><circle cx="424" cy="546" r="6.5"/><circle cx="406" cy="574" r="6"/>
+    </g>
+  </g>
+
+  <!-- outer flicking tentacles (the matador 'ole' flourish: one raised high) -->
+  <g id="tako_part-t-flourish">
+    <path d="M300 360 C220 340 150 300 120 230 C100 184 138 160 162 188 C196 226 244 300 330 350 Z"
+          fill="url(#tako_tentGrad)" stroke="#c22d77" stroke-width="3"/>
+    <path d="M306 352 C232 330 170 296 142 240" fill="none" stroke="#ffd0e8" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+    <g fill="url(#tako_suckGrad)" stroke="#cf5f97" stroke-width="1.5">
+      <circle cx="262" cy="330" r="8"/><circle cx="216" cy="300" r="7.5"/><circle cx="176" cy="262" r="7"/><circle cx="148" cy="222" r="6"/>
+    </g>
+  </g>
+
+  <g id="tako_part-t-outer-right">
+    <path d="M474 360 C552 344 610 312 642 256 C664 216 632 190 606 216 C570 252 524 312 446 350 Z"
+          fill="url(#tako_tentGrad)" stroke="#c22d77" stroke-width="3"/>
+    <path d="M470 352 C540 334 596 304 626 256" fill="none" stroke="#ffd0e8" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+    <g fill="url(#tako_suckGrad)" stroke="#cf5f97" stroke-width="1.5">
+      <circle cx="510" cy="330" r="8"/><circle cx="556" cy="304" r="7.5"/><circle cx="596" cy="270" r="7"/><circle cx="624" cy="234" r="6"/>
+    </g>
+  </g>
+
+  <!-- ============ HEAD / BODY ============ -->
+  <g id="tako_part-body">
+    <!-- ambient occlusion / dark base -->
+    <ellipse cx="385" cy="262" rx="178" ry="158" fill="#b32a6e" opacity=".55"/>
+    <!-- main bulbous head -->
+    <path d="M218 252 C218 132 300 70 385 70 C470 70 552 132 552 252 C552 360 470 420 385 420 C300 420 218 360 218 252 Z"
+          fill="url(#tako_takoHead)" stroke="#c92b78" stroke-width="4"/>
+    <!-- belly lighter mantle -->
+    <ellipse cx="385" cy="312" rx="120" ry="92" fill="url(#tako_takoBelly)" opacity=".75"/>
+    <!-- AO under the head overhang -->
+    <path d="M250 330 C300 392 470 392 520 330 C500 392 440 422 385 422 C330 422 270 392 250 330 Z" fill="#c0306f" opacity=".35"/>
+    <!-- rim light on top -->
+    <path d="M250 200 C268 120 330 84 385 82" fill="none" stroke="#fff3fa" stroke-width="7" stroke-linecap="round" opacity=".75"/>
+    <path d="M400 82 C470 86 520 132 534 196" fill="none" stroke="#ffd9ec" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+    <!-- glossy highlights -->
+    <ellipse cx="320" cy="150" rx="58" ry="34" fill="#ffffff" opacity=".5"/>
+    <ellipse cx="298" cy="138" rx="24" ry="14" fill="#ffffff" opacity=".8"/>
+    <ellipse cx="470" cy="150" rx="22" ry="12" fill="#ffffff" opacity=".4"/>
+    <!-- subtle speckle texture -->
+    <g fill="#db4f93">
+      <circle cx="300" cy="300" r="4" opacity=".25"/><circle cx="350" cy="350" r="3" opacity=".22"/>
+      <circle cx="440" cy="340" r="4" opacity=".22"/><circle cx="475" cy="295" r="3" opacity=".2"/>
+      <circle cx="262" cy="270" r="3" opacity=".2"/><circle cx="510" cy="262" r="3" opacity=".2"/>
+    </g>
+  </g>
+
+  <!-- cheek blush -->
+  <g id="tako_part-blush" fill="#ff5a9e" opacity=".5">
+    <ellipse cx="288" cy="288" rx="34" ry="20"/>
+    <ellipse cx="482" cy="288" rx="34" ry="20"/>
+  </g>
+
+  <!-- ============ EYES (big, mischievous, looking sideways/sly) ============ -->
+  <g id="tako_P-eL">
+    <ellipse cx="338" cy="224" rx="56" ry="60" fill="url(#tako_eyeWhite)" stroke="#c92b78" stroke-width="3.5"/>
+    <!-- sly heavy upper lid drooping over the eye -->
+    <path d="M282 192 C302 176 374 174 394 200 C392 222 372 214 338 214 C308 214 290 216 282 222 Z" fill="#d24c8e"/>
+    <path d="M282 192 C302 176 374 174 394 200" fill="none" stroke="#a6266a" stroke-width="5" stroke-linecap="round"/>
+    <!-- iris looking to the side (sideways glance) -->
+    <ellipse cx="364" cy="234" rx="29" ry="32" fill="url(#tako_iris)"/>
+    <circle cx="364" cy="234" r="14" fill="#120701"/>
+    <circle cx="356" cy="224" r="7" fill="#ffffff" opacity=".95"/>
+    <circle cx="374" cy="244" r="3.5" fill="#ffffff" opacity=".7"/>
+    <!-- lower lid for the squint -->
+    <path d="M286 264 C320 282 360 282 392 260" fill="none" stroke="#c92b78" stroke-width="4" opacity=".7"/>
+  </g>
+
+  <g id="tako_P-eR">
+    <ellipse cx="452" cy="224" rx="56" ry="60" fill="url(#tako_eyeWhite)" stroke="#c92b78" stroke-width="3.5"/>
+    <path d="M396 200 C416 174 488 176 508 192 L508 222 C500 216 482 214 452 214 C418 214 398 222 396 200 Z" fill="#d24c8e"/>
+    <path d="M396 200 C416 174 488 176 508 192" fill="none" stroke="#a6266a" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="480" cy="234" rx="29" ry="32" fill="url(#tako_iris)"/>
+    <circle cx="480" cy="234" r="14" fill="#120701"/>
+    <circle cx="472" cy="224" r="7" fill="#ffffff" opacity=".95"/>
+    <circle cx="490" cy="244" r="3.5" fill="#ffffff" opacity=".7"/>
+    <path d="M398 260 C430 282 470 282 504 264" fill="none" stroke="#c92b78" stroke-width="4" opacity=".7"/>
+  </g>
+
+  <!-- sly angled brows (raised inner, scheming) -->
+  <g id="tako_part-brows" stroke="#9c2263" stroke-width="11" stroke-linecap="round" fill="none">
+    <path d="M288 178 C314 158 364 156 388 170"/>
+    <path d="M402 170 C426 156 476 158 502 178"/>
+  </g>
+
+  <!-- ============ BEAK MOUTH (sly grin) ============ -->
+  <g id="tako_P-mouth">
+    <!-- wide asymmetric sly grin: open one side, curling up -->
+    <path d="M330 318 C360 318 366 304 396 306 C430 308 452 318 470 314
+             C462 352 420 372 388 370 C352 368 330 348 330 318 Z"
+          fill="url(#tako_mouthInner)" stroke="#8a1746" stroke-width="3"/>
+    <!-- inner shadow -->
+    <path d="M348 326 C376 330 430 328 458 320 C448 344 416 358 390 357 C362 356 350 342 348 326 Z" fill="#43081f" opacity=".7"/>
+    <!-- tongue -->
+    <ellipse cx="404" cy="350" rx="24" ry="11" fill="#ff6fa8" opacity=".95"/>
+    <ellipse cx="404" cy="347" rx="10" ry="4" fill="#ffa6cb" opacity=".7"/>
+    <!-- upper fang teeth -->
+    <path d="M352 318 L360 336 L370 318 Z" fill="#ffffff"/>
+    <path d="M444 316 L452 334 L462 314 Z" fill="#ffffff"/>
+    <path d="M398 312 L404 328 L412 312 Z" fill="#fff8fb"/>
+    <!-- little beak nub above -->
+    <path d="M376 300 C386 292 404 292 414 300 C406 314 384 314 376 300 Z" fill="url(#tako_beakGrad)" stroke="#c98520" stroke-width="2"/>
+  </g>
+
+  <!-- ============ HACHIMAKI HEADBAND ============ -->
+  <g id="tako_part-hachimaki">
+    <path d="M232 132 C300 102 470 102 538 132 L532 158 C470 130 300 130 238 158 Z" fill="#ffffff" stroke="#d9dce6" stroke-width="2"/>
+    <circle cx="385" cy="138" r="16" fill="#e8324f"/>
+    <circle cx="385" cy="138" r="9" fill="#ff5f74"/>
+    <!-- trailing knot tails (matador red flourish) -->
+    <path d="M250 142 C210 150 188 188 196 224 C214 196 236 174 268 160 Z" fill="#e8324f" stroke="#b51f38" stroke-width="2"/>
+    <path d="M236 146 C200 158 184 196 196 224" fill="none" stroke="#ff8a98" stroke-width="3" opacity=".6"/>
+  </g>
+
+  <!-- ============ TAKOYAKI CONE HAT (signature, with 'S') ============ -->
+  <g id="tako_part-hat">
+    <!-- hat shadow on head -->
+    <ellipse cx="385" cy="118" rx="92" ry="22" fill="#000000" opacity=".15"/>
+    <!-- cone -->
+    <path d="M385 -8 L470 116 C440 130 330 130 300 116 Z" fill="url(#tako_hatGrad)" stroke="#c3c7d4" stroke-width="3"/>
+    <!-- cone shading -->
+    <path d="M385 -8 L432 116 C420 122 396 124 385 124 Z" fill="#dfe2ec" opacity=".7"/>
+    <path d="M385 -8 L338 116 C350 122 374 124 385 124 Z" fill="#ffffff" opacity=".6"/>
+    <!-- rim -->
+    <ellipse cx="385" cy="116" rx="86" ry="20" fill="#eef0f6" stroke="#c3c7d4" stroke-width="3"/>
+    <!-- the 'S' emblem -->
+    <text x="385" y="78" font-family="Arial, sans-serif" font-size="58" font-weight="bold" fill="#e23f8f" text-anchor="middle" stroke="#a82a6c" stroke-width="1.5">S</text>
+    <!-- top pom highlight -->
+    <circle cx="385" cy="-6" r="7" fill="#ffffff" stroke="#c3c7d4" stroke-width="2"/>
+  </g>
+
+  <!-- ============ CORE / weak spot (glowing takoyaki ball on forehead) ============ -->
+  <g id="tako_part-core">
+    <ellipse cx="385" cy="166" rx="20" ry="18" fill="#000" opacity=".12"/>
+    <circle cx="385" cy="163" r="19" fill="url(#tako_coreGrad)" stroke="#c97a18" stroke-width="2.5"/>
+    <circle cx="379" cy="157" r="5.5" fill="#fff7d6" opacity=".9"/>
+    <path d="M373 169 Q385 178 397 169" fill="none" stroke="#b85e10" stroke-width="2" opacity=".55"/>
+  </g>
+</svg>

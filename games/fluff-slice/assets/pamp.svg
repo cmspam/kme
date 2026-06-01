@@ -1,0 +1,267 @@
+<svg class="boss-art" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;display:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 640" width="760" height="640">
+  <defs>
+    <!-- Body plush gradient -->
+    <radialGradient id="pamp_pampBody" cx="0.42" cy="0.30" r="0.85">
+      <stop offset="0" stop-color="#f0e2ff"/>
+      <stop offset="0.45" stop-color="#d7bdf2"/>
+      <stop offset="0.80" stop-color="#b793df"/>
+      <stop offset="1" stop-color="#8a6abf"/>
+    </radialGradient>
+    <radialGradient id="pamp_pampHead" cx="0.42" cy="0.28" r="0.85">
+      <stop offset="0" stop-color="#f6ecff"/>
+      <stop offset="0.45" stop-color="#ddc6f4"/>
+      <stop offset="0.82" stop-color="#bb98e0"/>
+      <stop offset="1" stop-color="#9170c4"/>
+    </radialGradient>
+    <radialGradient id="pamp_pampTuft" cx="0.38" cy="0.32" r="0.85">
+      <stop offset="0" stop-color="#e3cdf6"/>
+      <stop offset="0.6" stop-color="#c2a0e2"/>
+      <stop offset="1" stop-color="#9b78cd"/>
+    </radialGradient>
+    <radialGradient id="pamp_pampLimb" cx="0.40" cy="0.30" r="0.9">
+      <stop offset="0" stop-color="#e7d3fa"/>
+      <stop offset="0.6" stop-color="#c2a2e6"/>
+      <stop offset="1" stop-color="#8a6abf"/>
+    </radialGradient>
+    <radialGradient id="pamp_pampMuzzle" cx="0.5" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#fff8ff"/>
+      <stop offset="0.7" stop-color="#f3e6fb"/>
+      <stop offset="1" stop-color="#dcc4ee"/>
+    </radialGradient>
+    <radialGradient id="pamp_pampBelly" cx="0.5" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#fff8ff"/>
+      <stop offset="0.65" stop-color="#f0def9"/>
+      <stop offset="1" stop-color="#cdaee6"/>
+    </radialGradient>
+    <radialGradient id="pamp_pampEye" cx="0.4" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#6b4a86"/>
+      <stop offset="0.55" stop-color="#3a2150"/>
+      <stop offset="1" stop-color="#150a22"/>
+    </radialGradient>
+    <radialGradient id="pamp_pampBobble" cx="0.4" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#ffe9f4"/>
+      <stop offset="0.6" stop-color="#f7c7df"/>
+      <stop offset="1" stop-color="#e090b6"/>
+    </radialGradient>
+    <radialGradient id="pamp_pampNose" cx="0.4" cy="0.3" r="0.85">
+      <stop offset="0" stop-color="#ff9ec4"/>
+      <stop offset="0.55" stop-color="#f56ba0"/>
+      <stop offset="1" stop-color="#c63d74"/>
+    </radialGradient>
+    <radialGradient id="pamp_pampBlush" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff9ec4" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ff9ec4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pamp_pampGround" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="pamp_pampBg" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0" stop-color="#fbeef8"/>
+      <stop offset="1" stop-color="#f3dcec"/>
+    </radialGradient>
+    <filter id="pamp_soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+
+  <!-- subtle background -->
+  
+
+  <!-- ground shadow -->
+  <ellipse cx="380" cy="588" rx="205" ry="30" fill="url(#pamp_pampGround)"/>
+
+  <!-- ============ BODY FUR HALO (ring of plush tufts behind body) ============ -->
+  <g id="pamp_part-fur-body" fill="url(#pamp_pampTuft)" stroke="#9874c2" stroke-width="1.5" opacity="0.95">
+    <circle cx="200" cy="430" r="22"/><circle cx="186" cy="468" r="20"/>
+    <circle cx="190" cy="505" r="19"/><circle cx="208" cy="538" r="18"/>
+    <circle cx="240" cy="558" r="17"/><circle cx="278" cy="568" r="16"/>
+    <circle cx="320" cy="572" r="16"/><circle cx="360" cy="574" r="16"/>
+    <circle cx="400" cy="574" r="16"/><circle cx="440" cy="572" r="16"/>
+    <circle cx="482" cy="568" r="16"/><circle cx="520" cy="558" r="17"/>
+    <circle cx="552" cy="538" r="18"/><circle cx="570" cy="505" r="19"/>
+    <circle cx="574" cy="468" r="20"/><circle cx="560" cy="430" r="22"/>
+  </g>
+
+  <!-- ============ BODY ============ -->
+  <g id="pamp_part-body">
+    <!-- AO under body -->
+    <ellipse cx="380" cy="430" rx="180" ry="150" fill="#7d5cae" opacity="0.5" filter="url(#pamp_soft)"/>
+    <!-- big plush round body -->
+    <path fill="url(#pamp_pampBody)" stroke="#6e4f9c" stroke-width="3"
+      d="M205 415
+         q-10 -120 80 -165
+         q60 -28 95 -28
+         q35 0 95 28
+         q90 45 80 165
+         q-12 130 -175 130
+         q-163 0 -175 -130 z"/>
+    <!-- body fur shading strokes -->
+    <g stroke="#9d79cf" stroke-width="2.4" stroke-linecap="round" fill="none" opacity="0.55">
+      <path d="M250 360 q8 16 -2 30"/>
+      <path d="M270 400 q9 16 -1 31"/>
+      <path d="M300 440 q8 17 -2 31"/>
+      <path d="M495 360 q-8 16 2 30"/>
+      <path d="M478 400 q-9 16 1 31"/>
+      <path d="M450 440 q-8 17 2 31"/>
+      <path d="M232 320 q9 14 0 28"/>
+    </g>
+    <!-- body rim light -->
+    <path fill="none" stroke="#fbf0ff" stroke-width="5" stroke-linecap="round" opacity="0.7"
+      d="M250 300 q35 -75 130 -75 q95 0 130 75"/>
+    <!-- belly weak-spot patch -->
+    <g id="pamp_P-butt">
+      <ellipse cx="380" cy="445" rx="86" ry="80" fill="url(#pamp_pampBelly)" stroke="#cdaae0" stroke-width="2.5"/>
+      <!-- stitched seam down belly -->
+      <path d="M380 375 L380 520" stroke="#b48fd2" stroke-width="2.5" stroke-dasharray="6 7" stroke-linecap="round" opacity="0.8"/>
+      <!-- toy button -->
+      <circle cx="380" cy="445" r="13" fill="#caa6e8" stroke="#8a6abf" stroke-width="2.5"/>
+      <circle cx="375" cy="441" r="2.6" fill="#3a2150"/>
+      <circle cx="385" cy="441" r="2.6" fill="#3a2150"/>
+      <circle cx="375" cy="450" r="2.6" fill="#3a2150"/>
+      <circle cx="385" cy="450" r="2.6" fill="#3a2150"/>
+    </g>
+  </g>
+
+  <!-- ============ ARMS (little plush) ============ -->
+  <g id="pamp_P-armL">
+    <ellipse cx="208" cy="380" rx="40" ry="58" fill="url(#pamp_pampLimb)" stroke="#6e4f9c" stroke-width="3" transform="rotate(28 208 380)"/>
+    <ellipse cx="198" cy="420" rx="26" ry="24" fill="url(#pamp_pampLimb)" stroke="#6e4f9c" stroke-width="2.5"/>
+    <path d="M186 360 q-6 14 2 26" stroke="#9d79cf" stroke-width="2.2" fill="none" opacity="0.5"/>
+  </g>
+  <g id="pamp_P-armR">
+    <ellipse cx="552" cy="380" rx="40" ry="58" fill="url(#pamp_pampLimb)" stroke="#6e4f9c" stroke-width="3" transform="rotate(-28 552 380)"/>
+    <ellipse cx="562" cy="420" rx="26" ry="24" fill="url(#pamp_pampLimb)" stroke="#6e4f9c" stroke-width="2.5"/>
+    <path d="M574 360 q6 14 -2 26" stroke="#9d79cf" stroke-width="2.2" fill="none" opacity="0.5"/>
+  </g>
+
+  <!-- ============ LEGS / FEET ============ -->
+  <g id="pamp_P-legL">
+    <ellipse cx="322" cy="548" rx="44" ry="34" fill="url(#pamp_pampLimb)" stroke="#6e4f9c" stroke-width="3"/>
+    <ellipse cx="318" cy="552" rx="22" ry="15" fill="url(#pamp_pampMuzzle)" opacity="0.85"/>
+  </g>
+  <g id="pamp_P-legR">
+    <ellipse cx="438" cy="548" rx="44" ry="34" fill="url(#pamp_pampLimb)" stroke="#6e4f9c" stroke-width="3"/>
+    <ellipse cx="442" cy="552" rx="22" ry="15" fill="url(#pamp_pampMuzzle)" opacity="0.85"/>
+  </g>
+
+  <!-- ============ HEAD FUR HALO (ring of plush tufts) ============ -->
+  <g id="pamp_part-fur-head" fill="url(#pamp_pampTuft)" stroke="#9874c2" stroke-width="1.5" opacity="0.97">
+    <circle cx="380" cy="48" r="20"/><circle cx="332" cy="56" r="19"/>
+    <circle cx="428" cy="56" r="19"/><circle cx="290" cy="80" r="19"/>
+    <circle cx="470" cy="80" r="19"/><circle cx="254" cy="116" r="20"/>
+    <circle cx="506" cy="116" r="20"/><circle cx="230" cy="160" r="20"/>
+    <circle cx="530" cy="160" r="20"/><circle cx="222" cy="208" r="20"/>
+    <circle cx="538" cy="208" r="20"/><circle cx="232" cy="254" r="20"/>
+    <circle cx="528" cy="254" r="20"/><circle cx="262" cy="296" r="19"/>
+    <circle cx="498" cy="296" r="19"/>
+  </g>
+
+  <!-- ============ HEAD ============ -->
+  <g id="pamp_part-head">
+    <!-- AO neck shadow -->
+    <ellipse cx="380" cy="300" rx="120" ry="40" fill="#7d5cae" opacity="0.4" filter="url(#pamp_soft)"/>
+    <!-- big round head -->
+    <circle cx="380" cy="200" r="150" fill="url(#pamp_pampHead)" stroke="#6e4f9c" stroke-width="3"/>
+    <!-- head fur strokes around edge -->
+    <g stroke="#9d79cf" stroke-width="2.4" stroke-linecap="round" fill="none" opacity="0.5">
+      <path d="M250 150 q12 12 4 28"/>
+      <path d="M245 200 q14 8 8 26"/>
+      <path d="M258 250 q14 6 12 24"/>
+      <path d="M510 150 q-12 12 -4 28"/>
+      <path d="M515 200 q-14 8 -8 26"/>
+      <path d="M502 250 q-14 6 -12 24"/>
+    </g>
+    <!-- rim light top of head -->
+    <path fill="none" stroke="#fdf4ff" stroke-width="6" stroke-linecap="round" opacity="0.8"
+      d="M285 95 q95 -50 190 0"/>
+  </g>
+
+  <!-- ============ ROUNDED EARS ============ -->
+  <g id="pamp_part-earBaseL">
+    <circle cx="278" cy="92" r="40" fill="url(#pamp_pampHead)" stroke="#6e4f9c" stroke-width="3"/>
+    <circle cx="278" cy="92" r="20" fill="url(#pamp_pampMuzzle)" opacity="0.85"/>
+  </g>
+  <g id="pamp_part-earBaseR">
+    <circle cx="482" cy="92" r="40" fill="url(#pamp_pampHead)" stroke="#6e4f9c" stroke-width="3"/>
+    <circle cx="482" cy="92" r="20" fill="url(#pamp_pampMuzzle)" opacity="0.85"/>
+  </g>
+
+  <!-- ============ ANTENNA BOBBLES (signature aegyo) ============ -->
+  <g id="pamp_P-earL">
+    <path d="M330 78 Q300 30 318 18" fill="none" stroke="#8a6abf" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="318" cy="16" r="18" fill="url(#pamp_pampBobble)" stroke="#d77ba6" stroke-width="2"/>
+    <ellipse cx="312" cy="10" rx="6" ry="4" fill="#fff" opacity="0.8"/>
+  </g>
+  <g id="pamp_P-earR">
+    <path d="M430 78 Q460 30 442 18" fill="none" stroke="#8a6abf" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="442" cy="16" r="18" fill="url(#pamp_pampBobble)" stroke="#d77ba6" stroke-width="2"/>
+    <ellipse cx="436" cy="10" rx="6" ry="4" fill="#fff" opacity="0.8"/>
+  </g>
+
+  <!-- ============ FACE ============ -->
+  <!-- muzzle / cheek area -->
+  <ellipse cx="380" cy="238" rx="92" ry="68" fill="url(#pamp_pampMuzzle)" opacity="0.9"/>
+
+  <!-- cheek blush -->
+  <ellipse cx="280" cy="232" rx="34" ry="22" fill="url(#pamp_pampBlush)"/>
+  <ellipse cx="480" cy="232" rx="34" ry="22" fill="url(#pamp_pampBlush)"/>
+
+  <!-- EYES: big, innocent, but a subtly unsettling fixed stare -->
+  <g id="pamp_P-eL">
+    <ellipse cx="320" cy="195" rx="40" ry="46" fill="url(#pamp_pampEye)" stroke="#2a1640" stroke-width="2"/>
+    <!-- iris ring (too-shiny, doll-like) -->
+    <circle cx="320" cy="198" r="22" fill="#1a0e2b"/>
+    <circle cx="320" cy="198" r="22" fill="none" stroke="#7e5aa6" stroke-width="2" opacity="0.6"/>
+    <!-- big catchlights -->
+    <circle cx="310" cy="183" r="11" fill="#ffffff"/>
+    <circle cx="332" cy="205" r="6" fill="#ffffff" opacity="0.9"/>
+    <circle cx="328" cy="180" r="3.5" fill="#ffd6ec"/>
+    <!-- tiny lower lid lift = unsettling -->
+    <path d="M286 220 q34 14 68 0" fill="none" stroke="#caa6e8" stroke-width="3" opacity="0.6"/>
+  </g>
+  <g id="pamp_P-eR">
+    <ellipse cx="440" cy="195" rx="40" ry="46" fill="url(#pamp_pampEye)" stroke="#2a1640" stroke-width="2"/>
+    <circle cx="440" cy="198" r="22" fill="#1a0e2b"/>
+    <circle cx="440" cy="198" r="22" fill="none" stroke="#7e5aa6" stroke-width="2" opacity="0.6"/>
+    <circle cx="430" cy="183" r="11" fill="#ffffff"/>
+    <circle cx="452" cy="205" r="6" fill="#ffffff" opacity="0.9"/>
+    <circle cx="448" cy="180" r="3.5" fill="#ffd6ec"/>
+    <path d="M406 220 q34 14 68 0" fill="none" stroke="#caa6e8" stroke-width="3" opacity="0.6"/>
+  </g>
+
+  <!-- heart NOSE -->
+  <g id="pamp_part-nose">
+    <path d="M380 232
+             C 372 220 356 220 354 234
+             C 352 246 366 254 380 266
+             C 394 254 408 246 406 234
+             C 404 220 388 220 380 232 Z"
+          fill="url(#pamp_pampNose)" stroke="#b03468" stroke-width="2"/>
+    <ellipse cx="368" cy="232" rx="6" ry="4" fill="#fff" opacity="0.7"/>
+  </g>
+
+  <!-- MOUTH: a too-wide unsettling smile -->
+  <g id="pamp_P-mouth">
+    <path d="M380 266 L380 280" stroke="#b48fd2" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M300 286 Q380 350 460 286" fill="#7a2a52" stroke="#5a1c3c" stroke-width="3"/>
+    <!-- inner mouth / little fangs hint -->
+    <path d="M300 286 Q380 350 460 286 Q380 320 300 286 Z" fill="#a83d6e"/>
+    <path d="M335 304 l8 16 8 -14 Z" fill="#fff"/>
+    <path d="M417 304 l8 14 8 -16 Z" fill="#fff"/>
+    <!-- tongue -->
+    <ellipse cx="380" cy="318" rx="22" ry="13" fill="#e36b9c"/>
+    <!-- smile rim light -->
+    <path d="M300 286 Q380 350 460 286" fill="none" stroke="#ffd6ec" stroke-width="2" opacity="0.4"/>
+  </g>
+
+  <!-- ============ CORE (weak spot glow, chest gem) ============ -->
+  <g id="pamp_part-core">
+    <circle cx="380" cy="372" r="20" fill="#fff0fa" opacity="0.4"/>
+    <circle cx="380" cy="372" r="13" fill="#ff7fb0" opacity="0.85" stroke="#c63d74" stroke-width="2"/>
+    <ellipse cx="375" cy="368" rx="4" ry="3" fill="#fff" opacity="0.8"/>
+  </g>
+
+  <!-- stitched seam across head (toy detail) -->
+  <path d="M255 110 q125 -28 250 0" fill="none" stroke="#b48fd2" stroke-width="2" stroke-dasharray="5 6" opacity="0.55"/>
+</svg>

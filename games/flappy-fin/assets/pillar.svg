@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 660" width="170" height="660">
+  <defs>
+    <linearGradient id="cream" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff7e8"/>
+      <stop offset="0.5" stop-color="#ffe6bd"/>
+      <stop offset="1" stop-color="#e9b873"/>
+    </linearGradient>
+    <linearGradient id="capg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff7e8"/>
+      <stop offset="1" stop-color="#ffd9a0"/>
+    </linearGradient>
+  </defs>
+  <!-- column body (extends off the top of screen) -->
+  <path d="M18 -20 L152 -20 L152 540 Q150 560 130 562 L40 562 Q20 560 18 540 Z"
+        fill="url(#cream)" stroke="#c98a3a" stroke-width="8" stroke-linejoin="round"/>
+  <!-- soft-serve swirl cap (the business end / gap edge) -->
+  <path d="M22 540 Q40 600 85 612 Q130 600 148 540 Q150 580 120 612 Q150 624 132 648
+           Q108 632 85 636 Q62 632 38 648 Q20 624 50 612 Q20 580 22 540 Z"
+        fill="url(#capg)" stroke="#c98a3a" stroke-width="8" stroke-linejoin="round"/>
+  <!-- swirl lines -->
+  <path d="M50 560 Q85 576 120 560 M58 588 Q85 600 112 588" fill="none" stroke="#e0ab63" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+  <!-- side shadow (form shading) -->
+  <path d="M128 -20 L152 -20 L152 540 Q150 558 134 561 Z" fill="#caa05c" opacity="0.45"/>
+  <!-- cherry -->
+  <circle cx="85" cy="628" r="15" fill="#e8344a" stroke="#9c1f30" stroke-width="5"/>
+  <circle cx="80" cy="623" r="4" fill="#ffb3bf"/>
+</svg>

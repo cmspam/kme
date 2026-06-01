@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 130" width="170" height="130">
+  <defs>
+    <radialGradient id="fb" cx=".5" cy=".35" r=".75"><stop offset="0" stop-color="#ffd98a"/><stop offset=".6" stop-color="#ff9e3a"/><stop offset="1" stop-color="#e06a16"/></radialGradient>
+    <linearGradient id="ff" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc16a"/><stop offset="1" stop-color="#e07a1e"/></linearGradient>
+  </defs>
+  <!-- tail -->
+  <path d="M132 65 L166 36 L160 65 L166 94 Z" fill="url(#ff)" stroke="#a8500c" stroke-width="5" stroke-linejoin="round"/>
+  <!-- top fin -->
+  <path d="M64 36 Q86 12 108 32 Q90 40 76 46 Z" fill="url(#ff)" stroke="#a8500c" stroke-width="4" stroke-linejoin="round"/>
+  <!-- body -->
+  <path d="M12 65 Q44 22 90 24 Q138 28 144 65 Q138 102 90 106 Q44 108 12 65 Z" fill="url(#fb)" stroke="#a8500c" stroke-width="6" stroke-linejoin="round"/>
+  <!-- belly -->
+  <path d="M40 90 Q86 106 130 88 Q100 100 74 100 Q52 98 40 90 Z" fill="#fff3da" opacity=".8"/>
+  <!-- side fin -->
+  <path d="M70 80 Q80 100 100 100 Q90 84 84 76 Z" fill="url(#ff)" stroke="#a8500c" stroke-width="4" stroke-linejoin="round"/>
+  <!-- gill + eye -->
+  <path d="M44 44 Q36 65 44 86" fill="none" stroke="#b85c12" stroke-width="3" opacity=".6"/>
+  <circle cx="34" cy="58" r="11" fill="#fff" stroke="#a8500c" stroke-width="3"/><circle cx="31" cy="60" r="5" fill="#16263a"/><circle cx="29" cy="56" r="2" fill="#fff"/>
+  <ellipse cx="78" cy="42" rx="34" ry="11" fill="#fff" opacity=".4"/>
+</svg>

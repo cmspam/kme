@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 150" width="170" height="150">
+  <defs>
+    <radialGradient id="bb" cx=".4" cy=".3" r=".8"><stop offset="0" stop-color="#7fd0ff"/><stop offset=".6" stop-color="#3f9fe8"/><stop offset="1" stop-color="#2566b0"/></radialGradient>
+    <linearGradient id="bw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f9fe8"/><stop offset="1" stop-color="#1f5ba0"/></linearGradient>
+  </defs>
+  <!-- tail -->
+  <path d="M30 84 L4 70 L8 100 Z" fill="url(#bw)" stroke="#173f73" stroke-width="5" stroke-linejoin="round"/>
+  <!-- body -->
+  <path d="M40 88 Q44 40 96 38 Q150 40 150 84 Q150 122 104 126 Q56 126 40 88 Z" fill="url(#bb)" stroke="#173f73" stroke-width="6" stroke-linejoin="round"/>
+  <!-- belly -->
+  <path d="M70 110 Q104 124 138 104 Q120 120 96 120 Q80 120 70 110 Z" fill="#dff1ff" opacity=".85"/>
+  <!-- wing -->
+  <path d="M70 70 Q104 58 128 78 Q104 96 80 92 Q70 82 70 70 Z" fill="url(#bw)" stroke="#173f73" stroke-width="5" stroke-linejoin="round"/>
+  <!-- beak -->
+  <path d="M148 74 L168 80 L148 90 Z" fill="#ffb13a" stroke="#c8791a" stroke-width="4" stroke-linejoin="round"/>
+  <!-- eye -->
+  <circle cx="128" cy="66" r="13" fill="#fff" stroke="#173f73" stroke-width="3"/>
+  <circle cx="131" cy="68" r="6" fill="#16263a"/><circle cx="129" cy="64" r="2" fill="#fff"/>
+  <!-- top sheen -->
+  <ellipse cx="92" cy="56" rx="34" ry="12" fill="#fff" opacity=".4"/>
+</svg>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>クサモン えいご / Kusamon English Games</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffd24d'/%3E%3Ctext x='32' y='46' font-size='40' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#1a1140; }
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body{ margin:0; min-height:100%; }
+  body{
+    font-family:"Zen Maru Gothic",sans-serif; color:#fff;
+    background:radial-gradient(120% 80% at 50% 0%, #3a2a6e 0%, #241a52 45%, #140d30 100%);
+    background-attachment:fixed; padding:24px 16px 48px;
+  }
+  header{ text-align:center; margin:14px 0 26px; }
+  h1{ font-family:"Baloo 2",sans-serif; font-weight:800; font-size:34px; margin:0; color:#ffd24d; text-shadow:0 3px 0 #6e1c2c, 0 0 18px rgba(255,210,77,.4); }
+  .sub{ font-size:15px; color:#cdb6ff; margin-top:6px; }
+  .grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; max-width:560px; margin:0 auto; }
+  a.card{
+    display:flex; flex-direction:column; align-items:center; text-align:center; text-decoration:none;
+    background:linear-gradient(180deg,#3c2c72,#241650); border:3px solid #6a4ad0; border-radius:20px;
+    padding:16px 10px 14px; color:#fff; box-shadow:0 6px 0 rgba(0,0,0,.35); transition:transform .08s, box-shadow .08s;
+  }
+  a.card:active{ transform:translateY(4px); box-shadow:0 2px 0 rgba(0,0,0,.35); }
+  a.card.boss{ border-color:#ff5aa0; background:linear-gradient(180deg,#5a1c46,#2a1030); }
+  .ico{ width:84px; height:84px; display:flex; align-items:center; justify-content:center; filter:drop-shadow(0 4px 4px rgba(0,0,0,.4)); }
+  .ico img{ width:100%; height:100%; object-fit:contain; }
+  .jp{ font-weight:700; font-size:17px; margin-top:8px; line-height:1.2; }
+  .en{ font-family:"Baloo 2",sans-serif; font-weight:600; font-size:13px; color:#8ad6ff; margin-top:2px; }
+  .tag{ margin-top:8px; font-size:12px; font-weight:700; color:var(--ink); background:#ffd24d; border-radius:999px; padding:3px 12px; }
+  footer{ text-align:center; color:#6a5a9a; font-size:12px; margin-top:30px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>クサモン えいご</h1>
+  <div class="sub">えいご ゲーム ・ すきな のを えらんで あそぼう！</div>
+</header>
+<div class="grid" id="grid"></div>
+<footer>Kusamon English ・ tap a game to play</footer>
+<script>
+  var GAMES = [
+    { d:"flappy-fin",      ico:"sardine.svg",    jp:"イワシ・パタパタ",       en:"Flappy Fin",      tag:"a / an" },
+    { d:"fluff-slice",     ico:"pamp.svg",       jp:"フワフワ ぎゅっ",        en:"Fluff Hug",       tag:"ふくすう" },
+    { d:"tako-pinball",    ico:"tako.svg",       jp:"タコ バブル",            en:"Tako Bubble",     tag:"be どうし" },
+    { d:"liar-basketball", ico:"tral.svg",       jp:"ウソつき バスケット",    en:"Liar Basketball", tag:"can / can't" },
+    { d:"token-push",      ico:"catcherski.svg", jp:"トークン プッシュ",      en:"Token Push",      tag:"だいめいし" },
+    { d:"hump-bop",        ico:"temee.svg",      jp:"ハンプ ボップ",          en:"Hump Bop",        tag:"this / that" },
+    { d:"claw-order",      ico:"catcherski.svg", jp:"クレーノフの しわざ",    en:"Claw & Order",    tag:"ばしょ" },
+    { d:"showtime-snap",   ico:"tral.svg",       jp:"ショータイム スナップ",  en:"Showtime Snap",   tag:"〜ing" },
+    { d:"ink-tally",       ico:"tako.svg",       jp:"インク タリー",          en:"Ink Tally",       tag:"there is / are" },
+    { d:"justice-catch",   ico:"anpan.svg",      jp:"ジャスティス キャッチ",  en:"Justice Catch",   tag:"しつもん" },
+    { d:"stink-sergeant",  ico:"unko.svg",       jp:"スティンク サージェント",en:"Stink Sergeant",  tag:"めいれい" },
+    { d:"camel-spit",      ico:"temee.svg",      jp:"キャメル スピット",      en:"Camel Spit",      tag:"3人称 -s" },
+    { d:"battle-kaiju",    ico:"brainrot.svg",   jp:"かいじゅう バトル",      en:"Kaiju Battle",    tag:"もぎテスト", boss:true }
+  ];
+  var g = document.getElementById("grid");
+  GAMES.forEach(function (x) {
+    var a = document.createElement("a");
+    a.className = "card" + (x.boss ? " boss" : ""); a.href = "games/" + x.d + "/index.html";
+    a.innerHTML = '<div class="ico"><img src="games/' + x.d + '/assets/' + x.ico + '" alt=""></div>' +
+      '<div class="jp">' + x.jp + '</div><div class="en">' + x.en + '</div><div class="tag">' + x.tag + '</div>';
+    g.appendChild(a);
+  });
+</script>
+</body>
+</html>

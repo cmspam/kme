@@ -1,0 +1,270 @@
+<svg class="boss-art" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;display:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 640" width="760" height="640">
+  <defs>
+    <radialGradient id="tral_tralBody" cx=".42" cy=".32" r=".85">
+      <stop offset="0" stop-color="#d2f1ff"/>
+      <stop offset=".45" stop-color="#7cd1ff"/>
+      <stop offset=".8" stop-color="#3aa7d8"/>
+      <stop offset="1" stop-color="#1c6e9e"/>
+    </radialGradient>
+    <radialGradient id="tral_tralBelly" cx=".5" cy=".4" r=".75">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".7" stop-color="#e7f8ff"/>
+      <stop offset="1" stop-color="#b8e6fb"/>
+    </radialGradient>
+    <linearGradient id="tral_tralTail" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9fdcff"/>
+      <stop offset="1" stop-color="#2f93c8"/>
+    </linearGradient>
+    <linearGradient id="tral_tralFin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bce8ff"/>
+      <stop offset="1" stop-color="#2f93c8"/>
+    </linearGradient>
+    <radialGradient id="tral_tralEyeWhite" cx=".4" cy=".35" r=".75">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".75" stop-color="#f0f8ff"/>
+      <stop offset="1" stop-color="#c4ddec"/>
+    </radialGradient>
+    <radialGradient id="tral_tralIris" cx=".4" cy=".35" r=".8">
+      <stop offset="0" stop-color="#ffe9a0"/>
+      <stop offset=".5" stop-color="#f5a623"/>
+      <stop offset="1" stop-color="#9c5a06"/>
+    </radialGradient>
+    <radialGradient id="tral_tralMouth" cx=".5" cy=".25" r=".9">
+      <stop offset="0" stop-color="#b8345a"/>
+      <stop offset=".6" stop-color="#7c1230"/>
+      <stop offset="1" stop-color="#3e0817"/>
+    </radialGradient>
+    <linearGradient id="tral_tralTongue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff8aa6"/>
+      <stop offset="1" stop-color="#e23a63"/>
+    </linearGradient>
+    <linearGradient id="tral_tralShoe" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5fb8ff"/>
+      <stop offset=".55" stop-color="#2f7fe0"/>
+      <stop offset="1" stop-color="#1450a8"/>
+    </linearGradient>
+    <linearGradient id="tral_tralSole" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#cfe0ee"/>
+    </linearGradient>
+    <radialGradient id="tral_tralSpot" cx=".4" cy=".35" r=".8">
+      <stop offset="0" stop-color="#fff4b0"/>
+      <stop offset=".6" stop-color="#ffe24a"/>
+      <stop offset="1" stop-color="#d9a200"/>
+    </radialGradient>
+    <radialGradient id="tral_tralCore" cx=".4" cy=".35" r=".8">
+      <stop offset="0" stop-color="#fffdf0"/>
+      <stop offset=".5" stop-color="#ffe24a"/>
+      <stop offset="1" stop-color="#d98a00"/>
+    </radialGradient>
+    <radialGradient id="tral_tralGround" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#000000" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="400" cy="600" rx="210" ry="34" fill="url(#tral_tralGround)"/>
+
+  <!-- ============ TAIL (behind body) ============ -->
+  <g id="tral_part-tail">
+    <path d="M 230 250 Q 95 200 70 110 Q 120 175 210 215 Q 110 250 78 330 Q 140 270 240 270 Z"
+          fill="url(#tral_tralTail)" stroke="#0e4a6b" stroke-width="5" stroke-linejoin="round"/>
+    <!-- fin ribs -->
+    <path d="M 150 165 L 120 130 M 175 185 L 152 150" stroke="#1c6e9e" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/>
+    <path d="M 145 270 L 112 305 M 175 262 L 150 296" stroke="#1c6e9e" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/>
+    <path d="M 110 125 Q 150 165 215 213" stroke="#cdeeff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/>
+  </g>
+
+  <!-- ============ DORSAL FIN (finT) ============ -->
+  <g id="tral_P-finT">
+    <path d="M 348 112 Q 400 10 472 106 Q 430 96 400 122 Q 380 102 348 112 Z"
+          fill="url(#tral_tralFin)" stroke="#0e4a6b" stroke-width="5.5" stroke-linejoin="round"/>
+    <path d="M 402 40 L 410 116" stroke="#cdeeff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".7"/>
+    <path d="M 372 90 L 378 116 M 432 90 L 426 116" stroke="#1c6e9e" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".5"/>
+  </g>
+
+  <!-- ============ LEFT SIDE FIN (flamboyant raised conductor arm) ============ -->
+  <g id="tral_P-finL">
+    <!-- upper-arm sweeping up -->
+    <path d="M 300 310 Q 230 290 188 215 Q 175 178 200 165
+             Q 222 158 232 188 Q 248 250 308 268 Z"
+          fill="url(#tral_tralFin)" stroke="#0e4a6b" stroke-width="5.5" stroke-linejoin="round"/>
+    <!-- fin webbing fan at the hand -->
+    <path d="M 210 196 Q 172 168 162 132 Q 200 162 222 182 Q 214 188 210 196 Z" fill="url(#tral_tralFin)" stroke="#0e4a6b" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M 196 210 Q 156 200 138 172 Q 178 192 206 198 Q 200 202 196 210 Z" fill="url(#tral_tralFin)" stroke="#0e4a6b" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M 250 220 Q 250 320 232 380 Q 285 330 312 340 Q 280 290 296 250 Z"
+          fill="url(#tral_tralFin)" stroke="#0e4a6b" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M 226 185 Q 250 240 305 262" stroke="#cdeeff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"/>
+    <path d="M 262 250 Q 250 320 238 372" stroke="#0e4a6b" stroke-width="2.5" fill="none" opacity=".55"/>
+    <!-- conductor baton held aloft in the raised left fin -->
+    <path d="M 195 195 L 132 110" stroke="#f5f0e0" stroke-width="6" stroke-linecap="round"/>
+    <path d="M 195 195 L 168 158" stroke="#5a3a18" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="132" cy="110" r="7" fill="#fffefa" stroke="#9a8a6a" stroke-width="2"/>
+  </g>
+
+  <!-- ============ RIGHT SIDE FIN (water-spray style) ============ -->
+  <g id="tral_P-finR">
+    <path d="M 540 300 Q 640 270 695 200 Q 660 285 600 320 Q 685 310 720 270 Q 660 340 580 350 Q 660 380 700 360 Q 620 405 540 370 Z"
+          fill="url(#tral_tralFin)" stroke="#0e4a6b" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M 560 320 Q 640 300 690 230 M 560 345 Q 650 345 705 290 M 558 360 Q 640 375 695 360"
+          stroke="#cdeeff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/>
+  </g>
+
+  <!-- ============ LEGS + SNEAKERS ============ -->
+  <!-- left leg -->
+  <g id="tral_P-legL">
+    <path d="M 350 470 Q 338 525 332 560" stroke="#1c6e9e" stroke-width="34" fill="none" stroke-linecap="round"/>
+    <path d="M 350 470 Q 338 525 332 560" stroke="#5fc0ee" stroke-width="20" fill="none" stroke-linecap="round" opacity=".5"/>
+    <!-- sneaker -->
+    <g>
+      <path d="M 300 560 Q 298 538 320 534 L 348 534 Q 360 534 362 552 L 372 558 Q 392 562 392 580 L 392 592 Q 392 600 382 600 L 300 600 Q 292 600 292 588 Z"
+            fill="url(#tral_tralShoe)" stroke="#0e3a6b" stroke-width="4.5" stroke-linejoin="round"/>
+      <!-- swoosh -->
+      <path d="M 312 580 Q 345 560 378 572 Q 348 572 320 586 Z" fill="#ffffff" stroke="#0e3a6b" stroke-width="2"/>
+      <!-- toe lines (3 toes/feet feel) -->
+      <path d="M 332 540 L 330 562 M 350 540 L 350 562" stroke="#0e3a6b" stroke-width="2.5" opacity=".55"/>
+      <!-- sole -->
+      <path d="M 292 588 Q 292 600 302 602 L 384 602 Q 394 602 392 590 L 392 596 L 292 596 Z"
+            fill="url(#tral_tralSole)" stroke="#0e3a6b" stroke-width="4" stroke-linejoin="round"/>
+      <rect x="292" y="592" width="100" height="11" rx="5" fill="url(#tral_tralSole)" stroke="#0e3a6b" stroke-width="4"/>
+      <ellipse cx="330" cy="546" rx="20" ry="9" fill="#fff" opacity=".35"/>
+    </g>
+  </g>
+  <!-- right leg -->
+  <g id="tral_P-legR">
+    <path d="M 450 470 Q 462 525 468 560" stroke="#1c6e9e" stroke-width="34" fill="none" stroke-linecap="round"/>
+    <path d="M 450 470 Q 462 525 468 560" stroke="#5fc0ee" stroke-width="20" fill="none" stroke-linecap="round" opacity=".5"/>
+    <g>
+      <path d="M 500 560 Q 502 538 480 534 L 452 534 Q 440 534 438 552 L 428 558 Q 408 562 408 580 L 408 592 Q 408 600 418 600 L 500 600 Q 508 600 508 588 Z"
+            fill="url(#tral_tralShoe)" stroke="#0e3a6b" stroke-width="4.5" stroke-linejoin="round"/>
+      <path d="M 488 580 Q 455 560 422 572 Q 452 572 480 586 Z" fill="#ffffff" stroke="#0e3a6b" stroke-width="2"/>
+      <path d="M 468 540 L 470 562 M 450 540 L 450 562" stroke="#0e3a6b" stroke-width="2.5" opacity=".55"/>
+      <path d="M 508 588 Q 508 600 498 602 L 416 602 Q 406 602 408 590 L 408 596 L 508 596 Z"
+            fill="url(#tral_tralSole)" stroke="#0e3a6b" stroke-width="4" stroke-linejoin="round"/>
+      <rect x="408" y="592" width="100" height="11" rx="5" fill="url(#tral_tralSole)" stroke="#0e3a6b" stroke-width="4"/>
+      <ellipse cx="470" cy="546" rx="20" ry="9" fill="#fff" opacity=".35"/>
+    </g>
+  </g>
+
+  <!-- ============ BODY ============ -->
+  <g id="tral_part-body">
+    <!-- ambient occlusion under body -->
+    <ellipse cx="400" cy="320" rx="206" ry="190" fill="#0e4a6b" opacity=".25"/>
+    <path d="M 400 128
+             Q 575 132 602 285
+             Q 618 405 510 472
+             Q 458 505 400 505
+             Q 342 505 290 472
+             Q 182 405 198 285
+             Q 225 132 400 128 Z"
+          fill="url(#tral_tralBody)" stroke="#0e4a6b" stroke-width="6" stroke-linejoin="round"/>
+
+    <!-- belly -->
+    <path d="M 400 250
+             Q 470 250 488 350
+             Q 495 440 400 478
+             Q 305 440 312 350
+             Q 330 250 400 250 Z"
+          fill="url(#tral_tralBelly)" opacity=".95"/>
+    <!-- belly segment lines -->
+    <path d="M 332 340 Q 400 360 468 340 M 322 390 Q 400 415 478 390 M 340 435 Q 400 455 460 435"
+          stroke="#9ed4ef" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".7"/>
+
+    <!-- yellow spots -->
+    <g id="tral_part-spots">
+      <circle cx="300" cy="220" r="13" fill="url(#tral_tralSpot)" stroke="#a87b00" stroke-width="2.5"/>
+      <circle cx="510" cy="245" r="11" fill="url(#tral_tralSpot)" stroke="#a87b00" stroke-width="2.5"/>
+      <circle cx="540" cy="180" r="9" fill="url(#tral_tralSpot)" stroke="#a87b00" stroke-width="2.5"/>
+      <circle cx="270" cy="300" r="10" fill="url(#tral_tralSpot)" stroke="#a87b00" stroke-width="2.5"/>
+      <circle cx="530" cy="320" r="9" fill="url(#tral_tralSpot)" stroke="#a87b00" stroke-width="2.5"/>
+    </g>
+
+    <!-- gill slits -->
+    <path d="M 240 285 Q 262 320 244 360 M 270 273 Q 290 312 272 358 M 300 267 Q 318 308 302 356"
+          stroke="#0e4a6b" stroke-width="5" fill="none" stroke-linecap="round" opacity=".75"/>
+    <path d="M 248 290 Q 268 322 252 356 M 278 280 Q 296 314 280 354"
+          stroke="#9ed4ef" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".6"/>
+
+    <!-- subtle scale texture -->
+    <g stroke="#bfe6fb" stroke-width="2" fill="none" opacity=".4" stroke-linecap="round">
+      <path d="M 470 175 Q 482 185 470 195 M 500 200 Q 512 210 500 220 M 520 245 Q 532 255 520 265 M 488 235 Q 500 245 488 255 M 512 290 Q 524 300 512 310"/>
+    </g>
+    <!-- rim light top -->
+    <path d="M 300 150 Q 400 122 510 158" stroke="#eaffff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/>
+    <!-- gloss highlight -->
+    <ellipse cx="330" cy="205" rx="62" ry="32" fill="#ffffff" opacity=".45" transform="rotate(-18 330 205)"/>
+    <ellipse cx="318" cy="190" rx="22" ry="11" fill="#ffffff" opacity=".7" transform="rotate(-18 318 190)"/>
+  </g>
+
+  <!-- ============ EYEBROWS (menacing) ============ -->
+  <g id="tral_part-brows">
+    <path d="M 300 188 Q 330 168 368 184" stroke="#0e4a6b" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path d="M 432 184 Q 470 168 500 188" stroke="#0e4a6b" stroke-width="9" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- ============ EYES (big goofy-menacing) ============ -->
+  <g id="tral_P-eL">
+    <ellipse cx="350" cy="222" rx="40" ry="44" fill="url(#tral_tralEyeWhite)" stroke="#0e4a6b" stroke-width="5"/>
+    <circle cx="360" cy="230" r="23" fill="url(#tral_tralIris)" stroke="#5a3402" stroke-width="2.5"/>
+    <circle cx="360" cy="230" r="11" fill="#1a0f00"/>
+    <circle cx="352" cy="222" r="6" fill="#ffffff"/>
+    <circle cx="368" cy="238" r="3" fill="#ffffff" opacity=".8"/>
+  </g>
+  <g id="tral_P-eR">
+    <ellipse cx="450" cy="222" rx="40" ry="44" fill="url(#tral_tralEyeWhite)" stroke="#0e4a6b" stroke-width="5"/>
+    <circle cx="440" cy="230" r="23" fill="url(#tral_tralIris)" stroke="#5a3402" stroke-width="2.5"/>
+    <circle cx="440" cy="230" r="11" fill="#1a0f00"/>
+    <circle cx="432" cy="222" r="6" fill="#ffffff"/>
+    <circle cx="448" cy="238" r="3" fill="#ffffff" opacity=".8"/>
+  </g>
+
+  <!-- blush -->
+  <ellipse cx="300" cy="295" rx="26" ry="14" fill="#ff7ea0" opacity=".4"/>
+  <ellipse cx="500" cy="295" rx="26" ry="14" fill="#ff7ea0" opacity=".4"/>
+
+  <!-- ============ MOUTH (wide chomping, teeth) ============ -->
+  <g id="tral_P-mouth">
+    <!-- mouth cavity -->
+    <path d="M 300 300
+             Q 400 280 500 300
+             Q 510 360 400 400
+             Q 290 360 300 300 Z"
+          fill="url(#tral_tralMouth)" stroke="#0e4a6b" stroke-width="6" stroke-linejoin="round"/>
+    <!-- upper teeth -->
+    <g id="tral_part-teeth-upper" fill="#ffffff" stroke="#c9d8e0" stroke-width="1.5">
+      <path d="M 312 305 L 322 332 L 332 306 Z"/>
+      <path d="M 338 305 L 350 338 L 362 306 Z"/>
+      <path d="M 370 306 L 384 340 L 398 306 Z"/>
+      <path d="M 402 306 L 416 340 L 430 306 Z"/>
+      <path d="M 436 306 L 450 338 L 462 306 Z"/>
+      <path d="M 468 306 L 478 332 L 488 305 Z"/>
+    </g>
+    <!-- lower teeth (side ones, tongue sits in front centrally) -->
+    <g id="tral_part-teeth-lower" fill="#ffffff" stroke="#c9d8e0" stroke-width="1.5">
+      <path d="M 328 390 L 338 366 L 350 388 Z"/>
+      <path d="M 354 396 L 364 370 L 376 394 Z"/>
+      <path d="M 424 394 L 436 370 L 446 394 Z"/>
+      <path d="M 452 390 L 462 366 L 472 388 Z"/>
+    </g>
+
+  </g>
+
+  <!-- ============ TONGUE (weak-spot, lolling out in front of lower teeth) ============ -->
+  <g id="tral_P-tongue">
+    <path d="M 366 356 Q 400 344 434 356 Q 446 408 400 426 Q 354 408 366 356 Z"
+          fill="url(#tral_tralTongue)" stroke="#a31f44" stroke-width="4"/>
+    <path d="M 400 358 Q 398 396 400 420" stroke="#a31f44" stroke-width="3" fill="none" opacity=".7"/>
+    <ellipse cx="386" cy="370" rx="15" ry="8" fill="#ffd0dd" opacity=".75"/>
+  </g>
+
+  <!-- ============ CORE / WEAK SPOT (glowing on belly) ============ -->
+  <g id="tral_part-core">
+    <circle cx="400" cy="445" r="24" fill="url(#tral_tralCore)" stroke="#a87b00" stroke-width="3.5"/>
+    <circle cx="400" cy="445" r="24" fill="none" stroke="#fffbe0" stroke-width="2" opacity=".7"/>
+    <ellipse cx="392" cy="438" rx="9" ry="5" fill="#ffffff" opacity=".8"/>
+    <path d="M 400 432 L 403 442 L 413 443 L 405 450 L 408 460 L 400 454 L 392 460 L 395 450 L 387 443 L 397 442 Z"
+          fill="#fff7c0" opacity=".5"/>
+  </g>
+
+</svg>

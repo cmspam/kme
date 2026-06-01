@@ -1,0 +1,227 @@
+<svg class="boss-art" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;display:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 640" width="760" height="640">
+  <defs>
+    <radialGradient id="unko_poopBody" cx="0.42" cy="0.30" r="0.88">
+      <stop offset="0" stop-color="#c98e57"/>
+      <stop offset="0.45" stop-color="#a87245"/>
+      <stop offset="0.82" stop-color="#7d4f2c"/>
+      <stop offset="1" stop-color="#56351b"/>
+    </radialGradient>
+    <linearGradient id="unko_snoutGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c08855"/>
+      <stop offset="0.55" stop-color="#9c6a3e"/>
+      <stop offset="1" stop-color="#6a4326"/>
+    </linearGradient>
+    <linearGradient id="unko_jawGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a5c36"/>
+      <stop offset="1" stop-color="#5c391d"/>
+    </linearGradient>
+    <linearGradient id="unko_screenGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a3a2a"/>
+      <stop offset="1" stop-color="#031a12"/>
+    </linearGradient>
+    <radialGradient id="unko_screenGlow" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#39ff9e" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#39ff9e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="unko_metalWing" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#9aa3ab"/>
+      <stop offset="0.5" stop-color="#6f777e"/>
+      <stop offset="1" stop-color="#3f454a"/>
+    </linearGradient>
+    <radialGradient id="unko_bombGrad" cx="0.4" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#5a6066"/>
+      <stop offset="1" stop-color="#23272b"/>
+    </radialGradient>
+    <radialGradient id="unko_eyeWhite" cx="0.45" cy="0.38" r="0.72">
+      <stop offset="0" stop-color="#fffef2"/>
+      <stop offset="1" stop-color="#d9c9ad"/>
+    </radialGradient>
+    <radialGradient id="unko_toothGrad" cx="0.5" cy="0.2" r="0.9">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d8d0bd"/>
+    </radialGradient>
+    <filter id="unko_softBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="380" cy="592" rx="200" ry="28" fill="#000" opacity="0.18"/>
+
+  <!-- ============ STINK LINES ============ -->
+  <g id="unko_part-stink" opacity="0.55">
+    <path d="M 320 110 Q 300 80 320 55 Q 340 30 320 6" stroke="#8a9a6a" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M 410 92 Q 388 62 410 36 Q 432 10 412 -12" stroke="#9aab78" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M 500 116 Q 482 86 502 60 Q 522 36 502 12" stroke="#8a9a6a" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- ============ BACK WINGS / BOMBER TAIL (attached to body) ============ -->
+  <g id="unko_part-tail">
+    <path d="M 560 360 Q 680 320 726 268 Q 700 348 612 392 Z" fill="url(#unko_metalWing)" stroke="#2b3034" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M 566 392 Q 678 408 724 460 Q 668 416 600 414 Z" fill="url(#unko_metalWing)" stroke="#2b3034" stroke-width="4" stroke-linejoin="round"/>
+    <line x1="600" y1="372" x2="680" y2="318" stroke="#3f454a" stroke-width="3"/>
+    <line x1="600" y1="400" x2="678" y2="436" stroke="#3f454a" stroke-width="3"/>
+    <circle cx="586" cy="378" r="5" fill="#2b3034"/>
+    <circle cx="588" cy="402" r="5" fill="#2b3034"/>
+  </g>
+
+  <!-- ============ BODY: coiled poop swirl ============ -->
+  <g id="unko_part-body">
+    <path d="M 232 470
+             Q 206 396 252 352
+             Q 206 332 246 288
+             Q 210 268 254 232
+             Q 226 200 282 186
+             Q 274 156 320 150
+             Q 322 122 366 122
+             Q 380 96 408 112
+             Q 440 102 444 138
+             Q 486 144 470 180
+             Q 514 192 488 228
+             Q 562 248 524 292
+             Q 586 318 540 358
+             Q 606 392 566 444
+             Q 600 484 552 512
+             Q 552 548 390 548
+             Q 226 548 232 470 Z"
+          fill="url(#unko_poopBody)" stroke="#3a2412" stroke-width="5" stroke-linejoin="round"/>
+
+    <!-- ambient occlusion under coils -->
+    <path d="M 252 352 Q 340 384 488 354 Q 446 396 336 396 Q 262 390 252 352 Z" fill="#3a2412" opacity="0.28" filter="url(#unko_softBlur)"/>
+    <path d="M 254 232 Q 340 264 490 232 Q 446 276 336 274 Q 270 268 254 232 Z" fill="#3a2412" opacity="0.24" filter="url(#unko_softBlur)"/>
+    <path d="M 340 168 Q 388 184 458 168 Q 426 200 378 198 Q 350 192 340 168 Z" fill="#3a2412" opacity="0.18" filter="url(#unko_softBlur)"/>
+
+    <!-- glossy swirl-tip highlight on pointed top coil -->
+    <path d="M 350 134 Q 384 112 426 130" stroke="#f0d3a8" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.85"/>
+    <ellipse cx="388" cy="128" rx="26" ry="11" fill="#f6e0bd" opacity="0.6"/>
+    <circle cx="376" cy="120" r="6" fill="#fbeed1" opacity="0.7"/>
+    <!-- coil rim lights -->
+    <path d="M 282 196 Q 350 170 472 188" stroke="#e8c79a" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <path d="M 258 242 Q 348 214 504 238" stroke="#e8c79a" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.45"/>
+    <path d="M 256 300 Q 356 270 528 300" stroke="#e8c79a" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.4"/>
+    <path d="M 260 362 Q 366 332 546 362" stroke="#e8c79a" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.38"/>
+
+    <path d="M 232 470 Q 254 426 266 372 Q 234 436 240 490 Z" fill="#3a2412" opacity="0.22"/>
+
+    <!-- rivets -->
+    <g fill="#4a2f18" opacity="0.7">
+      <circle cx="310" cy="456" r="4"/><circle cx="350" cy="472" r="4"/>
+      <circle cx="470" cy="456" r="4"/><circle cx="510" cy="434" r="4"/>
+      <circle cx="288" cy="404" r="4"/><circle cx="528" cy="392" r="4"/>
+    </g>
+    <g fill="#e8c79a" opacity="0.5">
+      <circle cx="309" cy="455" r="1.6"/><circle cx="349" cy="471" r="1.6"/>
+      <circle cx="469" cy="455" r="1.6"/><circle cx="509" cy="433" r="1.6"/>
+    </g>
+
+    <!-- military star emblem on upper-right flank -->
+    <g id="unko_part-star" transform="translate(486 308)">
+      <circle r="24" fill="#3a2412" opacity="0.35"/>
+      <path d="M 0 -20 L 5.9 -6.2 L 20.9 -6.2 L 8.5 2.4 L 13.2 16.2 L 0 7.6 L -13.2 16.2 L -8.5 2.4 L -20.9 -6.2 L -5.9 -6.2 Z"
+            fill="#ffd23f" stroke="#b5870f" stroke-width="2"/>
+      <path d="M 0 -20 L 5.9 -6.2 L 0 -2 Z" fill="#fff0c4" opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- ============ CROCODILE HEAD (front, lower-left of body) ============ -->
+  <g id="unko_part-head">
+    <!-- head base merging into body -->
+    <path d="M 296 298 Q 360 284 432 300 Q 474 320 462 374 Q 434 414 360 412 Q 294 408 284 360 Q 280 322 296 298 Z"
+          fill="url(#unko_snoutGrad)" stroke="#3a2412" stroke-width="5" stroke-linejoin="round"/>
+
+    <!-- upper snout extending forward-left (overlaps deep into head, no seam) -->
+    <g id="unko_P-mouth">
+      <path d="M 372 326 Q 260 314 168 330 Q 116 336 102 362 Q 138 378 220 376 Q 320 380 386 356 Z"
+            fill="url(#unko_snoutGrad)" stroke="#3a2412" stroke-width="5" stroke-linejoin="round"/>
+      <!-- lower jaw -->
+      <path d="M 368 366 Q 258 388 176 384 Q 128 382 110 404 Q 150 420 220 416 Q 312 420 376 392 Z"
+            fill="url(#unko_jawGrad)" stroke="#3a2412" stroke-width="5" stroke-linejoin="round"/>
+      <!-- snout top ridge highlight -->
+      <path d="M 170 338 Q 260 326 360 340" stroke="#e0bd8d" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <!-- nostrils on snout tip -->
+      <ellipse cx="122" cy="350" rx="9" ry="6" fill="#2a1a0e"/>
+      <ellipse cx="122" cy="348" rx="3" ry="2" fill="#5c391d"/>
+      <!-- inner mouth shadow (depth between jaws) -->
+      <path d="M 112 378 Q 220 392 360 376 Q 250 386 130 384 Z" fill="#1c1208" opacity="0.45"/>
+      <!-- mouth/smirk line, hooking up at the back for a cocky smirk -->
+      <path d="M 108 380 Q 230 392 360 372 Q 372 366 384 354" stroke="#2a1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- snout-to-head connecting shadow (kills the seam) -->
+      <path d="M 360 332 Q 392 340 404 360 Q 384 348 356 352 Z" fill="#3a2412" opacity="0.30" filter="url(#unko_softBlur)"/>
+
+      <!-- teeth -->
+      <g id="unko_part-teeth" fill="url(#unko_toothGrad)" stroke="#b8af9a" stroke-width="1">
+        <path d="M 150 376 L 160 396 L 170 376 Z"/>
+        <path d="M 184 376 L 195 398 L 206 376 Z"/>
+        <path d="M 220 376 L 231 396 L 242 376 Z"/>
+        <path d="M 258 374 L 268 392 L 278 374 Z"/>
+        <path d="M 168 370 L 178 352 L 188 370 Z"/>
+        <path d="M 204 370 L 214 350 L 224 370 Z"/>
+        <path d="M 242 368 L 252 350 L 262 368 Z"/>
+      </g>
+      <!-- snout rivets -->
+      <g fill="#4a2f18" opacity="0.7">
+        <circle cx="160" cy="350" r="3"/><circle cx="200" cy="346" r="3"/><circle cx="242" cy="348" r="3"/>
+      </g>
+    </g>
+
+    <!-- ============ EYES (beady, angry) on top of head ============ -->
+    <!-- left eye: brow ridge + eyeball -->
+    <g id="unko_P-eL">
+      <path d="M 304 282 Q 342 266 388 284 L 380 306 Q 344 290 314 306 Z" fill="#6a4326" stroke="#3a2412" stroke-width="3.5"/>
+      <ellipse cx="346" cy="316" rx="25" ry="27" fill="url(#unko_eyeWhite)" stroke="#3a2412" stroke-width="3"/>
+      <circle cx="350" cy="326" r="12.5" fill="#1c1208"/>
+      <circle cx="354" cy="322" r="3.8" fill="#fff" opacity="0.92"/>
+    </g>
+    <!-- right eye: brow ridge + eyeball -->
+    <g id="unko_P-eR">
+      <path d="M 452 280 Q 412 268 378 288 L 388 308 Q 414 292 446 300 Z" fill="#6a4326" stroke="#3a2412" stroke-width="3.5"/>
+      <ellipse cx="416" cy="314" rx="25" ry="27" fill="url(#unko_eyeWhite)" stroke="#3a2412" stroke-width="3"/>
+      <circle cx="412" cy="324" r="12.5" fill="#1c1208"/>
+      <circle cx="416" cy="320" r="3.8" fill="#fff" opacity="0.92"/>
+    </g>
+  </g>
+
+  <!-- ============ ANTENNA on pointed swirl tip ============ -->
+  <g id="unko_P-ant">
+    <line x1="384" y1="116" x2="372" y2="56" stroke="#2b3034" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="370" cy="50" r="11" fill="#ffd23f" stroke="#b5870f" stroke-width="3"/>
+    <circle cx="366" cy="46" r="3.5" fill="#fff" opacity="0.8"/>
+  </g>
+
+  <!-- ============ DIGITAL BELLY SCREEN ============ -->
+  <g id="unko_P-belly">
+    <rect x="430" y="416" width="118" height="84" rx="14" fill="#1a1410" stroke="#3a2412" stroke-width="5"/>
+    <rect x="440" y="426" width="98" height="64" rx="9" fill="url(#unko_screenGrad)"/>
+    <rect x="440" y="426" width="98" height="64" rx="9" fill="url(#unko_screenGlow)"/>
+    <rect x="458" y="442" width="18" height="14" rx="2" fill="#46ffae"/>
+    <rect x="502" y="442" width="18" height="14" rx="2" fill="#46ffae"/>
+    <rect x="456" y="440" width="22" height="4" fill="#031a12"/>
+    <rect x="500" y="440" width="22" height="4" fill="#031a12"/>
+    <path d="M 460 472 L 470 480 L 480 472 L 490 480 L 500 472 L 510 480 L 520 472" stroke="#46ffae" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <g fill="#5a3c22">
+      <circle cx="440" cy="426" r="3"/><circle cx="538" cy="426" r="3"/>
+      <circle cx="440" cy="490" r="3"/><circle cx="538" cy="490" r="3"/>
+    </g>
+    <rect x="444" y="430" width="90" height="10" rx="5" fill="#fff" opacity="0.10"/>
+  </g>
+
+  <!-- ============ BOMB MOTIF (tucked at side of belly) ============ -->
+  <g id="unko_part-bomb">
+    <ellipse cx="300" cy="510" rx="30" ry="22" fill="url(#unko_bombGrad)" stroke="#1a1d20" stroke-width="3"/>
+    <path d="M 274 502 L 246 494 L 252 510 L 240 518 L 270 518 Z" fill="#3f454a" stroke="#1a1d20" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="316" cy="502" r="5" fill="#7a8088" opacity="0.7"/>
+    <line x1="322" y1="490" x2="326" y2="476" stroke="#1a1d20" stroke-width="3"/>
+    <ellipse cx="292" cy="502" rx="8" ry="4" fill="#fff" opacity="0.25"/>
+  </g>
+
+  <!-- ============ LEGS / clawed feet ============ -->
+  <!-- left leg / clawed foot -->
+  <g id="unko_P-L1">
+    <path d="M 332 540 Q 328 580 314 594 Q 300 580 302 596 Q 308 580 322 598 Q 332 580 340 598 Q 350 580 348 596 Q 336 580 354 590 Q 344 568 352 540 Z"
+          fill="url(#unko_snoutGrad)" stroke="#3a2412" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+  <!-- right leg / clawed foot -->
+  <g id="unko_P-L2">
+    <path d="M 446 540 Q 450 580 464 594 Q 478 580 476 596 Q 470 580 456 598 Q 446 580 438 598 Q 428 580 430 596 Q 442 580 424 590 Q 434 568 426 540 Z"
+          fill="url(#unko_snoutGrad)" stroke="#3a2412" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+</svg>

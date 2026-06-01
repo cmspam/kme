@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 640" width="760" height="640">
+<defs>
+  <radialGradient id="bg" cx="0.42" cy="0.4" r="0.85">
+    <stop offset="0" stop-color="#f7e3ba"/><stop offset="1" stop-color="#d3a967"/>
+  </radialGradient>
+  <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#efd098"/><stop offset="0.5" stop-color="#cd9c58"/><stop offset="1" stop-color="#9e6c33"/>
+  </linearGradient>
+  <linearGradient id="hump" x1="0.2" y1="0" x2="0.5" y2="1">
+    <stop offset="0" stop-color="#d8aa6a"/><stop offset="1" stop-color="#825529"/>
+  </linearGradient>
+  <radialGradient id="headFur" cx="0.5" cy="0.42" r="0.7">
+    <stop offset="0" stop-color="#a06f3c"/><stop offset="1" stop-color="#6e451f"/>
+  </radialGradient>
+  <radialGradient id="monkeyFace" cx="0.5" cy="0.44" r="0.66">
+    <stop offset="0" stop-color="#ecb98e"/><stop offset="0.7" stop-color="#cf8d5a"/><stop offset="1" stop-color="#b06c3a"/>
+  </radialGradient>
+  <radialGradient id="muzzle" cx="0.5" cy="0.36" r="0.72">
+    <stop offset="0" stop-color="#f3d2ac"/><stop offset="1" stop-color="#d49a64"/>
+  </radialGradient>
+  <linearGradient id="beard" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#c7ccd0"/>
+  </linearGradient>
+  <linearGradient id="hat" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#8c411b"/><stop offset="1" stop-color="#471b07"/>
+  </linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#f7db6c"/><stop offset="0.5" stop-color="#d4a62c"/><stop offset="1" stop-color="#986f12"/>
+  </linearGradient>
+  <linearGradient id="rug" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#c0322f"/><stop offset="1" stop-color="#8a1d1c"/>
+  </linearGradient>
+  <linearGradient id="leg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#c8964f"/><stop offset="1" stop-color="#82561f"/>
+  </linearGradient>
+  <linearGradient id="legFar" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#a87d44"/><stop offset="1" stop-color="#6e481f"/>
+  </linearGradient>
+  <filter id="soft" x="-25%" y="-25%" width="150%" height="150%">
+    <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#3a2410" flood-opacity="0.3"/>
+  </filter>
+</defs>
+
+<ellipse cx="410" cy="582" rx="290" ry="32" fill="#7a531f" opacity="0.28"/>
+
+<!-- ===== FAR LEGS ===== -->
+<g fill="url(#legFar)" stroke="#5a3a16" stroke-width="3">
+  <path d="M 312 432 q -10 66 -6 118 q 1 12 13 12 q 12 0 13 -12 q 4 -56 14 -118 z"/>
+  <path d="M 520 432 q 8 66 4 118 q -1 12 -13 12 q -12 0 -13 -12 q -2 -56 -8 -118 z"/>
+</g>
+<g fill="#2a190b">
+  <path d="M 308 556 q 16 5 28 0 l 1 14 q -7 5 -15 5 q -1 -8 -1 -8 q 0 8 -3 8 q -8 0 -14 -5 z"/>
+  <path d="M 492 556 q 16 5 28 0 l 1 14 q -7 5 -15 5 q -1 -8 -1 -8 q 0 8 -3 8 q -8 0 -14 -5 z"/>
+</g>
+
+<!-- ===== BODY (standing camel torso) ===== -->
+<g filter="url(#soft)">
+  <path d="M 214 346
+           q -6 -16 16 -22 q 60 -16 120 -2 q 50 -14 100 -2 q 56 -2 92 14
+           q 40 18 38 64 q -2 44 -10 70 q -8 24 -54 30 q -70 8 -158 8 q -88 0 -158 -8 q -42 -6 -50 -34 q -8 -30 -8 -64 q 0 -40 40 -54 z"
+        fill="url(#body)" stroke="#5a3a16" stroke-width="4"/>
+</g>
+<!-- under-belly ambient occlusion -->
+<path d="M 230 446 q 180 44 350 2 q -18 38 -64 44 q -110 10 -226 0 q -44 -6 -60 -46 z" fill="#6e4419" opacity="0.3"/>
+<!-- back rim light -->
+<path d="M 232 332 q 170 -30 330 6" stroke="#fbeac4" stroke-width="6" fill="none" opacity="0.5" stroke-linecap="round"/>
+<!-- rump form -->
+<path d="M 540 350 q 56 16 54 74 q -2 36 -50 46 q 32 -36 30 -72 q -2 -32 -34 -48 z" fill="#6e4419" opacity="0.22"/>
+<!-- flank fur rows -->
+<g stroke="#946632" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.5">
+  <path d="M 250 388 q 7 8 0 18"/><path d="M 280 398 q 7 8 0 18"/><path d="M 540 388 q 7 8 0 18"/><path d="M 566 400 q 7 8 0 18"/>
+  <path d="M 258 420 q 7 9 0 20"/><path d="M 520 420 q 7 9 0 20"/>
+</g>
+<!-- belly fringe fur -->
+<g stroke="#7a4f24" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.55">
+  <path d="M 320 470 q 2 14 -4 24"/><path d="M 372 476 q 2 14 -4 24"/><path d="M 424 474 q 2 14 -4 24"/><path d="M 474 468 q 2 14 -4 24"/>
+</g>
+
+<!-- ===== TAIL (attached to rump) ===== -->
+<g id="P-tail">
+<path d="M 588 380 q 40 18 40 60 q 0 30 -14 56" fill="none" stroke="#a9763a" stroke-width="12" stroke-linecap="round"/>
+<path d="M 614 496 q 6 26 -8 48 q 18 -6 26 -26 q 8 -18 -2 -32 z" fill="#5a3a16"/>
+</g>
+
+<!-- ===== HUMPS ===== -->
+<g id="P-h1">
+  <path d="M 296 318 q 8 -100 74 -102 q 58 -2 60 94 q -66 28 -134 8 z" fill="url(#hump)" stroke="#5a3a16" stroke-width="4"/>
+  <path d="M 322 232 q 18 -22 44 -22 q 22 0 32 18" fill="none" stroke="#f0d293" stroke-width="5" opacity="0.55" stroke-linecap="round"/>
+  <path d="M 338 216 q 8 -18 0 -34 q 12 14 16 32 z" fill="#6b4622"/>
+</g>
+<g id="P-h2">
+  <path d="M 416 314 q 6 -102 74 -100 q 60 2 56 96 q -62 26 -130 4 z" fill="url(#hump)" stroke="#5a3a16" stroke-width="4"/>
+  <path d="M 444 230 q 18 -22 44 -20 q 22 2 30 18" fill="none" stroke="#f0d293" stroke-width="5" opacity="0.55" stroke-linecap="round"/>
+  <path d="M 464 214 q 8 -18 0 -34 q 12 14 16 32 z" fill="#6b4622"/>
+</g>
+<path d="M 410 248 q -4 28 0 58" stroke="#5a3a16" stroke-width="3" fill="none" opacity="0.45"/>
+
+<!-- ===== SADDLE RUG ===== -->
+<g>
+  <path d="M 356 300 q 70 -20 148 6 q 16 56 -6 112 q -76 24 -148 2 q -20 -60 6 -120 z" fill="url(#rug)" stroke="#5a1010" stroke-width="3"/>
+  <path d="M 362 312 q 64 -16 138 6" fill="none" stroke="url(#gold)" stroke-width="6"/>
+  <path d="M 356 404 q 72 22 148 0" fill="none" stroke="url(#gold)" stroke-width="6"/>
+  <g fill="none" stroke="#f3d873" stroke-width="3">
+    <path d="M 380 342 h 13 v -11 h 13 v 11 h 13 v -11 h 13 v 11 h 13 v -11 h 13 v 11 h 13"/>
+    <path d="M 380 376 h 13 v 11 h 13 v -11 h 13 v 11 h 13 v -11 h 13 v 11 h 13 v -11 h 13"/>
+  </g>
+  <g fill="#f3d873"><path d="M 426 358 l 12 8 l -12 8 l -12 -8 z"/><path d="M 462 358 l 12 8 l -12 8 l -12 -8 z"/></g>
+  <g stroke="#f3d873" stroke-width="3" stroke-linecap="round">
+    <line x1="370" y1="410" x2="368" y2="426"/><line x1="402" y1="418" x2="401" y2="436"/><line x1="434" y1="420" x2="434" y2="438"/><line x1="466" y1="418" x2="467" y2="436"/><line x1="498" y1="410" x2="500" y2="426"/>
+  </g>
+</g>
+
+<!-- ===== NEAR LEGS ===== -->
+<g id="P-L1">
+  <path d="M 268 440 q -16 64 -12 116 q 1 16 17 16 q 16 0 17 -16 q 4 -56 16 -116 z" fill="url(#leg)" stroke="#5a3a16" stroke-width="4"/>
+  <ellipse cx="270" cy="500" rx="16" ry="14" fill="#bb8849" stroke="#5a3a16" stroke-width="2.5"/>
+  <path d="M 258 512 q 12 8 26 0" stroke="#946632" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 256 560 q 22 6 40 0 l 2 16 q -9 6 -19 6 q -2 -10 -2 -10 q 0 10 -4 10 q -12 0 -19 -6 z" fill="#2a190b"/>
+</g>
+<g id="P-L2">
+  <path d="M 466 440 q 14 64 10 116 q -1 16 -17 16 q -16 0 -17 -16 q -2 -56 -14 -116 z" fill="url(#leg)" stroke="#5a3a16" stroke-width="4"/>
+  <ellipse cx="474" cy="500" rx="16" ry="14" fill="#bb8849" stroke="#5a3a16" stroke-width="2.5"/>
+  <path d="M 462 512 q 12 8 26 0" stroke="#946632" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 454 560 q 22 6 40 0 l 2 16 q -9 6 -19 6 q -2 -10 -2 -10 q 0 10 -4 10 q -12 0 -19 -6 z" fill="#2a190b"/>
+</g>
+
+<!-- ===== NECK ===== -->
+<path d="M 232 356 q -54 -44 -60 -126 q -4 -54 32 -88" fill="none" stroke="#5a3a16" stroke-width="60" stroke-linecap="round"/>
+<path d="M 232 356 q -54 -44 -60 -126 q -4 -54 32 -88" fill="none" stroke="url(#leg)" stroke-width="50" stroke-linecap="round"/>
+<path d="M 218 350 q -48 -42 -54 -118" stroke="#fbeac4" stroke-width="7" fill="none" opacity="0.38" stroke-linecap="round"/>
+<path d="M 144 238 q -10 -52 12 -106" stroke="#6e451f" stroke-width="11" fill="none" stroke-linecap="round" opacity="0.8"/>
+
+<!-- deel collar -->
+<path d="M 190 322 q 54 32 112 -2 q -6 38 -58 42 q -54 4 -54 -40 z" fill="#3a6ea5" stroke="#16305a" stroke-width="3"/>
+<path d="M 202 332 q 44 26 90 2" fill="none" stroke="url(#gold)" stroke-width="5"/>
+
+<!-- ===== MONKEY HEAD ===== -->
+<!-- ears (big rounded monkey ears) -->
+<g stroke="#5a3a16" stroke-width="3">
+  <ellipse cx="104" cy="158" rx="24" ry="30" fill="#7e542a"/><ellipse cx="106" cy="158" rx="14" ry="19" fill="#cf9d6a"/><ellipse cx="108" cy="160" rx="7" ry="10" fill="#e8b890"/>
+  <ellipse cx="256" cy="154" rx="24" ry="30" fill="#7e542a"/><ellipse cx="254" cy="154" rx="14" ry="19" fill="#cf9d6a"/><ellipse cx="252" cy="156" rx="7" ry="10" fill="#e8b890"/>
+</g>
+<!-- head fur (outer) -->
+<ellipse cx="180" cy="168" rx="90" ry="86" fill="url(#headFur)" stroke="#4f3216" stroke-width="3"/>
+<!-- monkey face plate (heart-ish, reddish macaque) -->
+<path d="M 180 110
+         q 60 0 66 56 q 4 44 -22 76 q -20 26 -44 26 q -24 0 -44 -26 q -26 -32 -22 -76 q 6 -56 66 -56 z"
+      fill="url(#monkeyFace)" stroke="#a96c3a" stroke-width="1.5"/>
+<!-- heavy brow ridge -->
+<path d="M 126 150 q 54 -30 108 0 q -6 16 -22 16 q -12 -12 -32 -12 q -20 0 -32 12 q -16 0 -22 -16 z" fill="#9c6536" opacity="0.55"/>
+<!-- eyes (big, warm, close-set, under brow) -->
+<g id="P-eL">
+  <ellipse cx="152" cy="166" rx="24" ry="25" fill="#fff" stroke="#5a3a16" stroke-width="2.5"/>
+  <circle cx="156" cy="170" r="13" fill="#a86a22"/><circle cx="156" cy="170" r="7.5" fill="#1a0e04"/><circle cx="151" cy="165" r="3.6" fill="#fff"/>
+</g>
+<g id="P-eR">
+  <ellipse cx="208" cy="164" rx="24" ry="25" fill="#fff" stroke="#5a3a16" stroke-width="2.5"/>
+  <circle cx="204" cy="168" r="13" fill="#a86a22"/><circle cx="204" cy="168" r="7.5" fill="#1a0e04"/><circle cx="199" cy="163" r="3.6" fill="#fff"/>
+</g>
+<!-- bushy white brows -->
+<path d="M 124 146 q 32 -20 56 -4 q -8 9 -28 9 q -18 0 -28 -5 z" fill="url(#beard)" stroke="#b8bdc1" stroke-width="1.5"/>
+<path d="M 182 144 q 30 -16 56 2 q -10 9 -28 9 q -18 0 -28 -11 z" fill="url(#beard)" stroke="#b8bdc1" stroke-width="1.5"/>
+<!-- monkey muzzle (forward, lighter) with brow furrow above -->
+<path d="M 162 192 q 18 6 38 0" stroke="#a96c3a" stroke-width="2" fill="none" opacity="0.5"/>
+<ellipse cx="180" cy="214" rx="40" ry="32" fill="url(#muzzle)" stroke="#bd8552" stroke-width="1.8"/>
+<!-- monkey nostrils: two small close-set slits -->
+<g fill="#5a3216" stroke="#5a3216" stroke-width="1">
+  <path d="M 172 200 q -2 8 1 14" stroke-linecap="round" fill="none" stroke-width="3"/>
+  <path d="M 188 200 q 2 8 -1 14" stroke-linecap="round" fill="none" stroke-width="3"/>
+</g>
+<!-- wide monkey mouth (open, proclaiming) -->
+<path d="M 150 226 q 30 24 60 0 q -4 22 -30 22 q -26 0 -30 -22 z" fill="#7a2233"/>
+<path d="M 162 230 q 18 12 36 0 q -4 9 -18 9 q -14 0 -18 -9 z" fill="#d76a82"/>
+<rect x="164" y="226" width="9" height="9" rx="2" fill="#fff"/><rect x="187" y="226" width="9" height="9" rx="2" fill="#fff"/>
+
+<!-- ===== MUSTACHE + BUSHY BEARD (gameplay part "mouth"; mustache breaks first) ===== -->
+<g id="P-mouth">
+<g id="Pd-mouth">
+<path d="M 180 222 q -22 -10 -50 -4 q -34 8 -48 32 q 20 12 42 0 q 24 -14 44 -16 q 6 -2 12 -2 q 6 0 12 2 q 20 2 44 16 q 22 12 42 0 q -14 -24 -48 -32 q -28 -6 -50 4 z" fill="url(#beard)" stroke="#b8bdc1" stroke-width="1.5"/>
+</g>
+<path d="M 132 250 q -16 16 -16 56 q 0 50 28 92 q 18 26 36 32 q 18 -6 36 -32 q 28 -42 28 -92 q 0 -40 -16 -56 q -20 22 -48 22 q -28 0 -48 -22 z" fill="url(#beard)" stroke="#c2c7cb" stroke-width="2"/>
+<g stroke="#b8bdc1" stroke-width="1.6" fill="none" opacity="0.8" stroke-linecap="round">
+  <path d="M 150 276 q -16 60 8 150"/><path d="M 180 280 q 0 70 0 150"/><path d="M 210 276 q 16 60 -8 150"/>
+  <path d="M 136 296 q -10 50 14 104"/><path d="M 224 296 q 10 50 -14 104"/>
+</g>
+</g>
+
+<!-- ===== HAT (Mongolian toortsog) ===== -->
+<path d="M 100 130 q 80 -34 162 0 q -6 18 -81 18 q -75 0 -81 -18 z" fill="#3a2410" stroke="#1a0e04" stroke-width="2"/>
+<g stroke="#5a3a1a" stroke-width="3" stroke-linecap="round">
+  <path d="M 114 132 q -2 8 -6 12"/><path d="M 144 138 q -2 8 -6 12"/><path d="M 181 140 q 0 8 0 12"/><path d="M 220 138 q 2 8 6 12"/><path d="M 250 132 q 2 8 6 12"/>
+</g>
+<path d="M 108 114 q 74 -26 148 0 l 0 18 q -75 -26 -148 0 z" fill="url(#gold)" stroke="#7a5a10" stroke-width="2"/>
+<g fill="#9c7314"><circle cx="142" cy="118" r="2.6"/><circle cx="181" cy="114" r="2.6"/><circle cx="220" cy="118" r="2.6"/></g>
+<path d="M 120 116 q 61 -150 126 0 q -63 -26 -126 0 z" fill="url(#hat)" stroke="#1a0e04" stroke-width="2.5"/>
+<path d="M 161 110 q 22 -86 44 0 q -22 -12 -44 0 z" fill="#a8512a" opacity="0.7"/>
+<line x1="183" y1="28" x2="183" y2="108" stroke="#1a0e04" stroke-width="2.5"/>
+<circle cx="183" cy="28" r="8" fill="url(#gold)" stroke="#7a5a10" stroke-width="2"/>
+<path d="M 183 36 q 14 26 8 54" stroke="#cc2233" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M 183 36 q -10 24 -4 50" stroke="#9c1820" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>
