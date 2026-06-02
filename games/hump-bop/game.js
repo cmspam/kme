@@ -12,7 +12,7 @@
   const NEAR_Y = 804, FAR_Y = 566;
   const NEAR = [{ x: 188 }, { x: 380 }, { x: 572 }];      // foreground holes (big, close)
   const FAR = [{ x: 150 }, { x: 326 }, { x: 470 }, { x: 642 }];   // dune holes (small, far)
-  const NEAR_S = 0.96, FAR_S = 0.58;
+  const NEAR_S = 0.96, FAR_S = 0.74;
   const TINTS = [0xffffff, 0xf3b977, 0xe7d2a6, 0xefa766, 0xd9c08c];
   const wordFor = (near, many) => near ? (many ? "these" : "this") : (many ? "those" : "that");
 
@@ -47,7 +47,8 @@
       this.buildBackdrop();
       this.buildField();
       this.buildHud();
-      this.buildButtons();
+      this.buildWordBanner();
+      this.calledWord = null;
       this.temee = this.add.image(86, 150, "temee").setScale(0.6).setDepth(40).setVisible(false);
       this.mallet = this.add.image(0, 0, "mallet").setOrigin(0.5, 1).setDepth(38).setVisible(false);
 
@@ -103,29 +104,29 @@
     }
     updateHud() { this.hud.setText("ボップ " + this.cleared + " / " + WIN); this.hearts.forEach((h, i) => { const on = i < this.lives; h.setTint(on ? 0xffffff : 0x6a5040).setAlpha(on ? 1 : 0.5); }); }
 
-    buildButtons() {
-      const WB = 224, HB = 100, cx0 = W / 2 - 120, cx1 = W / 2 + 120, cy0 = 1008, cy1 = 1116;
-      const cells = [{ x: cx0, y: cy0 }, { x: cx1, y: cy0 }, { x: cx0, y: cy1 }, { x: cx1, y: cy1 }];
-      // SHUFFLE the four words across the four cells each game: position is not a cue, so the
-      // kid must READ this/that/these/those (the only answer signal; A2).
-      const words = Phaser.Utils.Array.Shuffle(["this", "these", "that", "those"]);
-      this.btns = {};
-      words.forEach((w, i) => {
-        const c = cells[i];
-        const g = this.add.graphics().setDepth(33);
-        g.fillGradientStyle(0x4c3270, 0x4c3270, 0x2e1a48, 0x2e1a48, 1); g.fillRoundedRect(c.x - WB / 2, c.y - HB / 2, WB, HB, 20);
-        g.lineStyle(5, 0xffd24d, 1); g.strokeRoundedRect(c.x - WB / 2, c.y - HB / 2, WB, HB, 20);
-        this.add.text(c.x, c.y, w, { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "42px", color: "#fff", fontStyle: "800" }).setOrigin(0.5).setDepth(34).setStroke("#2a1838", 6);
-        this.add.zone(c.x, c.y, WB, HB).setInteractive({ useHandCursor: true }).setDepth(35).on("pointerdown", () => { Sfx.init(); this.onWord(w); this.pressFx(g); });
-        this.btns[w] = { g: g, x: c.x, y: c.y };
-      });
+    // A big banner names the word to BOP. You bop the critters MATCHING it (you
+    // tap the moles themselves, not a button), and avoid the others.
+    buildWordBanner() {
+      const by = 1070;
+      const g = this.add.graphics().setDepth(33); g.fillGradientStyle(0x4c3270, 0x4c3270, 0x2e1a48, 0x2e1a48, 1); g.fillRoundedRect(W / 2 - 340, by - 60, 680, 120, 24); g.lineStyle(6, 0xffd24d, 1); g.strokeRoundedRect(W / 2 - 340, by - 60, 680, 120, 24);
+      this.add.text(W / 2 - 300, by, "ボップ！", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "30px", color: "#ffd24d", fontStyle: "700" }).setOrigin(0, 0.5).setDepth(34);
+      this.wordBanner = this.add.text(W / 2 + 70, by, "", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "72px", color: "#fff", fontStyle: "800" }).setOrigin(0.5).setDepth(34).setStroke("#2a1838", 7);
+      this.wordBannerG = g;
     }
-    pressFx(g) { this.tweens.add({ targets: g, alpha: 0.6, duration: 70, yoyo: true }); }
+    rotateWord(force) {
+      const words = ["this", "these", "that", "those"];
+      let w; do { w = Phaser.Utils.Array.GetRandom(words); } while (!force && w === this.calledWord && words.length > 1);
+      this.calledWord = w;
+      if (this.wordBanner) { this.wordBanner.setText(w); this.tweens.add({ targets: this.wordBanner, scale: { from: 1.25, to: 1 }, duration: 240, ease: "Back.out" }); }
+      this.voice("en_" + w);
+      // guarantee a matching critter is or will be up so the called word is answerable
+      if (!this.targets.some((t) => !t.bopped && t.word === w)) this.forceSpawnWord = w;
+    }
 
     // ---------- whack-a-mole engine ----------
-    stayMs() { return Math.max(1150, 2500 - this.cleared * 105); }
-    spawnMs() { return Math.max(620, 1380 - this.cleared * 62); }
-    activeCap() { return 1; }   // one critter (single or cluster) at a time; difficulty ramps via speed, not count
+    stayMs() { return Math.max(1000, 2100 - this.cleared * 90); }
+    spawnMs() { return Math.max(380, 760 - this.cleared * 30); }
+    activeCap() { return 4; }   // several critters up at once = real whack-a-mole chaos
 
     spawnLoop() {
       if (this.state !== "play") return;
@@ -134,15 +135,18 @@
     }
     trySpawn() {
       if (this.targets.length >= this.activeCap()) return;
-      const used = new Set(this.targets.map((t) => t.word)), opts = [];
+      const opts = [];
       [[true, false], [true, true], [false, false], [false, true]].forEach(([near, many]) => {
         const word = wordFor(near, many);
-        if (used.has(word)) return;
         const free = this.holes.filter((h) => h.near === near && !h.occupied);
         if (free.length) opts.push({ near, many, word, free });
       });
       if (!opts.length) return;
-      const o = Phaser.Utils.Array.GetRandom(opts);
+      // keep the CALLED word answerable (several can be up); mix in decoys to avoid
+      let o = null;
+      if (this.forceSpawnWord) { o = opts.find((x) => x.word === this.forceSpawnWord); this.forceSpawnWord = null; }
+      if (!o && this.calledWord && Math.random() < 0.55) o = opts.find((x) => x.word === this.calledWord);
+      if (!o) o = Phaser.Utils.Array.GetRandom(opts);
       this.makeTarget(o.near, o.many, o.word, Phaser.Utils.Array.GetRandom(o.free));
     }
     makeTarget(near, many, word, hole) {
@@ -150,7 +154,7 @@
       const spread = many ? 30 * s : 0;
       for (let i = 0; i < n; i++) {
         const ox = n === 1 ? 0 : (i - (n - 1) / 2) * spread;
-        const restY = hole.y - 30 * s, sp = this.add.image(hole.x + ox, hole.y + 12 * s, "pup").setOrigin(0.5, 1).setScale(s * 0.4).setDepth(hole.near ? 22 : 12).setAlpha(hole.near ? 1 : 0.86).setTint(Phaser.Utils.Array.GetRandom(TINTS));
+        const restY = hole.y - 30 * s, sp = this.add.image(hole.x + ox, hole.y + 12 * s, "pup").setOrigin(0.5, 1).setScale(s * 0.4).setDepth(hole.near ? 22 : 12).setAlpha(hole.near ? 1 : 0.94).setTint(Phaser.Utils.Array.GetRandom(TINTS));
         this.tweens.add({ targets: sp, y: restY, scaleX: s, scaleY: s, duration: 200, ease: "Back.out", delay: i * 50 });
         this.tweens.add({ targets: sp, y: restY - 5 * s, duration: 520, yoyo: true, repeat: -1, delay: 200 + i * 60, ease: "Sine.inOut" });
         sprites.push(sp);
@@ -160,6 +164,8 @@
       Sfx.pop();
       const target = { near, many, word, hole, sprites, bopped: false };
       hole.occupied = target; this.targets.push(target);
+      // you tap the MOLE ITSELF now (not a word button): hand goes where the action is
+      target.sprites.forEach((sp) => sp.setInteractive({ useHandCursor: true }).on("pointerdown", () => this.tapTarget(target)));
       target.ev = this.time.delayedCall(this.stayMs(), () => this.duckTarget(target, true));
     }
     duckTarget(target, missed) {
@@ -169,12 +175,11 @@
       target.sprites.forEach((sp) => { this.tweens.killTweensOf(sp); this.tweens.add({ targets: sp, y: target.hole.y + 14 * target.hole.scale, scaleX: target.hole.scale * 0.4, scaleY: target.hole.scale * 0.3, alpha: 0, duration: 200, ease: "Quad.in", onComplete: () => sp.destroy() }); });
       if (missed) { this.combo = 0; if (this.temee && this.state === "play") this.tweens.add({ targets: this.temee, angle: 6, duration: 90, yoyo: true }); }
     }
-    onWord(w) {
-      if (this.state !== "play" || this.busyTap) return;
-      const match = this.targets.filter((t) => !t.bopped && t.word === w);
-      if (match.length) { this.bopTarget(match[0]); return; }
-      const live = this.targets.filter((t) => !t.bopped);
-      if (live.length) this.wrongTap(w); else this.whiff(w);
+    tapTarget(target) {
+      if (this.state !== "play" || this.busyTap || target.bopped) return;
+      Sfx.init();
+      if (target.word === this.calledWord) this.bopTarget(target);
+      else this.wrongTapAt(target);
     }
     bopTarget(target) {
       target.bopped = true; if (target.ev) target.ev.remove();
@@ -192,15 +197,15 @@
         if (this.cleared >= WIN) this.win();
       });
     }
-    wrongTap(w) {
+    wrongTapAt(target) {
       Sfx.bad(); this.lives--; this.updateHud(); this.cameras.main.shake(160, 0.008); this.combo = 0;
       if (this.temee) this.tweens.add({ targets: this.temee, angle: -8, duration: 70, yoyo: true, repeat: 2 });
-      this.toast("ちがうぞい！", "#ff9a9a", W / 2, 360);
+      target.sprites.forEach((sp) => this.tweens.add({ targets: sp, angle: { from: -14, to: 14 }, duration: 50, repeat: 2, yoyo: true, onComplete: () => sp.setAngle(0) }));
+      this.toast("ちがうぞい！", "#ff9a9a", target.hole.x, target.hole.y - 50 * target.hole.scale);
       this.voice("te_no");
-      this.busyTap = true; this.time.delayedCall(520, () => { this.busyTap = false; });
+      this.busyTap = true; this.time.delayedCall(360, () => { this.busyTap = false; });
       if (this.lives <= 0) this.lose();
     }
-    whiff(w) { Sfx.noise(0.05, 0.06, 900); const b = this.btns[w]; if (b) { const p = this.add.image(b.x, b.y - 60, "p_puff").setScale(0.4).setAlpha(0.5).setTint(0xcaa46a).setDepth(36); this.tweens.add({ targets: p, scale: 0.7, alpha: 0, duration: 260, onComplete: () => p.destroy() }); } }
     swingMallet(x, y, near) {
       const m = this.mallet; m.setVisible(true).setPosition(x + 54, y - 30).setScale(near ? 0.92 : 0.66).setAngle(-58).setAlpha(1).setDepth(near ? 30 : 20);
       this.tweens.add({ targets: m, angle: 8, duration: 130, ease: "Quad.in", onComplete: () => { this.tweens.add({ targets: m, angle: -40, alpha: 0, duration: 200, delay: 60, ease: "Quad.out", onComplete: () => m.setVisible(false) }); } });
@@ -261,10 +266,10 @@
       if (onEnd) p.then(onEnd);
       return p;
     }
-    startPlay() { if (this.playStarted) return; this.playStarted = true; this.state = "play"; if (this.hudObjs) this.hudObjs.forEach((o) => o.setVisible(true)); this.time.delayedCall(400, () => this.spawnLoop()); }
+    startPlay() { if (this.playStarted) return; this.playStarted = true; this.state = "play"; if (this.hudObjs) this.hudObjs.forEach((o) => o.setVisible(true)); this.rotateWord(true); this.wordEv = this.time.addEvent({ delay: 3400, loop: true, callback: () => { if (this.state === "play") this.rotateWord(); } }); this.time.delayedCall(400, () => this.spawnLoop()); }
 
-    win() { this.state = "over"; if (window.KMEFlow) KMEFlow.win(); if (this.spawnEv) this.spawnEv.remove(); Sfx.win(); this.flash(0xfff2c4, 0.5); this.voice("te_yes"); this.tweens.add({ targets: this.temee, scaleX: 0.7, scaleY: 0.7, duration: 180, yoyo: true, repeat: 3 }); this.time.delayedCall(700, () => this.panel("みごと じゃ！", "YOU WIN!")); }
-    lose() { this.state = "over"; if (this.spawnEv) this.spawnEv.remove(); Sfx.lose(); this.cameras.main.shake(280, 0.012); this.time.delayedCall(500, () => this.panel("まだまだ じゃ！", "GAME OVER")); }
+    win() { this.state = "over"; if (window.KMEFlow) KMEFlow.win(); if (this.spawnEv) this.spawnEv.remove(); if (this.wordEv) this.wordEv.remove(); Sfx.win(); this.flash(0xfff2c4, 0.5); this.voice("te_yes"); this.tweens.add({ targets: this.temee, scaleX: 0.7, scaleY: 0.7, duration: 180, yoyo: true, repeat: 3 }); this.time.delayedCall(700, () => this.panel("みごと じゃ！", "YOU WIN!")); }
+    lose() { this.state = "over"; if (this.spawnEv) this.spawnEv.remove(); if (this.wordEv) this.wordEv.remove(); Sfx.lose(); this.cameras.main.shake(280, 0.012); this.time.delayedCall(500, () => this.panel("まだまだ じゃ！", "GAME OVER")); }
     flash(color, alpha) { const f = this.add.rectangle(0, 0, W, H, color, alpha).setOrigin(0).setDepth(50); this.tweens.add({ targets: f, alpha: 0, duration: 240, onComplete: () => f.destroy() }); }
     panel(titleJp, big) {
       const cy = H * 0.42;
@@ -279,17 +284,10 @@
       this.tweens.add({ targets: bg, alpha: 0.7, duration: 700, yoyo: true, repeat: -1 });
     }
 
-    capSetup(q) {
-      this.state = "play"; this.playStarted = true;
-      // place one target per word for a deterministic showcase frame
-      const want = (q.get("acts") ? q.get("acts").split(",") : ["this", "these", "that", "those"]);
-      want.forEach((w) => {
-        let near, many;
-        if (w === "this") { near = true; many = false; } else if (w === "these") { near = true; many = true; }
-        else if (w === "that") { near = false; many = false; } else if (w === "those") { near = false; many = true; } else return;
-        const free = this.holes.filter((h) => h.near === near && !h.occupied);
-        if (free.length) this.makeTarget(near, many, w, Phaser.Utils.Array.GetRandom(free));
-      });
+    capSetup() {
+      this.markSeen(); this.startPlay();
+      // headless self-play: bop critters matching the called word
+      this.time.addEvent({ delay: 220, loop: true, callback: () => { if (this.state !== "play") return; const m = this.targets.find((t) => !t.bopped && t.word === this.calledWord); if (m) this.tapTarget(m); } });
     }
   }
 
