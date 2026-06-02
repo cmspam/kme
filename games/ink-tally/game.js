@@ -73,12 +73,12 @@
 
     buildHud() {
       this.hud = this.add.graphics().setDepth(30); this.hud.fillStyle(0x0a2d47, 0.82); this.hud.fillRoundedRect(8, 8, W - 16, 50, 16);
-      this.orderNo = this.add.text(20, 17, "", { fontFamily: '"Baloo 2"', fontSize: "22px", color: "#cdeeff", fontStyle: "800" }).setDepth(31);
-      this.hearts = this.add.text(W - 20, 17, "", { fontFamily: '"Baloo 2"', fontSize: "24px", color: "#ff5a7a" }).setOrigin(1, 0).setDepth(31);
+      this.orderNo = this.add.text(20, 17, "", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "22px", color: "#cdeeff", fontStyle: "800" }).setDepth(31);
+      this.hearts = this.add.text(W - 20, 17, "", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "24px", color: "#ff5a7a" }).setOrigin(1, 0).setDepth(31);
       // the order (English there-is/are sentence) on a plate
       this.orderPlate = this.add.graphics().setDepth(30); this.orderPlate.fillStyle(0xffffff, 0.96); this.orderPlate.fillRoundedRect(W / 2 - 290, 70, 580, 76, 18); this.orderPlate.lineStyle(5, 0x7fd0ff, 1); this.orderPlate.strokeRoundedRect(W / 2 - 290, 70, 580, 76, 18);
-      this.orderTx = this.add.text(W / 2, 100, "", { fontFamily: '"Baloo 2"', fontSize: "32px", color: "#0a2d47", fontStyle: "800" }).setOrigin(0.5).setDepth(31);
-      this.tallyTx = this.add.text(W / 2, 132, "", { fontFamily: '"Zen Maru Gothic"', fontSize: "18px", color: "#2a6a90", fontStyle: "700" }).setOrigin(0.5).setDepth(31);
+      this.orderTx = this.add.text(W / 2, 100, "", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "32px", color: "#0a2d47", fontStyle: "800" }).setOrigin(0.5).setDepth(31);
+      this.tallyTx = this.add.text(W / 2, 132, "", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "18px", color: "#2a6a90", fontStyle: "700" }).setOrigin(0.5).setDepth(31);
       this.orderPlate.setVisible(false); this.orderTx.setVisible(false); this.tallyTx.setVisible(false);
       this.updateHud();
     }
@@ -143,7 +143,7 @@
       this.busy = true; Sfx.serve(); this.cameras.main.flash(160, 200, 240, 255);
       this.rewardDone = this.voice("there_" + this.target + "_" + this.kind.k);
       this.tweens.add({ targets: this.tako, scaleX: 0.7, scaleY: 0.7, duration: 160, yoyo: true, repeat: 2 });
-      const t = this.add.text(W / 2, 200, this.orderTx.text + " ✓", { fontFamily: '"Baloo 2"', fontSize: "30px", color: "#2fae5e", fontStyle: "800" }).setOrigin(0.5).setDepth(33).setStroke("#fff", 6).setScale(0.6);
+      const t = this.add.text(W / 2, 200, this.orderTx.text + " ✓", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "30px", color: "#2fae5e", fontStyle: "800" }).setOrigin(0.5).setDepth(33).setStroke("#fff", 6).setScale(0.6);
       this.tweens.add({ targets: t, scale: 1, duration: 200, ease: "Back.out" }); this.time.delayedCall(1100, () => t.destroy());
       this.order++; this.updateHud();
       if (this.order >= WIN) { this.time.delayedCall(700, () => this.win()); return; }
@@ -152,7 +152,7 @@
     }
     spoil(msg) {
       this.busy = true; Sfx.bad(); this.lives--; this.updateHud(); this.cameras.main.shake(180, 0.009);
-      const t = this.add.text(W / 2, 200, msg, { fontFamily: '"Baloo 2"', fontSize: "28px", color: "#ff7a6a", fontStyle: "800" }).setOrigin(0.5).setDepth(33).setStroke("#0a2d47", 5);
+      const t = this.add.text(W / 2, 200, msg, { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "28px", color: "#ff7a6a", fontStyle: "800" }).setOrigin(0.5).setDepth(33).setStroke("#0a2d47", 5);
       this.tweens.add({ targets: t, y: t.y - 24, alpha: 0, duration: 900, onComplete: () => t.destroy() });
       if (this.lives <= 0) { this.time.delayedCall(600, () => this.lose()); return; }
       this.time.delayedCall(800, () => { if (this.state === "play") { this.caught = 0; this.updateHud(); this.stockTank(); this.busy = false; } });   // retry the same order
@@ -182,11 +182,11 @@
     panel(jp, big) {
       const p = this.add.graphics().setDepth(60); p.fillStyle(0x0a2d47, 0.95); p.fillRoundedRect(W / 2 - 200, H / 2 - 150, 400, 300, 28); p.lineStyle(6, 0x7fd0ff, 1); p.strokeRoundedRect(W / 2 - 200, H / 2 - 150, 400, 300, 28);
       this.add.image(W / 2, H / 2 - 80, "tako").setScale(0.4).setDepth(61);
-      this.add.text(W / 2, H / 2 - 2, big, { fontFamily: '"Baloo 2"', fontSize: "44px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(61).setStroke("#0a2d47", 6);
-      this.add.text(W / 2, H / 2 + 44, jp, { fontFamily: '"Zen Maru Gothic"', fontSize: "26px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(61);
+      this.add.text(W / 2, H / 2 - 2, big, { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "44px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(61).setStroke("#0a2d47", 6);
+      this.add.text(W / 2, H / 2 + 44, jp, { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "26px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(61);
       const bw = 240, bh = 72, by = H / 2 + 108;
       const bg = this.add.graphics().setDepth(61); bg.fillStyle(0x3DBE6A, 1); bg.fillRoundedRect(W / 2 - bw / 2, by - bh / 2, bw, bh, 20); bg.lineStyle(5, 0x1F8A4C, 1); bg.strokeRoundedRect(W / 2 - bw / 2, by - bh / 2, bw, bh, 20);
-      this.add.text(W / 2, by, "もう いちど ▶", { fontFamily: '"Zen Maru Gothic"', fontSize: "26px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#1F5A30", 5);
+      this.add.text(W / 2, by, "もう いちど ▶", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "26px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#1F5A30", 5);
       this.add.zone(W / 2, by, bw, bh).setInteractive({ useHandCursor: true }).setDepth(63).on("pointerdown", () => this.scene.restart());
       this.tweens.add({ targets: bg, alpha: 0.65, duration: 700, yoyo: true, repeat: -1 });
     }
@@ -200,12 +200,12 @@
       const dim = this.add.graphics().setDepth(60); dim.fillStyle(0x06243a, 0.5); dim.fillRect(0, 0, W, H);
       const host = this.add.image(W / 2, H * 0.34, "tako").setScale(0.9).setDepth(62);
       this.titleBob = this.tweens.add({ targets: host, y: H * 0.34 - 16, duration: 950, yoyo: true, repeat: -1, ease: "Sine.inOut" });
-      this.add.text(W / 2, H * 0.56, "タコ の すいそう", { fontFamily: '"Baloo 2"', fontSize: "40px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(62).setStroke("#06243a", 7);
-      this.add.text(W / 2, H * 0.56 + 44, "Tako's Tank", { fontFamily: '"Baloo 2"', fontSize: "24px", color: "#bdeaff", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#06243a", 5);
+      this.add.text(W / 2, H * 0.56, "タコ の すいそう", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "40px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(62).setStroke("#06243a", 7);
+      this.add.text(W / 2, H * 0.56 + 44, "Tako's Tank", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "24px", color: "#bdeaff", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#06243a", 5);
       const bw = 300, bh = 92, bx = W / 2, by = H * 0.73;
       const bg = this.add.graphics().setDepth(62); bg.fillStyle(0x2aa9d8, 1); bg.fillRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 26); bg.lineStyle(6, 0x16708f, 1); bg.strokeRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 26);
       this.add.triangle(bx - 58, by, 0, 0, 26, 16, 0, 32, 0xffffff).setDepth(63);
-      this.add.text(bx + 14, by, "あそぶ", { fontFamily: '"Zen Maru Gothic"', fontSize: "34px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(63).setStroke("#0a3a4a", 5);
+      this.add.text(bx + 14, by, "あそぶ", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "34px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(63).setStroke("#0a3a4a", 5);
       this.titlePulse = this.tweens.add({ targets: bg, alpha: 0.7, duration: 650, yoyo: true, repeat: -1 });
       this.add.zone(bx, by, bw, bh).setInteractive({ useHandCursor: true }).setDepth(64).on("pointerdown", () => this.startFromTitle());
     }
@@ -222,8 +222,8 @@
       this.introBob = this.tweens.add({ targets: this.introBig, y: H * 0.34 - 14, duration: 900, yoyo: true, repeat: -1, ease: "Sine.inOut" });
       const bx = W / 2, by = H * 0.62;
       this.introBg = this.add.graphics().setDepth(46); this.introBg.fillStyle(0xffffff, 0.97); this.introBg.fillRoundedRect(bx - 332, by - 104, 664, 208, 24); this.introBg.lineStyle(5, 0x0a2d47, 1); this.introBg.strokeRoundedRect(bx - 332, by - 104, 664, 208, 24);
-      this.introText = this.add.text(bx, by, "まいど！ ワシ の すいそう や！\nちゅうもん を よんでや。 「There is a fish」 やったら\nさかな 1ぴき、 「There are three crabs」 やったら\nカニ 3びき を、 タップ して つかまえるんや！\nちがう いきもの や とりすぎ は あかんで！", { fontFamily: '"Zen Maru Gothic"', fontSize: "22px", color: "#0a2d47", fontStyle: "700", align: "center", lineSpacing: 7 }).setOrigin(0.5).setDepth(47);
-      this.skipBtn = this.add.text(W - 56, 92, "スキップ", { fontFamily: '"Zen Maru Gothic"', fontSize: "24px", color: "#bdeaff", fontStyle: "700" }).setOrigin(1, 0.5).setDepth(48).setInteractive({ useHandCursor: true }).setStroke("#06243a", 5);
+      this.introText = this.add.text(bx, by, "まいど！ ワシ の すいそう や！\nちゅうもん を よんでや。 「There is a fish」 やったら\nさかな 1ぴき、 「There are three crabs」 やったら\nカニ 3びき を、 タップ して つかまえるんや！\nちがう いきもの や とりすぎ は あかんで！", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "22px", color: "#0a2d47", fontStyle: "700", align: "center", lineSpacing: 7 }).setOrigin(0.5).setDepth(47);
+      this.skipBtn = this.add.text(W - 56, 92, "スキップ", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "24px", color: "#bdeaff", fontStyle: "700" }).setOrigin(1, 0.5).setDepth(48).setInteractive({ useHandCursor: true }).setStroke("#06243a", 5);
       this.skipChev = this.add.triangle(W - 34, 92, 0, 0, 18, 11, 0, 22, 0xffd24d).setDepth(48).setInteractive({ useHandCursor: true });
       let advanced = false; this.advIntro = () => { if (advanced) return; advanced = true; this.endIntro(); };
       this.skipBtn.on("pointerdown", this.advIntro); this.skipChev.on("pointerdown", this.advIntro);

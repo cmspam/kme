@@ -92,12 +92,12 @@
 
     buildHud() {
       this.hud = this.add.graphics().setDepth(30); this.hud.fillStyle(0x10210a, 0.78); this.hud.fillRoundedRect(8, 8, W - 16, 54, 16);
-      this.progTx = this.add.text(20, 18, "", { fontFamily: '"Baloo 2"', fontSize: "22px", color: "#eaf6d8", fontStyle: "800" }).setDepth(31);
-      this.comboTx = this.add.text(W / 2, 34, "", { fontFamily: '"Baloo 2"', fontSize: "22px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(31).setStroke("#10210a", 4);
-      this.hearts = this.add.text(W - 20, 18, "", { fontFamily: '"Baloo 2"', fontSize: "26px", color: "#ff5a7a" }).setOrigin(1, 0).setDepth(31);
+      this.progTx = this.add.text(20, 18, "", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "22px", color: "#eaf6d8", fontStyle: "800" }).setDepth(31);
+      this.comboTx = this.add.text(W / 2, 34, "", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "22px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(31).setStroke("#10210a", 4);
+      this.hearts = this.add.text(W - 20, 18, "", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "26px", color: "#ff5a7a" }).setOrigin(1, 0).setDepth(31);
       this.orderPlate = this.add.graphics().setDepth(31);
-      this.orderTx = this.add.text(W / 2, 110, "", { fontFamily: '"Baloo 2"', fontSize: "46px", color: "#fff", fontStyle: "800" }).setOrigin(0.5).setDepth(33).setStroke("#10210a", 7);
-      this.hintTx = this.add.text(W / 2, H - 30, "うえ・ひだり・みぎ に スワイプ！ めいれい は まもれ！", { fontFamily: '"Zen Maru Gothic"', fontSize: "17px", color: "#d8f08a", fontStyle: "700" }).setOrigin(0.5).setDepth(31).setVisible(false);
+      this.orderTx = this.add.text(W / 2, 110, "", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "46px", color: "#fff", fontStyle: "800" }).setOrigin(0.5).setDepth(33).setStroke("#10210a", 7);
+      this.hintTx = this.add.text(W / 2, H - 30, "うえ・ひだり・みぎ に スワイプ！ めいれい は まもれ！", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "17px", color: "#d8f08a", fontStyle: "700" }).setOrigin(0.5).setDepth(31).setVisible(false);
       this.updateHud();
     }
     updateHud() { this.progTx.setText("ゴールまで " + Math.max(0, GOAL - this.row)); this.hearts.setText("❤".repeat(Math.max(0, this.lives))); this.comboTx.setText(this.combo >= 2 ? this.combo + " コンボ！" : ""); }
@@ -207,7 +207,7 @@
       this.popText("ぺちゃ！", "#ff7a6a");
       if (this.lives <= 0) { this.dead = true; this.time.delayedCall(700, () => this.lose()); }
     }
-    popText(t, c) { const o = this.add.text(this.recruit.x, RECRUIT_Y - 70, t, { fontFamily: '"Baloo 2"', fontSize: "28px", color: c, fontStyle: "800" }).setOrigin(0.5).setDepth(26).setStroke("#10210a", 5); this.tweens.add({ targets: o, y: o.y - 30, alpha: 0, duration: 700, onComplete: () => o.destroy() }); }
+    popText(t, c) { const o = this.add.text(this.recruit.x, RECRUIT_Y - 70, t, { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "28px", color: c, fontStyle: "800" }).setOrigin(0.5).setDepth(26).setStroke("#10210a", 5); this.tweens.add({ targets: o, y: o.y - 30, alpha: 0, duration: 700, onComplete: () => o.destroy() }); }
 
     flash(color, alpha) { const f = this.add.rectangle(0, 0, W, H, color, alpha).setOrigin(0).setDepth(50); this.tweens.add({ targets: f, alpha: 0, duration: 240, onComplete: () => f.destroy() }); }
     win() { if (this.state === "over") return; this.state = "over"; this.clearOrder(); if (window.KMEFlow) KMEFlow.win(); Sfx.win(); this.flash(0xfff2c4, 0.5); this.tweens.add({ targets: this.recruit, y: RECRUIT_Y - 50, scaleX: 1, scaleY: 1, duration: 300, yoyo: true, repeat: 2 }); this.time.delayedCall(700, () => this.panel("わたりきった！", "YOU WIN!")); }
@@ -215,11 +215,11 @@
     panel(jp, big) {
       const p = this.add.graphics().setDepth(60); p.fillStyle(0x10210a, 0.95); p.fillRoundedRect(W / 2 - 200, H / 2 - 150, 400, 300, 28); p.lineStyle(6, 0xb6d96a, 1); p.strokeRoundedRect(W / 2 - 200, H / 2 - 150, 400, 300, 28);
       this.add.image(W / 2, H / 2 - 80, "unko").setScale(0.42).setDepth(61);
-      this.add.text(W / 2, H / 2 - 2, big, { fontFamily: '"Baloo 2"', fontSize: "44px", color: "#b6d96a", fontStyle: "800" }).setOrigin(0.5).setDepth(61).setStroke("#10210a", 6);
-      this.add.text(W / 2, H / 2 + 44, jp, { fontFamily: '"Zen Maru Gothic"', fontSize: "26px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(61);
+      this.add.text(W / 2, H / 2 - 2, big, { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "44px", color: "#b6d96a", fontStyle: "800" }).setOrigin(0.5).setDepth(61).setStroke("#10210a", 6);
+      this.add.text(W / 2, H / 2 + 44, jp, { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "26px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(61);
       const bw = 240, bh = 72, by = H / 2 + 108;
       const bg = this.add.graphics().setDepth(61); bg.fillStyle(0x3DBE6A, 1); bg.fillRoundedRect(W / 2 - bw / 2, by - bh / 2, bw, bh, 20); bg.lineStyle(5, 0x1F8A4C, 1); bg.strokeRoundedRect(W / 2 - bw / 2, by - bh / 2, bw, bh, 20);
-      this.add.text(W / 2, by, "もう いちど ▶", { fontFamily: '"Zen Maru Gothic"', fontSize: "26px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#1F5A30", 5);
+      this.add.text(W / 2, by, "もう いちど ▶", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "26px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#1F5A30", 5);
       this.add.zone(W / 2, by, bw, bh).setInteractive({ useHandCursor: true }).setDepth(63).on("pointerdown", () => this.scene.restart());
       this.tweens.add({ targets: bg, alpha: 0.65, duration: 700, yoyo: true, repeat: -1 });
     }
@@ -233,12 +233,12 @@
       const dim = this.add.graphics().setDepth(60); dim.fillStyle(0x10210a, 0.5); dim.fillRect(0, 0, W, H);
       const host = this.add.image(W / 2, H * 0.34, "unko").setScale(0.8).setDepth(62);
       this.titleBob = this.tweens.add({ targets: host, y: H * 0.34 - 16, duration: 950, yoyo: true, repeat: -1, ease: "Sine.inOut" });
-      this.add.text(W / 2, H * 0.56, "スティンク サージェント", { fontFamily: '"Baloo 2"', fontSize: "34px", color: "#d8f08a", fontStyle: "800" }).setOrigin(0.5).setDepth(62).setStroke("#10210a", 7);
-      this.add.text(W / 2, H * 0.56 + 42, "Stink Crossing", { fontFamily: '"Baloo 2"', fontSize: "24px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#10210a", 5);
+      this.add.text(W / 2, H * 0.56, "スティンク サージェント", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "34px", color: "#d8f08a", fontStyle: "800" }).setOrigin(0.5).setDepth(62).setStroke("#10210a", 7);
+      this.add.text(W / 2, H * 0.56 + 42, "Stink Crossing", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "24px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#10210a", 5);
       const bw = 300, bh = 92, bx = W / 2, by = H * 0.73;
       const bg = this.add.graphics().setDepth(62); bg.fillStyle(0x6a8a3e, 1); bg.fillRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 26); bg.lineStyle(6, 0x47611f, 1); bg.strokeRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 26);
       this.add.triangle(bx - 58, by, 0, 0, 26, 16, 0, 32, 0xffffff).setDepth(63);
-      this.add.text(bx + 14, by, "あそぶ", { fontFamily: '"Zen Maru Gothic"', fontSize: "34px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(63).setStroke("#10210a", 5);
+      this.add.text(bx + 14, by, "あそぶ", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "34px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(63).setStroke("#10210a", 5);
       this.titlePulse = this.tweens.add({ targets: bg, alpha: 0.7, duration: 650, yoyo: true, repeat: -1 });
       this.add.zone(bx, by, bw, bh).setInteractive({ useHandCursor: true }).setDepth(64).on("pointerdown", () => this.startFromTitle());
     }
@@ -255,8 +255,8 @@
       this.introBob = this.tweens.add({ targets: this.introBig, y: H * 0.34 - 14, duration: 900, yoyo: true, repeat: -1, ease: "Sine.inOut" });
       const bx = W / 2, by = H * 0.62;
       this.introBg = this.add.graphics().setDepth(46); this.introBg.fillStyle(0xffffff, 0.97); this.introBg.fillRoundedRect(bx - 332, by - 110, 664, 220, 24); this.introBg.lineStyle(5, 0x10210a, 1); this.introBg.strokeRoundedRect(bx - 332, by - 110, 664, 220, 24);
-      this.introText = this.add.text(bx, by, "ワシ は スティンク ぐんそう だ！\nどうろ を わたれ！ スワイプ で ぴょん と とべ。\nくるま に ぶつかる な よ！\nワシ が めいれい したら、 その とおり に うごけ。\nでも 「Don't move!」 の ときは… うごくな！ うごいたら バクダン だ ぞ！", { fontFamily: '"Zen Maru Gothic"', fontSize: "22px", color: "#10210a", fontStyle: "700", align: "center", lineSpacing: 6 }).setOrigin(0.5).setDepth(47);
-      this.skipBtn = this.add.text(W - 56, 92, "スキップ", { fontFamily: '"Zen Maru Gothic"', fontSize: "24px", color: "#d8f08a", fontStyle: "700" }).setOrigin(1, 0.5).setDepth(48).setInteractive({ useHandCursor: true }).setStroke("#10210a", 5);
+      this.introText = this.add.text(bx, by, "ワシ は スティンク ぐんそう だ！\nどうろ を わたれ！ スワイプ で ぴょん と とべ。\nくるま に ぶつかる な よ！\nワシ が めいれい したら、 その とおり に うごけ。\nでも 「Don't move!」 の ときは… うごくな！ うごいたら バクダン だ ぞ！", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "22px", color: "#10210a", fontStyle: "700", align: "center", lineSpacing: 6 }).setOrigin(0.5).setDepth(47);
+      this.skipBtn = this.add.text(W - 56, 92, "スキップ", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "24px", color: "#d8f08a", fontStyle: "700" }).setOrigin(1, 0.5).setDepth(48).setInteractive({ useHandCursor: true }).setStroke("#10210a", 5);
       this.skipChev = this.add.triangle(W - 34, 92, 0, 0, 18, 11, 0, 22, 0xb6d96a).setDepth(48).setInteractive({ useHandCursor: true });
       let advanced = false; this.advIntro = () => { if (advanced) return; advanced = true; this.endIntro(); };
       this.skipBtn.on("pointerdown", this.advIntro); this.skipChev.on("pointerdown", this.advIntro);

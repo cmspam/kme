@@ -96,7 +96,7 @@
     }
     buildHud() {
       const bar = this.add.graphics().setDepth(31); bar.fillStyle(0x2a1838, 0.82); bar.fillRoundedRect(8, 8, W - 16, 50, 16);
-      this.hud = this.add.text(20, 17, "", { fontFamily: '"Zen Maru Gothic"', fontSize: "23px", color: "#ffe08a", fontStyle: "700" }).setDepth(32);
+      this.hud = this.add.text(20, 17, "", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "23px", color: "#ffe08a", fontStyle: "700" }).setDepth(32);
       this.hearts = []; for (let i = 0; i < LIVES; i++) this.hearts.push(this.add.image(W - 30 - i * 46, 33, "heart").setOrigin(1, 0.5).setDepth(32));
       this.hudObjs = [bar, this.hud].concat(this.hearts);
       this.updateHud();
@@ -115,7 +115,7 @@
         const g = this.add.graphics().setDepth(33);
         g.fillGradientStyle(0x4c3270, 0x4c3270, 0x2e1a48, 0x2e1a48, 1); g.fillRoundedRect(c.x - WB / 2, c.y - HB / 2, WB, HB, 20);
         g.lineStyle(5, 0xffd24d, 1); g.strokeRoundedRect(c.x - WB / 2, c.y - HB / 2, WB, HB, 20);
-        this.add.text(c.x, c.y, w, { fontFamily: '"Baloo 2"', fontSize: "42px", color: "#fff", fontStyle: "800" }).setOrigin(0.5).setDepth(34).setStroke("#2a1838", 6);
+        this.add.text(c.x, c.y, w, { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "42px", color: "#fff", fontStyle: "800" }).setOrigin(0.5).setDepth(34).setStroke("#2a1838", 6);
         this.add.zone(c.x, c.y, WB, HB).setInteractive({ useHandCursor: true }).setDepth(35).on("pointerdown", () => { Sfx.init(); this.onWord(w); this.pressFx(g); });
         this.btns[w] = { g: g, x: c.x, y: c.y };
       });
@@ -206,7 +206,7 @@
       this.tweens.add({ targets: m, angle: 8, duration: 130, ease: "Quad.in", onComplete: () => { this.tweens.add({ targets: m, angle: -40, alpha: 0, duration: 200, delay: 60, ease: "Quad.out", onComplete: () => m.setVisible(false) }); } });
     }
     burst(x, y) { for (let i = 0; i < 5; i++) { const a = (i / 5) * Math.PI * 2, p = this.add.image(x, y, i % 2 ? "p_star" : "p_spark").setScale(0.4).setTint(0xffd24d).setDepth(37); this.tweens.add({ targets: p, x: x + Math.cos(a) * 44, y: y + Math.sin(a) * 44, scale: 0.1, alpha: 0, duration: 360, ease: "Quad.out", onComplete: () => p.destroy() }); } }
-    toast(txt, color, x, y) { const t = this.add.text(x, y, txt, { fontFamily: '"Baloo 2"', fontSize: "32px", color: color, fontStyle: "800" }).setOrigin(0.5).setDepth(47).setStroke("#2a1838", 6).setScale(0.6); this.tweens.add({ targets: t, scale: 1, y: y - 26, duration: 240, ease: "Back.out", yoyo: true, hold: 360, onComplete: () => t.destroy() }); }
+    toast(txt, color, x, y) { const t = this.add.text(x, y, txt, { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "32px", color: color, fontStyle: "800" }).setOrigin(0.5).setDepth(47).setStroke("#2a1838", 6).setScale(0.6); this.tweens.add({ targets: t, scale: 1, y: y - 26, duration: 240, ease: "Back.out", yoyo: true, hold: 360, onComplete: () => t.destroy() }); }
 
     // ---------- title / intro / voice ----------
     introNeeded() { try { return !localStorage.getItem("hb_intro_seen"); } catch (e) { return true; } }
@@ -217,12 +217,12 @@
       const dim = this.add.graphics().setDepth(60); dim.fillStyle(0x2a1838, 0.5); dim.fillRect(0, 0, W, H);
       const host = this.add.image(W / 2, H * 0.33, "temee").setScale(1.25).setDepth(62);
       this.titleBob = this.tweens.add({ targets: host, y: H * 0.33 - 14, duration: 900, yoyo: true, repeat: -1, ease: "Sine.inOut" });
-      this.add.text(W / 2, H * 0.55, "ハンプ ボップ", { fontFamily: '"Baloo 2"', fontSize: "44px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(62).setStroke("#2a1838", 7);
-      this.add.text(W / 2, H * 0.55 + 46, "Hump Bop", { fontFamily: '"Baloo 2"', fontSize: "26px", color: "#fff2d8", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#2a1838", 5);
+      this.add.text(W / 2, H * 0.55, "ハンプ ボップ", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "44px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(62).setStroke("#2a1838", 7);
+      this.add.text(W / 2, H * 0.55 + 46, "Hump Bop", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "26px", color: "#fff2d8", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#2a1838", 5);
       const bw = 300, bh = 92, bx = W / 2, by = H * 0.72;
       const bg = this.add.graphics().setDepth(62); bg.fillStyle(0xff8a3d, 1); bg.fillRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 26); bg.lineStyle(6, 0xb85a18, 1); bg.strokeRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 26);
       this.add.triangle(bx - 58, by, 0, 0, 26, 16, 0, 32, 0xffffff).setDepth(63);
-      this.add.text(bx + 14, by, "あそぶ", { fontFamily: '"Zen Maru Gothic"', fontSize: "34px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(63).setStroke("#2a1838", 5);
+      this.add.text(bx + 14, by, "あそぶ", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "34px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(63).setStroke("#2a1838", 5);
       this.titlePulse = this.tweens.add({ targets: bg, alpha: 0.7, duration: 650, yoyo: true, repeat: -1 });
       this.add.zone(bx, by, bw, bh).setInteractive({ useHandCursor: true }).setDepth(64).on("pointerdown", () => this.startFromTitle());
     }
@@ -239,8 +239,8 @@
       this.introBob = this.tweens.add({ targets: this.introBig, y: H * 0.36 - 14, duration: 900, yoyo: true, repeat: -1, ease: "Sine.inOut" });
       const bx = W / 2, by = H * 0.62;
       this.introBg = this.add.graphics().setDepth(46); this.introBg.fillStyle(0xfff6e8, 0.97); this.introBg.fillRoundedRect(bx - 336, by - 116, 672, 232, 24); this.introBg.lineStyle(5, 0xb85a18, 1); this.introBg.strokeRoundedRect(bx - 336, by - 116, 672, 232, 24); this.introBg.fillTriangle(bx - 18, by + 114, bx + 18, by + 114, bx, by + 144);
-      this.introText = this.add.text(bx, by, "ほっほ！ わし は ティメー、さばく の ながおい じゃ。\nすな から わんぱくもの が でるぞい。\nちかく は this（ひとつ）these（たくさん）、\nとおく は that（ひとつ）those（たくさん）。\nただしい コトバ の ツチ で たたくのじゃ！", { fontFamily: '"Zen Maru Gothic"', fontSize: "23px", color: "#3a2410", fontStyle: "700", align: "center", lineSpacing: 7 }).setOrigin(0.5).setDepth(47);
-      this.skipBtn = this.add.text(W - 56, 92, "スキップ", { fontFamily: '"Zen Maru Gothic"', fontSize: "24px", color: "#fff2d8", fontStyle: "700" }).setOrigin(1, 0.5).setDepth(48).setInteractive({ useHandCursor: true }).setStroke("#2a1838", 5);
+      this.introText = this.add.text(bx, by, "ほっほ！ わし は ティメー、さばく の ながおい じゃ。\nすな から わんぱくもの が でるぞい。\nちかく は this（ひとつ）these（たくさん）、\nとおく は that（ひとつ）those（たくさん）。\nただしい コトバ の ツチ で たたくのじゃ！", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "23px", color: "#3a2410", fontStyle: "700", align: "center", lineSpacing: 7 }).setOrigin(0.5).setDepth(47);
+      this.skipBtn = this.add.text(W - 56, 92, "スキップ", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "24px", color: "#fff2d8", fontStyle: "700" }).setOrigin(1, 0.5).setDepth(48).setInteractive({ useHandCursor: true }).setStroke("#2a1838", 5);
       this.skipChev = this.add.triangle(W - 34, 92, 0, 0, 18, 11, 0, 22, 0xffd24d).setDepth(48).setInteractive({ useHandCursor: true });
       let advanced = false; this.advIntro = () => { if (advanced) return; advanced = true; this.endIntro(); };
       this.skipBtn.on("pointerdown", this.advIntro); this.skipChev.on("pointerdown", this.advIntro);
@@ -269,11 +269,11 @@
     panel(titleJp, big) {
       const cy = H * 0.42;
       const p = this.add.graphics().setDepth(70); p.fillStyle(0x2a1838, 0.96); p.fillRoundedRect(W / 2 - 230, cy - 140, 460, 320, 28); p.lineStyle(6, 0xffd24d, 1); p.strokeRoundedRect(W / 2 - 230, cy - 140, 460, 320, 28);
-      this.add.text(W / 2, cy - 76, titleJp, { fontFamily: '"Zen Maru Gothic"', fontSize: "38px", color: "#fff7f0", fontStyle: "700" }).setOrigin(0.5).setDepth(71).setStroke("#2a1838", 7);
-      this.add.text(W / 2, cy + 2, big, { fontFamily: '"Baloo 2"', fontSize: "52px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(71).setStroke("#2a1838", 7);
+      this.add.text(W / 2, cy - 76, titleJp, { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "38px", color: "#fff7f0", fontStyle: "700" }).setOrigin(0.5).setDepth(71).setStroke("#2a1838", 7);
+      this.add.text(W / 2, cy + 2, big, { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "52px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(71).setStroke("#2a1838", 7);
       const bw = 280, bh = 80, bx = W / 2, by = cy + 100;
       const bg = this.add.graphics().setDepth(71); bg.fillStyle(0xff8a3d, 1); bg.fillRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 24); bg.lineStyle(5, 0xb85a18, 1); bg.strokeRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 24);
-      this.add.text(bx - 16, by, "もう いちど", { fontFamily: '"Zen Maru Gothic"', fontSize: "30px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(72).setStroke("#2a1838", 5);
+      this.add.text(bx - 16, by, "もう いちど", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "30px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(72).setStroke("#2a1838", 5);
       this.add.triangle(bx + 88, by, 0, 0, 20, 12, 0, 24, 0xffffff).setDepth(72);
       this.add.zone(bx, by, bw, bh).setInteractive({ useHandCursor: true }).setDepth(73).on("pointerdown", () => this.scene.restart());
       this.tweens.add({ targets: bg, alpha: 0.7, duration: 700, yoyo: true, repeat: -1 });

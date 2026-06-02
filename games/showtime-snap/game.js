@@ -138,13 +138,13 @@
     }
     buildHud() {
       const bar = this.add.graphics().setDepth(31); bar.fillStyle(0x160817, 0.85); bar.fillRoundedRect(8, 8, W - 16, 50, 16);
-      this.hud = this.add.text(20, 17, "", { fontFamily: '"Zen Maru Gothic"', fontSize: "23px", color: "#ffe08a", fontStyle: "700" }).setDepth(32);
+      this.hud = this.add.text(20, 17, "", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "23px", color: "#ffe08a", fontStyle: "700" }).setDepth(32);
       this.hearts = []; for (let i = 0; i < LIVES; i++) this.hearts.push(this.add.image(W - 30 - i * 46, 33, "heart").setOrigin(1, 0.5).setDepth(32));
       const pw = 372, ph = 66, py = 156;
       this.promptPlate = this.add.graphics().setDepth(32).setVisible(false);
       this.promptPlate.fillStyle(0x3a1430, 0.92); this.promptPlate.fillRoundedRect(W / 2 - pw / 2, py - ph / 2, pw, ph, 20);
       this.promptPlate.lineStyle(4, 0xffd24d, 1); this.promptPlate.strokeRoundedRect(W / 2 - pw / 2, py - ph / 2, pw, ph, 20);
-      this.prompt = this.add.text(W / 2, py, "", { fontFamily: '"Baloo 2"', fontSize: "46px", color: "#fff", fontStyle: "800" }).setOrigin(0.5).setDepth(33).setStroke("#3a1430", 6).setVisible(false);
+      this.prompt = this.add.text(W / 2, py, "", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "46px", color: "#fff", fontStyle: "800" }).setOrigin(0.5).setDepth(33).setStroke("#3a1430", 6).setVisible(false);
       this.updateHud();
     }
     updateHud() { this.hud.setText("写真 " + this.cleared + " / " + WIN); this.hearts.forEach((h, i) => { const on = i < this.lives; h.setTint(on ? 0xffffff : 0x5a4a58).setAlpha(on ? 1 : 0.5); }); }
@@ -157,7 +157,7 @@
       g.fillStyle(0xd83a4e, 1); g.fillCircle(x, y, this.shR - 12);          // red base
       g.fillStyle(0xff6676, 1); g.fillCircle(x, y - 4, this.shR - 18);       // lighter top (fake gradient)
       g.fillStyle(0xffffff, 0.85); g.fillCircle(x - 14, y - 16, 8);          // hotspot
-      this.add.text(x, y + this.shR + 22, "シャッター", { fontFamily: '"Zen Maru Gothic"', fontSize: "18px", color: "#ffd2ec", fontStyle: "700" }).setOrigin(0.5).setDepth(34);
+      this.add.text(x, y + this.shR + 22, "シャッター", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "18px", color: "#ffd2ec", fontStyle: "700" }).setOrigin(0.5).setDepth(34);
       this.shutterBtn = g;
       this.add.zone(x, y, (this.shR + 12) * 2, (this.shR + 12) * 2).setOrigin(0.5).setInteractive({ useHandCursor: true }).setDepth(35).on("pointerdown", () => this.snap());
     }
@@ -324,7 +324,7 @@
       const photo = this.add.container(sx, RETY).setDepth(46);
       const fr = this.add.graphics(); fr.fillStyle(0xffffff, 1); fr.fillRoundedRect(-56, -56, 112, 128, 8); photo.add(fr);
       const pic = this.add.image(0, -16, a.spr.texture.key).setScale(0.48); photo.add(pic);
-      const star = this.add.text(0, 46, "The " + NAMES[a.ck] + "\nis " + this.cur + "!", { fontFamily: '"Baloo 2"', fontSize: "15px", color: "#3a1430", fontStyle: "800", align: "center", lineSpacing: 2 }).setOrigin(0.5); photo.add(star);
+      const star = this.add.text(0, 46, "The " + NAMES[a.ck] + "\nis " + this.cur + "!", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "15px", color: "#3a1430", fontStyle: "800", align: "center", lineSpacing: 2 }).setOrigin(0.5); photo.add(star);
       this.toast("ベリッシモ！", "#ffd24d");
       this.tweens.add({ targets: photo, x: W - 80, y: 30, scale: 0.3, angle: 12, duration: 620, ease: "Cubic.in", onComplete: () => {
         photo.destroy();
@@ -340,7 +340,7 @@
       this.toast("ブレてる！", "#ff8a8a");
       this.time.delayedCall(700, () => { if (this.lives <= 0) this.lose(); else { this.busy = false; } });   // keep the same scene; try again
     }
-    toast(txt, color) { const t = this.add.text(W / 2, RETY - RHH - 26, txt, { fontFamily: '"Baloo 2"', fontSize: "34px", color: color, fontStyle: "800" }).setOrigin(0.5).setDepth(47).setStroke("#160817", 6).setScale(0.6); this.tweens.add({ targets: t, scale: 1, duration: 200, ease: "Back.out", yoyo: true, hold: 600, onComplete: () => t.destroy() }); }
+    toast(txt, color) { const t = this.add.text(W / 2, RETY - RHH - 26, txt, { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "34px", color: color, fontStyle: "800" }).setOrigin(0.5).setDepth(47).setStroke("#160817", 6).setScale(0.6); this.tweens.add({ targets: t, scale: 1, duration: 200, ease: "Back.out", yoyo: true, hold: 600, onComplete: () => t.destroy() }); }
 
     // ---------- title / intro / voice ----------
     introNeeded() { try { return !localStorage.getItem("ss_intro_seen"); } catch (e) { return true; } }
@@ -350,12 +350,12 @@
       const dim = this.add.graphics().setDepth(60); dim.fillStyle(0x160817, 0.55); dim.fillRect(0, 0, W, H);
       const host = this.add.image(W / 2, H * 0.34, "tral").setScale(1.4).setDepth(62);
       this.titleBob = this.tweens.add({ targets: host, y: H * 0.34 - 14, duration: 900, yoyo: true, repeat: -1, ease: "Sine.inOut" });
-      const t1 = this.add.text(W / 2, H * 0.55, "ショータイム スナップ", { fontFamily: '"Baloo 2"', fontSize: "40px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(62).setStroke("#3a1430", 7);
-      const t2 = this.add.text(W / 2, H * 0.55 + 44, "Showtime Snap", { fontFamily: '"Baloo 2"', fontSize: "26px", color: "#ffd2ec", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#3a1430", 5);
+      const t1 = this.add.text(W / 2, H * 0.55, "ショータイム スナップ", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "40px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(62).setStroke("#3a1430", 7);
+      const t2 = this.add.text(W / 2, H * 0.55 + 44, "Showtime Snap", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "26px", color: "#ffd2ec", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#3a1430", 5);
       const bw = 300, bh = 92, bx = W / 2, by = H * 0.72;
       const bg = this.add.graphics().setDepth(62); bg.fillStyle(0xff5a8a, 1); bg.fillRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 26); bg.lineStyle(6, 0xb52e63, 1); bg.strokeRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 26);
       const tri = this.add.triangle(bx - 58, by, 0, 0, 26, 16, 0, 32, 0xffffff).setDepth(63);
-      this.add.text(bx + 14, by, "あそぶ", { fontFamily: '"Zen Maru Gothic"', fontSize: "34px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(63).setStroke("#3a1430", 5);
+      this.add.text(bx + 14, by, "あそぶ", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "34px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(63).setStroke("#3a1430", 5);
       this.titlePulse = this.tweens.add({ targets: bg, alpha: 0.7, duration: 650, yoyo: true, repeat: -1 });
       this.add.zone(bx, by, bw, bh).setInteractive({ useHandCursor: true }).setDepth(64).on("pointerdown", () => this.startFromTitle());
     }
@@ -372,8 +372,8 @@
       this.introBob = this.tweens.add({ targets: this.introBig, y: H * 0.38 - 16, duration: 900, yoyo: true, repeat: -1, ease: "Sine.inOut" });
       const bx = W / 2, by = H * 0.64;
       this.introBg = this.add.graphics().setDepth(46); this.introBg.fillStyle(0xffffff, 0.97); this.introBg.fillRoundedRect(bx - 332, by - 104, 664, 208, 24); this.introBg.lineStyle(5, 0xb52e63, 1); this.introBg.strokeRoundedRect(bx - 332, by - 104, 664, 208, 24); this.introBg.fillTriangle(bx - 18, by + 102, bx + 18, by + 102, bx, by + 132);
-      this.introText = this.add.text(bx, by, "チャオ！ えんしゅつか の トララ だ！\nみんな つぎつぎ うごき を かえる ぞ！\nわし が いう うごき の コ を ねらって\nファインダー に いれて シャッター！ ベリッシモ！", { fontFamily: '"Zen Maru Gothic"', fontSize: "24px", color: "#3a1430", fontStyle: "700", align: "center", lineSpacing: 8 }).setOrigin(0.5).setDepth(47);
-      this.skipBtn = this.add.text(W - 56, 92, "スキップ", { fontFamily: '"Zen Maru Gothic"', fontSize: "24px", color: "#ffd2ec", fontStyle: "700" }).setOrigin(1, 0.5).setDepth(48).setInteractive({ useHandCursor: true }).setStroke("#160817", 5);
+      this.introText = this.add.text(bx, by, "チャオ！ えんしゅつか の トララ だ！\nみんな つぎつぎ うごき を かえる ぞ！\nわし が いう うごき の コ を ねらって\nファインダー に いれて シャッター！ ベリッシモ！", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "24px", color: "#3a1430", fontStyle: "700", align: "center", lineSpacing: 8 }).setOrigin(0.5).setDepth(47);
+      this.skipBtn = this.add.text(W - 56, 92, "スキップ", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "24px", color: "#ffd2ec", fontStyle: "700" }).setOrigin(1, 0.5).setDepth(48).setInteractive({ useHandCursor: true }).setStroke("#160817", 5);
       this.skipChev = this.add.triangle(W - 34, 92, 0, 0, 18, 11, 0, 22, 0xffd24d).setDepth(48).setInteractive({ useHandCursor: true });
       let advanced = false; this.advIntro = () => { if (advanced) return; advanced = true; this.endIntro(); };
       this.skipBtn.on("pointerdown", this.advIntro); this.skipChev.on("pointerdown", this.advIntro);
@@ -406,11 +406,11 @@
     panel(titleJp, big) {
       const cy = H * 0.42;
       const p = this.add.graphics().setDepth(70); p.fillStyle(0x160817, 0.96); p.fillRoundedRect(W / 2 - 230, cy - 140, 460, 320, 28); p.lineStyle(6, 0xffd24d, 1); p.strokeRoundedRect(W / 2 - 230, cy - 140, 460, 320, 28);
-      this.add.text(W / 2, cy - 76, titleJp, { fontFamily: '"Zen Maru Gothic"', fontSize: "38px", color: "#fff7f0", fontStyle: "700" }).setOrigin(0.5).setDepth(71).setStroke("#160817", 7);
-      this.add.text(W / 2, cy + 2, big, { fontFamily: '"Baloo 2"', fontSize: "52px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(71).setStroke("#160817", 7);
+      this.add.text(W / 2, cy - 76, titleJp, { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "38px", color: "#fff7f0", fontStyle: "700" }).setOrigin(0.5).setDepth(71).setStroke("#160817", 7);
+      this.add.text(W / 2, cy + 2, big, { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "52px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(71).setStroke("#160817", 7);
       const bw = 280, bh = 80, bx = W / 2, by = cy + 100;
       const bg = this.add.graphics().setDepth(71); bg.fillStyle(0xff5a8a, 1); bg.fillRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 24); bg.lineStyle(5, 0xb52e63, 1); bg.strokeRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 24);
-      this.add.text(bx - 16, by, "もう いちど", { fontFamily: '"Zen Maru Gothic"', fontSize: "30px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(72).setStroke("#160817", 5);
+      this.add.text(bx - 16, by, "もう いちど", { fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: "30px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(72).setStroke("#160817", 5);
       this.add.triangle(bx + 88, by, 0, 0, 20, 12, 0, 24, 0xffffff).setDepth(72);
       this.add.zone(bx, by, bw, bh).setInteractive({ useHandCursor: true }).setDepth(73).on("pointerdown", () => this.scene.restart());
       this.tweens.add({ targets: bg, alpha: 0.7, duration: 700, yoyo: true, repeat: -1 });
