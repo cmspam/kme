@@ -8,7 +8,7 @@
 // shown. The slot decides the form, so reading the English IS the game. catcherski JP = flavor (A2).
 "use strict";
 (function () {
-  const W = 760, H = 1200, TURNS = 10, TARGET = 16;                    // collect TARGET coins within TURNS drops
+  const W = 760, H = 1200, TURNS = 10, TARGET = 60;                    // collect TARGET coins within TURNS drops
   const SX0 = 110, SX1 = 650, BACKY = 300, EDGEY = 568, AMP = 232;     // shelf geometry
   const COIN_R = 21, CSC = 0.42;                                       // coin radius / sprite scale
   const TRAYY = 632, TRAY_CAP = 64, DECKY = 812, PUSH_MS = 2500;       // PUSH_MS = full back-and-forth period (slow, dramatic)
@@ -195,6 +195,16 @@
       const c = this.add.image(Phaser.Math.Clamp(x, SX0 + COIN_R, SX1 - COIN_R), y, "coin").setScale(CSC * Phaser.Math.FloatBetween(0.9, 1.06)).setAngle(Phaser.Math.Between(-22, 22)).setDepth(7).setTint(0xffe7a0);
       this.pile.push(c); return c;
     }
+    seedBed() {
+      // a real coin-pusher is RAMMED with gold: pack the whole shelf so a push
+      // shoves a WALL of coins off the lip (fixes the empty-shelf no-cascade bug).
+      const cols = 11, dx = (SX1 - SX0 - 2 * COIN_R - 12) / (cols - 1), x0 = SX0 + COIN_R + 6;
+      for (let r = 0; r < 7; r++) for (let col = 0; col < cols; col++) {
+        const y = BACKY + 22 + r * 27 + Phaser.Math.Between(-5, 5);
+        if (y > EDGEY - 104) continue;
+        this.addCoin(x0 + col * dx + (r % 2) * (dx / 2) + Phaser.Math.Between(-5, 5), y);
+      }
+    }
     cascade(c) {
       c.setDepth(9); this.score++; this.updateHud();
       const tx = Phaser.Math.Between(SX0, SX1), ty = TRAYY + 64 + Phaser.Math.Between(-8, 66);
@@ -339,7 +349,7 @@
       if (onEnd) p.then(onEnd);
       return p;
     }
-    startPlay() { if (this.playStarted) return; this.playStarted = true; this.state = "play"; this.running = true; if (this.hudObjs) this.hudObjs.forEach((o) => o.setVisible(true)); for (let i = 0; i < 8; i++) this.addCoin(Phaser.Math.Between(SX0 + 30, SX1 - 30), BACKY + 30 + i * 18); this.time.delayedCall(350, () => this.newTurn()); }
+    startPlay() { if (this.playStarted) return; this.playStarted = true; this.state = "play"; this.running = true; if (this.hudObjs) this.hudObjs.forEach((o) => o.setVisible(true)); this.seedBed(); this.time.delayedCall(350, () => this.newTurn()); }
 
     flash(color, alpha) { const f = this.add.rectangle(0, 0, W, H, color, alpha).setOrigin(0).setDepth(50); this.tweens.add({ targets: f, alpha: 0, duration: 240, onComplete: () => f.destroy() }); }
     endGame() {
@@ -367,7 +377,7 @@
     }
     capSetup(q) {
       this.state = "play"; this.playStarted = true; this.running = true; this.hudObjs.forEach((o) => o.setVisible(true));
-      for (let i = 0; i < 8; i++) this.addCoin(Phaser.Math.Between(SX0 + 30, SX1 - 30), BACKY + 30 + i * 18);
+      this.seedBed();
       this.newTurn();
       if (q.get("cap") === "auto") this.time.delayedCall(400, () => this.autoStep());
     }
