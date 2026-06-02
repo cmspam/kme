@@ -66,6 +66,8 @@
       this.cable = this.add.rectangle(this.clawX, 156, 5, 60, 0xcfd8e6).setOrigin(0.5, 0).setDepth(15);
       this.claw = this.add.image(this.clawX, this.clawY, "claw").setOrigin(0.5, 0.1).setDepth(16);
       this.halo = this.add.circle(0, 0, 58, 0xffe7a8, 0.0).setDepth(8);
+      this.gripBar = this.add.graphics().setDepth(26);   // wobble/grip meter while carrying
+      this.grip = 1;
       this.held = null;
       this.bedApple = null;
       this.guide = this.add.graphics().setDepth(4);
@@ -246,12 +248,45 @@
       if (this.state !== "lowering") return;
       if (!this.carrying) { // pickup attempt
         if (this.bedApple && Math.abs(this.clawX - PICKX) < 85 && this.clawY + TIP > FLOORY - APPLER - 30) {
+          // REAL claw machine: the grip is weak + randomized, so it can SLIP. That
+          // "did it hold?!" greed is the whole reason claw machines are fun. Closer
+          // to centre = better grip; off-centre = it betrays you.
+          const off = Math.abs(this.clawX - PICKX) / 85;     // 0 (centred) .. 1 (edge)
+          const grip = Math.random() * (1 - off * 0.5);       // edge grabs are weaker
+          if (grip < 0.3) { Sfx.grab(); this.slipBear(); this.state = "lifting"; return; }
           this.carrying = true; Sfx.grab();
           this.held = this.bedApple; this.bedApple = null; this.held.setDepth(15);
+          this.grip = Phaser.Math.Clamp(1 - off * 0.5 + Phaser.Math.FloatBetween(-0.08, 0.08), 0.38, 1);   // a CENTRED grab holds better all the way to the box
           this.tweens.add({ targets: this.halo, alpha: 0.16 });
         } else { Sfx.miss(); }
         this.state = "lifting";
       } else { this.placeDrop(); }
+    }
+    slipBear() {
+      const b = this.bedApple; if (!b) return; const ry = b.y;
+      this.tweens.add({ targets: b, y: ry - 46, duration: 120, yoyo: true, onComplete: () => { b.y = ry; } });
+      this.tweens.add({ targets: b, angle: { from: -14, to: 14 }, duration: 60, repeat: 3, yoyo: true, onComplete: () => b.setAngle(0) });
+      this.cameras.main.shake(130, 0.006);
+      const t = this.add.text(PICKX, FLOORY - 110, "つるん！ おしい！", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "34px", color: "#ff9a9a", fontStyle: "800" }).setOrigin(0.5).setDepth(40).setStroke("#1a1030", 6);
+      this.tweens.add({ targets: t, y: t.y - 40, alpha: 0, duration: 850, onComplete: () => t.destroy() });
+    }
+    drawGrip() {
+      const g = this.gripBar; g.clear();
+      const x = this.clawX - 46, y = this.clawY + CARRY - 80, w = 92, h = 13;
+      g.fillStyle(0x000000, 0.45); g.fillRoundedRect(x - 2, y - 2, w + 4, h + 4, 6);
+      const col = this.grip > 0.5 ? 0x4fd16a : this.grip > 0.25 ? 0xffd24d : 0xff5a5a;
+      g.fillStyle(col, 1); g.fillRoundedRect(x, y, Math.max(0, w * this.grip), h, 5);
+    }
+    carrySlip() {
+      const b = this.held; if (!b) return;
+      this.held = null; this.carrying = false; this.grip = 0; this.gripBar.clear();
+      this.tweens.add({ targets: this.halo, alpha: 0 });
+      Sfx.bad(); this.cameras.main.shake(190, 0.011);
+      const t = this.add.text(this.clawX, this.clawY + CARRY - 70, "おっこちた〜！", { fontFamily: '"Baloo 2", "Arial Black", sans-serif', fontSize: "36px", color: "#ff9a9a", fontStyle: "800" }).setOrigin(0.5).setDepth(40).setStroke("#1a1030", 6);
+      this.tweens.add({ targets: t, y: t.y - 44, alpha: 0, duration: 950, onComplete: () => t.destroy() });
+      // the bear tumbles back down to the pickup bed; retry from there
+      this.tweens.add({ targets: b, y: FLOORY - APPLER + 6, x: PICKX, angle: 360, duration: 720, ease: "Bounce.out", onComplete: () => { b.setAngle(0); b.setDepth(7); this.bedApple = b; } });
+      this.state = "lifting";
     }
 
     placeDrop() {
@@ -331,7 +366,17 @@
       if (this.state === "lifting") { this.clawY -= LIFTSPD * dt; if (this.clawY <= CLAWMINY) { this.clawY = CLAWMINY; if (!this.appleFalling) this.state = "aim"; } }
       // draw claw + cable + carried apple
       this.claw.x = this.clawX; this.claw.y = this.clawY; this.cable.x = this.clawX; this.cable.height = Math.max(10, this.clawY - 96);
-      if (this.held) { this.held.x = this.clawX; this.held.y = this.clawY + CARRY; this.halo.x = this.clawX; this.halo.y = this.clawY + CARRY; }
+      if (this.held) {
+        this.held.x = this.clawX; this.held.y = this.clawY + CARRY; this.halo.x = this.clawX; this.halo.y = this.clawY + CARRY;
+        // the grip is weak and DRAINS (faster while you move), so carry carefully;
+        // when it runs out the bear slips IN THE AIR. A meter shows the danger.
+        if (this.state === "aim" || this.state === "lowering") {
+          this.grip -= (this.moveDir ? 0.32 : 0.075) * dt;
+          this.held.rotation = Math.sin(time / 60) * (1 - this.grip) * 0.28;
+          this.drawGrip();
+          if (this.grip <= 0) this.carrySlip();
+        }
+      } else { this.gripBar.clear(); }
       // aim guide (only while aiming, shows the drop column)
       this.guide.clear();
       if (this.state === "aim" || this.state === "lowering") { for (let yy = this.clawY + 110; yy < FLOORY; yy += 30) this.guide.fillStyle(0xffe7a8, 0.3).fillCircle(this.clawX, yy, 4); }
