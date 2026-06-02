@@ -1,34 +1,34 @@
-// Stink Sergeant (imperatives) - Phaser 3. Host: unko, the boot-camp drill
-// sergeant. unko barks an English command and a countdown ring shrinks. If it is
-// a real order ("Jump!", "Run!"), OBEY by tapping (the squad performs). If it
-// starts with "Don't" ("Don't run!"), you must FREEZE and wait it out; obeying a
-// "Don't" sets off a stink bomb. Reading the imperative (and spotting "Don't") is
-// the grammar. English-only command (A2): a JP translation of the order would
-// give away the "Don't", so the in-game command is never glossed.
+// Stink Sergeant (imperatives) - Phaser 3. Host: unko, the drill sergeant.
+// A REAL Frogger: you freely hop the recruit up across lanes of LIVE traffic
+// (cars actually hit you - time the gaps), reaching the far side. On top of that,
+// unko barks ENGLISH ORDERS you must obey on the beat: "Jump!"/"Go left!"/"Go
+// right!" force that exact hop, and "Stop!"/"Don't move!" mean FREEZE even as a
+// car bears down. Obey for a combo + a safe push; disobey (or move on a "Don't")
+// and you eat a stink-bomb. The grammar is obey-the-imperative; the game is dodge
+// the traffic. English-only order (A2): the command is never glossed.
 "use strict";
 (function () {
-  const W = 760, H = 1200, TARGET = 12, LIVES = 3;
+  const W = 760, H = 1200, COLS = 5, GOAL = 12, LIVES = 3;
+  const ROWH = 132, RECRUIT_Y = H * 0.64, COLW = W / COLS;
+  const colX = (c) => COLW * (c + 0.5);
 
-  const POS = [
-    { en: "Stand up!", k: "stand" }, { en: "Sit down!", k: "sit" }, { en: "Jump!", k: "jump" },
-    { en: "Run!", k: "run" }, { en: "Clap your hands!", k: "clap" }, { en: "Turn around!", k: "turn" },
-    { en: "Touch your nose!", k: "touch" }, { en: "Raise your hand!", k: "raise" }
-  ];
-  const NEG = [
-    { en: "Don't run!", k: "dont_run" }, { en: "Don't jump!", k: "dont_jump" },
-    { en: "Don't shout!", k: "dont_shout" }, { en: "Don't sit down!", k: "dont_sit" },
-    { en: "Don't move!", k: "dont_move" }
-  ];
+  const CMDS = {
+    up: [{ en: "Jump!" }, { en: "Go!" }, { en: "Forward!" }, { en: "Hop!" }],
+    left: [{ en: "Go left!" }, { en: "Left!" }, { en: "Jump left!" }],
+    right: [{ en: "Go right!" }, { en: "Right!" }, { en: "Jump right!" }],
+    stay: [{ en: "Stop!" }, { en: "Wait!" }, { en: "Don't move!" }, { en: "Freeze!" }]
+  };
 
   const Sfx = {
     ctx: null,
     init() { if (!this.ctx) { try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} } if (this.ctx && this.ctx.state === "suspended") this.ctx.resume(); },
     tone(f0, f1, dur, type, gain) { if (!this.ctx) return; const t = this.ctx.currentTime, o = this.ctx.createOscillator(), g = this.ctx.createGain(); o.type = type || "sine"; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(Math.max(40, f1), t + dur); g.gain.setValueAtTime(gain || 0.18, t); g.gain.exponentialRampToValueAtTime(0.001, t + dur); o.connect(g).connect(this.ctx.destination); o.start(t); o.stop(t + dur); },
     noise(dur, gain, freq) { if (!this.ctx) return; const t = this.ctx.currentTime, b = this.ctx.createBuffer(1, Math.max(1, this.ctx.sampleRate * dur), this.ctx.sampleRate), d = b.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; const s = this.ctx.createBufferSource(); s.buffer = b; const f = this.ctx.createBiquadFilter(); f.type = "lowpass"; f.frequency.value = freq || 900; const g = this.ctx.createGain(); g.gain.setValueAtTime(gain || 0.18, t); g.gain.exponentialRampToValueAtTime(0.001, t + dur); s.connect(f).connect(g).connect(this.ctx.destination); s.start(t); s.stop(t + dur); },
-    obey() { this.tone(620, 940, 0.1, "triangle", 0.16); },
-    good() { [0, 90].forEach((d, i) => setTimeout(() => this.tone(660 + i * 180, 1000 + i * 180, 0.12, "triangle", 0.15), d)); },
-    stink() { this.noise(0.5, 0.24, 500); this.tone(220, 90, 0.5, "sawtooth", 0.14); },
-    scold() { this.tone(300, 160, 0.22, "square", 0.12); },
+    hop() { this.tone(420, 700, 0.09, "square", 0.1); },
+    order() { this.tone(300, 520, 0.12, "sawtooth", 0.1); },
+    obey() { this.tone(680, 1020, 0.1, "triangle", 0.14); },
+    honk() { this.tone(300, 300, 0.16, "sawtooth", 0.16); this.tone(360, 360, 0.16, "square", 0.08); },
+    splat() { this.noise(0.4, 0.24, 600); this.tone(220, 80, 0.4, "sawtooth", 0.14); },
     win() { [0, 120, 240, 380].forEach((d, i) => setTimeout(() => this.tone(560 + i * 150, 940 + i * 150, 0.2, "triangle", 0.16), d)); },
     lose() { this.tone(420, 100, 0.5, "sawtooth", 0.16); }
   };
@@ -36,125 +36,186 @@
   class Play extends Phaser.Scene {
     constructor() { super("play"); }
     preload() {
-      this.load.svg("unko", "assets/unko.svg", { width: 280, height: 240 });
-      this.load.svg("recruit", "assets/recruit.svg", { width: 120, height: 120 });
-      this.load.svg("stink", "assets/stink.svg", { width: 160, height: 160 });
+      this.load.svg("unko", "assets/unko.svg", { width: 200, height: 172 });
+      this.load.svg("recruit", "assets/recruit.svg", { width: 96, height: 96 });
+      this.load.svg("car", "assets/car.svg", { width: 140, height: 82 });
+      this.load.svg("stink", "assets/stink.svg", { width: 150, height: 150 });
       this.load.svg("heart", "assets/heart.svg", { width: 44, height: 44 });
     }
     create() {
       this.time.removeAllEvents();
-      this.score = 0; this.lives = LIVES; this.combo = 0; this.awaiting = false; this.acted = false; this.busy = false; this.playStarted = false; this.state = null; this.cur = null;
-      if (window.KMEAudio) { KMEAudio.setBase("assets/").stopAll(); KMEAudio.register(["ss_intro"].concat(POS.map((c) => "c_" + c.k)).concat(NEG.map((c) => "c_" + c.k))); }
+      this.lives = LIVES; this.combo = 0; this.row = 0; this.col = 2; this.rows = {}; this.invuln = 0;
+      this.playStarted = false; this.state = null; this.order = null; this.orderActed = false; this.dead = false; this.rewardDone = null;
+      if (window.KMEAudio) { KMEAudio.setBase("assets/").stopAll(); const keys = ["ss_intro"]; for (const g in CMDS) CMDS[g].forEach((c) => keys.push("c_" + this.key(c.en))); KMEAudio.register(keys); }
 
       this.buildBackdrop();
-      this.unko = this.add.image(140, 250, "unko").setScale(0.62).setDepth(20).setVisible(false);
-      this.recruits = [];
-      for (let i = 0; i < 3; i++) { const r = this.add.image(W / 2 - 180 + i * 180, H - 230, "recruit").setScale(0.9).setDepth(12).setVisible(false); r.baseY = r.y; this.recruits.push(r); }
+      for (let r = -1; r <= 10; r++) this.ensureRow(r);
+      this.recruit = this.add.image(colX(this.col), RECRUIT_Y, "recruit").setScale(0.92).setDepth(20).setVisible(false);
+      this.shadow = this.add.ellipse(colX(this.col), RECRUIT_Y + 40, 64, 16, 0x0a1a0a, 0.25).setDepth(19).setVisible(false);
+      this.unko = this.add.image(96, 150, "unko").setScale(0.5).setDepth(31).setVisible(false);
       this.buildHud();
 
       const q = new URLSearchParams(location.search);
-      if (q.has("cap")) { window.__ss = this; this.markSeen(); this.showSquad(); this.unko.setVisible(true); this.startPlay(); }
+      if (q.has("cap")) { window.__ss = this; this.markSeen(); this.reveal(); this.startPlay(); }
       else this.showTitle();
 
-      this.input.on("pointerdown", (p) => this.onTap(p));
+      this.input.keyboard.on("keydown-UP", () => this.move("up"));
+      this.input.keyboard.on("keydown-LEFT", () => this.move("left"));
+      this.input.keyboard.on("keydown-RIGHT", () => this.move("right"));
+      this.input.on("pointerdown", (p) => { this.swX = p.x; this.swY = p.y; });
+      this.input.on("pointerup", (p) => { const dx = p.x - this.swX, dy = p.y - this.swY; if (Math.hypot(dx, dy) < 36) { this.move("up"); return; } if (Math.abs(dy) > Math.abs(dx)) { if (dy < 0) this.move("up"); } else this.move(dx < 0 ? "left" : "right"); });
     }
-
-    showSquad() { this.recruits.forEach((r) => r.setVisible(true)); }
+    reveal() { this.recruit.setVisible(true); this.shadow.setVisible(true); this.unko.setVisible(true); }
+    key(s) { return s.toLowerCase().replace(/[^a-z]/g, ""); }
 
     buildBackdrop() {
-      if (this.textures.exists("campbg")) this.textures.remove("campbg");
-      const tex = this.textures.createCanvas("campbg", W, H), cx = tex.getContext();
-      const g = cx.createLinearGradient(0, 0, 0, H);
-      g.addColorStop(0, "#9fb98a"); g.addColorStop(0.5, "#7a9466"); g.addColorStop(1, "#5a7048");
-      cx.fillStyle = g; cx.fillRect(0, 0, W, H);
-      cx.strokeStyle = "rgba(255,255,255,0.10)"; cx.lineWidth = 3;   // parade-ground lines
-      for (let y = 300; y < H; y += 90) { cx.beginPath(); cx.moveTo(0, y); cx.lineTo(W, y + 30); cx.stroke(); }
-      tex.refresh();
-      this.add.image(0, 0, "campbg").setOrigin(0, 0).setDepth(0);
-      const fl = this.add.graphics().setDepth(1); fl.fillStyle(0x4a5c3a, 1); fl.fillRect(0, H - 150, W, 150);
-      const v = this.add.graphics().setDepth(40); for (let i = 0; i < 46; i++) { v.lineStyle(2, 0x2a3a1e, i / 46 * 0.18); v.strokeRect(i, i, W - 2 * i, H - 2 * i); }
+      if (this.textures.exists("grassbg")) this.textures.remove("grassbg");
+      const tex = this.textures.createCanvas("grassbg", W, H), cx = tex.getContext();
+      cx.fillStyle = "#5f9a48"; cx.fillRect(0, 0, W, H); tex.refresh();
+      this.add.image(0, 0, "grassbg").setOrigin(0, 0).setDepth(0);
+      this.laneG = this.add.graphics().setDepth(1);
+      this.v = this.add.graphics().setDepth(45); for (let i = 0; i < 46; i++) { this.v.lineStyle(2, 0x10210a, i / 46 * 0.16); this.v.strokeRect(i, i, W - 2 * i, H - 2 * i); }
+    }
+    rowScreenY(r) { return RECRUIT_Y - (r - this.row) * ROWH; }
+    ensureRow(r) {
+      if (this.rows[r]) return this.rows[r];
+      // row 0 = start grass; goal row = grass; ~60% of the rest are roads
+      const isRoad = r > 0 && r < GOAL && (r % 3 !== 0);
+      const row = { r, isRoad, cars: [] };
+      if (isRoad) {
+        const dir = r % 2 ? 1 : -1, speed = 78 + Math.min(120, r * 9) + Phaser.Math.Between(0, 30);
+        const gap = Phaser.Math.Between(320, 430), n = Math.ceil((W + 400) / gap);
+        for (let i = 0; i < n; i++) row.cars.push({ x: i * gap + Phaser.Math.Between(0, 60), dir, speed, tint: [0xef5a3a, 0x4a90d9, 0xf2b035, 0x8a5cd0, 0x3ac06a][Phaser.Math.Between(0, 4)], spr: null });
+      }
+      this.rows[r] = row; return row;
     }
 
     buildHud() {
-      this.hud = this.add.graphics().setDepth(30); this.hud.fillStyle(0x2a3a1e, 0.8); this.hud.fillRoundedRect(8, 8, W - 16, 54, 16);
-      this.scoreTx = this.add.text(20, 18, "", { fontFamily: '"Baloo 2"', fontSize: "24px", color: "#eaf6d8", fontStyle: "800" }).setDepth(31);
+      this.hud = this.add.graphics().setDepth(30); this.hud.fillStyle(0x10210a, 0.78); this.hud.fillRoundedRect(8, 8, W - 16, 54, 16);
+      this.progTx = this.add.text(20, 18, "", { fontFamily: '"Baloo 2"', fontSize: "22px", color: "#eaf6d8", fontStyle: "800" }).setDepth(31);
+      this.comboTx = this.add.text(W / 2, 34, "", { fontFamily: '"Baloo 2"', fontSize: "22px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(31).setStroke("#10210a", 4);
       this.hearts = this.add.text(W - 20, 18, "", { fontFamily: '"Baloo 2"', fontSize: "26px", color: "#ff5a7a" }).setOrigin(1, 0).setDepth(31);
-      // command plate + ring
-      this.cmdPlate = this.add.graphics().setDepth(30);
-      this.cmdTx = this.add.text(W / 2, 150, "", { fontFamily: '"Baloo 2"', fontSize: "52px", color: "#fff", fontStyle: "800" }).setOrigin(0.5).setDepth(32).setStroke("#2a3a1e", 8);
-      this.ring = this.add.graphics().setDepth(31);
-      this.hintTx = this.add.text(W / 2, H - 70, "OBEY = タップ / Don't = うごくな", { fontFamily: '"Zen Maru Gothic"', fontSize: "20px", color: "#eaf6d8", fontStyle: "700" }).setOrigin(0.5).setDepth(31).setVisible(false);
+      this.orderPlate = this.add.graphics().setDepth(31);
+      this.orderTx = this.add.text(W / 2, 110, "", { fontFamily: '"Baloo 2"', fontSize: "46px", color: "#fff", fontStyle: "800" }).setOrigin(0.5).setDepth(33).setStroke("#10210a", 7);
+      this.hintTx = this.add.text(W / 2, H - 30, "うえ・ひだり・みぎ に スワイプ！ めいれい は まもれ！", { fontFamily: '"Zen Maru Gothic"', fontSize: "17px", color: "#d8f08a", fontStyle: "700" }).setOrigin(0.5).setDepth(31).setVisible(false);
       this.updateHud();
     }
-    updateHud() { this.scoreTx.setText("れんぞく " + this.score + "/" + TARGET); this.hearts.setText("❤".repeat(Math.max(0, this.lives))); }
+    updateHud() { this.progTx.setText("ゴールまで " + Math.max(0, GOAL - this.row)); this.hearts.setText("❤".repeat(Math.max(0, this.lives))); this.comboTx.setText(this.combo >= 2 ? this.combo + " コンボ！" : ""); }
 
-    startPlay() { if (this.playStarted) return; this.playStarted = true; this.state = "play"; this.hud.setVisible(true); this.hintTx.setVisible(true); this.showSquad(); this.time.delayedCall(500, () => this.newCommand()); }
+    startPlay() { if (this.playStarted) return; this.playStarted = true; this.state = "play"; this.hud.setVisible(true); this.hintTx.setVisible(true); this.scheduleOrder(2200); }
 
-    newCommand() {
+    scheduleOrder(delay) { if (this.state !== "play") return; this.time.delayedCall(delay, () => this.newOrder()); }
+    newOrder() {
       if (this.state !== "play") return;
-      this.acted = false; this.awaiting = true; this.busy = false;
-      const neg = Phaser.Math.Between(0, 99) < 42;
-      this.cur = neg ? Phaser.Utils.Array.GetRandom(NEG) : Phaser.Utils.Array.GetRandom(POS);
-      this.cur.neg = neg;
-      // plate
-      // Uniform plate for both kinds: the player must READ the command (spot "Don't"), not its colour (A2).
-      this.cmdPlate.clear(); this.cmdPlate.fillStyle(0x3a4f24, 0.95); this.cmdPlate.fillRoundedRect(W / 2 - 320, 100, 640, 100, 22); this.cmdPlate.lineStyle(5, 0xffe08a, 0.9); this.cmdPlate.strokeRoundedRect(W / 2 - 320, 100, 640, 100, 22);
-      this.cmdTx.setText(this.cur.en).setScale(0.6); this.tweens.add({ targets: this.cmdTx, scale: 1, duration: 200, ease: "Back.out" });
-      this.voice("c_" + this.cur.k);
-      // shrinking ring = the window
-      const dur = Math.max(900, 1700 - this.score * 60);
-      this.ringT = 1;
-      this.ringTween = this.tweens.add({ targets: this, ringT: 0, duration: dur, ease: "Linear", onUpdate: () => this.drawRing(), onComplete: () => { if (this.awaiting && !this.acted) this.resolve("wait"); } });
-      // unko bark
-      this.tweens.add({ targets: this.unko, scaleX: 0.66, scaleY: 0.58, duration: 120, yoyo: true });
+      const r = Phaser.Math.Between(0, 99);
+      let grp = r < 46 ? "up" : r < 62 ? "left" : r < 78 ? "right" : "stay";
+      if (grp === "stay" && this.carBearing()) grp = "up";   // never force a freeze with a car bearing down (no-win)
+      this.order = Object.assign({ grp }, Phaser.Utils.Array.GetRandom(CMDS[grp])); this.orderActed = false;
+      this.orderPlate.clear(); this.orderPlate.fillStyle(0x18301a, 0.95); this.orderPlate.fillRoundedRect(W / 2 - 280, 78, 560, 70, 20); this.orderPlate.lineStyle(4, 0xffe08a, 0.9); this.orderPlate.strokeRoundedRect(W / 2 - 280, 78, 560, 70, 20);
+      this.orderTx.setText(this.order.en).setScale(0.6); this.tweens.add({ targets: this.orderTx, scale: 1, duration: 150, ease: "Back.out" });
+      Sfx.order(); this.voice("c_" + this.key(this.order.en));
+      this.tweens.add({ targets: this.unko, scaleX: 0.54, scaleY: 0.46, duration: 110, yoyo: true });
+      this.orderEndT = this.time.now + 2000;
+      this.orderTimer = this.time.delayedCall(2000, () => this.resolveOrder());
     }
-    drawRing() {
-      this.ring.clear(); const cx = W / 2, cy = 150, r = 250;
-      this.ring.lineStyle(8, 0xffffff, 0.85);
-      this.ring.beginPath(); this.ring.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * this.ringT, false); this.ring.strokePath();
+    resolveOrder() {
+      if (!this.order) return;
+      const wasStay = this.order.grp === "stay";
+      if (wasStay && !this.orderActed) { this.combo++; Sfx.obey(); this.popText("FREEZE OK!", "#d8f08a"); }   // correctly held still
+      else if (!wasStay && !this.orderActed) { this.combo = 0; this.popText("おそい！", "#ffd24d"); }            // ignored a move order
+      this.clearOrder();
+      this.scheduleOrder(Phaser.Math.Between(900, 1500));
+    }
+    clearOrder() { this.order = null; this.orderTx.setText(""); this.orderPlate.clear(); if (this.orderTimer) this.orderTimer.remove(); }
+    carBearing() {   // is a car approaching the recruit's current cell? (then a "freeze" order would be unfair)
+      const row = this.ensureRow(this.row); if (!row.isRoad) return false;
+      for (const c of row.cars) { const d = colX(this.col) - c.x; if (Math.sign(d) === c.dir && Math.abs(d) < 220) return true; }
+      return false;
     }
 
-    onTap(p) {
+    move(dir) {
       Sfx.init(); if (window.KMEAudio) KMEAudio.unlock();
-      if (this.state !== "play" || !this.awaiting || this.acted) return;
-      this.acted = true; this.resolve("go");
-    }
-
-    resolve(action) {
-      if (!this.awaiting) return; this.awaiting = false; this.busy = true;
-      if (this.ringTween) this.ringTween.stop(); this.ring.clear();
-      const neg = this.cur.neg;
-      const correct = neg ? (action === "wait") : (action === "go");
-      if (correct) {
-        if (neg) { Sfx.good(); this.flash(0x6fcf8a, 0.25); this.squadFreeze(); }
-        else { Sfx.obey(); this.squadPerform(); }
-        this.score++; this.combo++; this.updateHud();
-        if (this.score >= TARGET) { this.time.delayedCall(500, () => this.win()); return; }
-        this.time.delayedCall(620, () => this.newCommand());
-      } else {
-        this.combo = 0;
-        if (neg && action === "go") { Sfx.stink(); this.stinkBomb(); this.lives--; this.updateHud(); this.cameras.main.shake(280, 0.012); }
-        else { Sfx.scold(); this.scold(); }   // missed a positive: scolded, no life lost
-        if (this.lives <= 0) { this.time.delayedCall(700, () => this.lose()); return; }
-        this.time.delayedCall(900, () => this.newCommand());
+      if (this.state !== "play" || this.dead || this.hopping) return;
+      // if an order is active, the move MUST match it
+      if (this.order) {
+        if (this.order.grp === "stay") { this.combo = 0; Sfx.splat(); this.popText("うごくな！", "#ff7a6a"); this.orderActed = true; this.clearOrder(); this.hit(); this.scheduleOrder(900); return; }
+        if (dir !== this.order.grp) { this.combo = 0; Sfx.honk(); this.popText("ちがう めいれい！", "#ff7a6a"); this.orderActed = true; this.clearOrder(); this.scheduleOrder(900); return; }
+        // correct obey -> unko's order shields you across (obeying is never punished by traffic)
+        this.orderActed = true; this.combo++; Sfx.obey(); this.invuln = Math.max(this.invuln, 0.55); this.popText("はい！", "#d8f08a"); this.clearOrder(); this.scheduleOrder(Phaser.Math.Between(900, 1500));
       }
+      this.hop(dir);
+    }
+    hop(dir) {
+      let nc = this.col, nr = this.row;
+      if (dir === "left") nc = Math.max(0, this.col - 1);
+      else if (dir === "right") nc = Math.min(COLS - 1, this.col + 1);
+      else nr = this.row + 1;
+      this.hopping = true;
+      this.col = nc; this.row = nr;
+      Sfx.hop();
+      const tx = colX(this.col);
+      this.tweens.add({ targets: this.recruit, x: tx, scaleY: 1.18, scaleX: 0.86, duration: 110, yoyo: true, ease: "Quad.out", onYoyo: () => this.recruit.setScale(0.92) });
+      this.shadow.x = tx;
+      this.tweens.add({ targets: this, _scroll: 1, duration: 130, onComplete: () => { this.hopping = false; this.checkLand(); if (this.row >= GOAL) this.win(); } });
+      this.updateHud();
+      if (dir === "up") this.ensureRow(this.row + 8);
+    }
+    checkLand() {
+      const row = this.ensureRow(this.row);
+      if (!row.isRoad || this.invuln > 0) return;
+      for (const c of row.cars) { if (Math.abs(c.x - colX(this.col)) < 70) { this.hit(); return; } }
     }
 
-    squadPerform() { this.recruits.forEach((r, i) => this.time.delayedCall(i * 70, () => { this.tweens.add({ targets: r, y: r.baseY - 70, duration: 180, yoyo: true, ease: "Quad.out" }); this.tweens.add({ targets: r, angle: 12, duration: 120, yoyo: true }); })); }
-    squadFreeze() { this.recruits.forEach((r) => { const f = this.add.text(r.x, r.y - 80, "❄", { fontSize: "34px" }).setOrigin(0.5).setDepth(15); this.tweens.add({ targets: f, alpha: 0, y: f.y - 20, duration: 600, onComplete: () => f.destroy() }); }); }
-    stinkBomb() {
-      this.recruits.forEach((r, i) => { const s = this.add.image(r.x, r.y - 30, "stink").setScale(0.2).setDepth(16).setAlpha(0.95); this.tweens.add({ targets: s, scale: 1.2, alpha: 0, duration: 900, ease: "Quad.out", onComplete: () => s.destroy() }); this.tweens.add({ targets: r, angle: i % 2 ? 24 : -24, y: r.baseY + 14, duration: 160, yoyo: true }); });
-      const t = this.add.text(W / 2, H / 2, "くさ〜い！", { fontFamily: '"Baloo 2"', fontSize: "46px", color: "#b6d96a", fontStyle: "800" }).setOrigin(0.5).setDepth(33).setStroke("#2a3a1e", 7).setScale(0.6); this.tweens.add({ targets: t, scale: 1.1, alpha: 0, duration: 900, onComplete: () => t.destroy() });
+    update(time, delta) {
+      const dt = Math.min(0.033, delta / 1000);
+      if (this.invuln > 0) this.invuln -= dt;
+      // draw lanes + move + render cars
+      this.laneG.clear();
+      for (const k in this.rows) {
+        const row = this.rows[k], y = this.rowScreenY(row.r);
+        if (y < -ROWH || y > H + ROWH) { row.cars.forEach((c) => { if (c.spr) { c.spr.setVisible(false); } }); continue; }
+        if (row.isRoad) { this.laneG.fillStyle(0x3a3f4a, 1); this.laneG.fillRect(0, y - ROWH / 2, W, ROWH); this.laneG.lineStyle(4, 0xf2d24a, 0.6); for (let x = 14; x < W; x += 64) this.laneG.lineBetween(x, y, x + 34, y); }
+        else { this.laneG.fillStyle(row.r >= GOAL ? 0x3aa05a : 0x6fb053, 0.5); this.laneG.fillRect(0, y - ROWH / 2, W, ROWH); }
+      }
+      if (this.state === "play" && !this.dead) {
+        for (const k in this.rows) {
+          const row = this.rows[k]; if (!row.isRoad) continue; const y = this.rowScreenY(row.r); const onScreen = y > -ROWH && y < H + ROWH;
+          for (const c of row.cars) {
+            c.x += c.dir * c.speed * dt;
+            if (c.dir > 0 && c.x > W + 180) c.x -= (W + 360); if (c.dir < 0 && c.x < -180) c.x += (W + 360);
+            if (onScreen) { if (!c.spr) { c.spr = this.add.image(0, 0, "car").setDepth(12); } c.spr.setVisible(true).setPosition(c.x, y).setFlipX(c.dir < 0).setTint(c.tint); }
+            else if (c.spr) c.spr.setVisible(false);
+            // run over the recruit if it stands in this row
+            if (row.r === this.row && this.invuln <= 0 && !this.hopping && Math.abs(c.x - colX(this.col)) < 64) this.hit();
+          }
+        }
+      }
+      this.recruit.x = colX(this.col); this.shadow.x = colX(this.col);
+      // order ring
+      if (this.order && this.orderEndT) { const tleft = Math.max(0, (this.orderEndT - time) / 2000); /* visual handled by plate pulse */ }
     }
-    scold() { const t = this.add.text(W / 2, H / 2, "おそい！", { fontFamily: '"Baloo 2"', fontSize: "40px", color: "#ffd24d", fontStyle: "800" }).setOrigin(0.5).setDepth(33).setStroke("#2a3a1e", 6).setScale(0.6); this.tweens.add({ targets: t, scale: 1, alpha: 0, y: t.y - 30, duration: 700, onComplete: () => t.destroy() }); this.tweens.add({ targets: this.unko, angle: 8, duration: 60, yoyo: true, repeat: 3 }); }
+
+    hit() {
+      if (this.dead || this.invuln > 0) return;
+      this.invuln = 1.1; this.lives--; this.combo = 0; this.updateHud();
+      Sfx.honk(); Sfx.splat(); this.cameras.main.shake(200, 0.012); this.cameras.main.flash(140, 200, 60, 60);
+      const s = this.add.image(this.recruit.x, RECRUIT_Y, "stink").setScale(0.3).setDepth(24).setAlpha(0.95); this.tweens.add({ targets: s, scale: 1.1, alpha: 0, duration: 700, onComplete: () => s.destroy() });
+      this.tweens.add({ targets: this.recruit, angle: 360, duration: 400, onComplete: () => this.recruit.setAngle(0) });
+      // knock back down a row to safety
+      if (this.row > 0) { this.row = Math.max(0, this.row - 1); this.updateHud(); }
+      this.tweens.add({ targets: this.recruit, alpha: 0.4, duration: 120, yoyo: true, repeat: 4 });
+      this.popText("ぺちゃ！", "#ff7a6a");
+      if (this.lives <= 0) { this.dead = true; this.time.delayedCall(700, () => this.lose()); }
+    }
+    popText(t, c) { const o = this.add.text(this.recruit.x, RECRUIT_Y - 70, t, { fontFamily: '"Baloo 2"', fontSize: "28px", color: c, fontStyle: "800" }).setOrigin(0.5).setDepth(26).setStroke("#10210a", 5); this.tweens.add({ targets: o, y: o.y - 30, alpha: 0, duration: 700, onComplete: () => o.destroy() }); }
 
     flash(color, alpha) { const f = this.add.rectangle(0, 0, W, H, color, alpha).setOrigin(0).setDepth(50); this.tweens.add({ targets: f, alpha: 0, duration: 240, onComplete: () => f.destroy() }); }
-    win() { this.state = "over"; if (window.KMEFlow) KMEFlow.win(); Sfx.win(); this.flash(0xfff2c4, 0.5); this.tweens.add({ targets: this.unko, scaleX: 0.72, scaleY: 0.72, duration: 180, yoyo: true, repeat: 3 }); this.time.delayedCall(700, () => this.panel("ごうかく へいし！", "YOU WIN!")); }
-    lose() { this.state = "over"; Sfx.lose(); this.cameras.main.shake(280, 0.012); this.time.delayedCall(400, () => this.panel("もういちど！", "GAME OVER")); }
+    win() { if (this.state === "over") return; this.state = "over"; this.clearOrder(); if (window.KMEFlow) KMEFlow.win(); Sfx.win(); this.flash(0xfff2c4, 0.5); this.tweens.add({ targets: this.recruit, y: RECRUIT_Y - 50, scaleX: 1, scaleY: 1, duration: 300, yoyo: true, repeat: 2 }); this.time.delayedCall(700, () => this.panel("わたりきった！", "YOU WIN!")); }
+    lose() { this.state = "over"; this.clearOrder(); Sfx.lose(); this.time.delayedCall(300, () => this.panel("もういちど！", "GAME OVER")); }
     panel(jp, big) {
-      const p = this.add.graphics().setDepth(60); p.fillStyle(0x2a3a1e, 0.95); p.fillRoundedRect(W / 2 - 200, H / 2 - 150, 400, 300, 28); p.lineStyle(6, 0xb6d96a, 1); p.strokeRoundedRect(W / 2 - 200, H / 2 - 150, 400, 300, 28);
+      const p = this.add.graphics().setDepth(60); p.fillStyle(0x10210a, 0.95); p.fillRoundedRect(W / 2 - 200, H / 2 - 150, 400, 300, 28); p.lineStyle(6, 0xb6d96a, 1); p.strokeRoundedRect(W / 2 - 200, H / 2 - 150, 400, 300, 28);
       this.add.image(W / 2, H / 2 - 80, "unko").setScale(0.42).setDepth(61);
-      this.add.text(W / 2, H / 2 - 2, big, { fontFamily: '"Baloo 2"', fontSize: "44px", color: "#b6d96a", fontStyle: "800" }).setOrigin(0.5).setDepth(61).setStroke("#2a3a1e", 6);
+      this.add.text(W / 2, H / 2 - 2, big, { fontFamily: '"Baloo 2"', fontSize: "44px", color: "#b6d96a", fontStyle: "800" }).setOrigin(0.5).setDepth(61).setStroke("#10210a", 6);
       this.add.text(W / 2, H / 2 + 44, jp, { fontFamily: '"Zen Maru Gothic"', fontSize: "26px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(61);
       const bw = 240, bh = 72, by = H / 2 + 108;
       const bg = this.add.graphics().setDepth(61); bg.fillStyle(0x3DBE6A, 1); bg.fillRoundedRect(W / 2 - bw / 2, by - bh / 2, bw, bh, 20); bg.lineStyle(5, 0x1F8A4C, 1); bg.strokeRoundedRect(W / 2 - bw / 2, by - bh / 2, bw, bh, 20);
@@ -164,20 +225,20 @@
     }
 
     // ---------- title / intro / voice ----------
-    introNeeded() { try { return !localStorage.getItem("ss_intro_seen"); } catch (e) { return true; } }
-    markSeen() { try { localStorage.setItem("ss_intro_seen", "1"); } catch (e) {} }
+    introNeeded() { try { return !localStorage.getItem("ss_intro_seen_v3"); } catch (e) { return true; } }
+    markSeen() { try { localStorage.setItem("ss_intro_seen_v3", "1"); } catch (e) {} }
     voice(key, onEnd) { const p = window.KMEAudio ? KMEAudio.play(key) : Promise.resolve(); if (onEnd) p.then(onEnd); return p; }
     showTitle() {
       this.state = "title"; this.titleStarted = false;
-      const dim = this.add.graphics().setDepth(60); dim.fillStyle(0x2a3a1e, 0.45); dim.fillRect(0, 0, W, H);
-      const host = this.add.image(W / 2, H * 0.34, "unko").setScale(0.95).setDepth(62);
+      const dim = this.add.graphics().setDepth(60); dim.fillStyle(0x10210a, 0.5); dim.fillRect(0, 0, W, H);
+      const host = this.add.image(W / 2, H * 0.34, "unko").setScale(0.8).setDepth(62);
       this.titleBob = this.tweens.add({ targets: host, y: H * 0.34 - 16, duration: 950, yoyo: true, repeat: -1, ease: "Sine.inOut" });
-      this.add.text(W / 2, H * 0.56, "スティンク サージェント", { fontFamily: '"Baloo 2"', fontSize: "34px", color: "#d8f08a", fontStyle: "800" }).setOrigin(0.5).setDepth(62).setStroke("#2a3a1e", 7);
-      this.add.text(W / 2, H * 0.56 + 42, "Stink Sergeant", { fontFamily: '"Baloo 2"', fontSize: "26px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#2a3a1e", 5);
+      this.add.text(W / 2, H * 0.56, "スティンク サージェント", { fontFamily: '"Baloo 2"', fontSize: "34px", color: "#d8f08a", fontStyle: "800" }).setOrigin(0.5).setDepth(62).setStroke("#10210a", 7);
+      this.add.text(W / 2, H * 0.56 + 42, "Stink Crossing", { fontFamily: '"Baloo 2"', fontSize: "24px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(62).setStroke("#10210a", 5);
       const bw = 300, bh = 92, bx = W / 2, by = H * 0.73;
       const bg = this.add.graphics().setDepth(62); bg.fillStyle(0x6a8a3e, 1); bg.fillRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 26); bg.lineStyle(6, 0x47611f, 1); bg.strokeRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 26);
       this.add.triangle(bx - 58, by, 0, 0, 26, 16, 0, 32, 0xffffff).setDepth(63);
-      this.add.text(bx + 14, by, "あそぶ", { fontFamily: '"Zen Maru Gothic"', fontSize: "34px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(63).setStroke("#2a3a1e", 5);
+      this.add.text(bx + 14, by, "あそぶ", { fontFamily: '"Zen Maru Gothic"', fontSize: "34px", color: "#fff", fontStyle: "700" }).setOrigin(0.5).setDepth(63).setStroke("#10210a", 5);
       this.titlePulse = this.tweens.add({ targets: bg, alpha: 0.7, duration: 650, yoyo: true, repeat: -1 });
       this.add.zone(bx, by, bw, bh).setInteractive({ useHandCursor: true }).setDepth(64).on("pointerdown", () => this.startFromTitle());
     }
@@ -185,17 +246,17 @@
       if (this.titleStarted) return; this.titleStarted = true; Sfx.init(); if (window.KMEAudio) KMEAudio.unlock();
       if (this.titleBob) this.titleBob.stop(); if (this.titlePulse) this.titlePulse.stop();
       this.children.list.filter((o) => o.depth >= 60 && o.depth < 65).forEach((o) => o.destroy());
-      if (this.introNeeded()) this.startIntro(); else { this.markSeen(); this.unko.setVisible(true); this.showSquad(); this.startPlay(); }
+      if (this.introNeeded()) this.startIntro(); else { this.markSeen(); this.reveal(); this.startPlay(); }
     }
     startIntro() {
       this.state = "intro";
-      this.introDim = this.add.graphics().setDepth(45); this.introDim.fillStyle(0x2a3a1e, 0.62); this.introDim.fillRect(0, 0, W, H);
-      this.introBig = this.add.image(W / 2, H * 0.34, "unko").setScale(0.9).setDepth(47);
+      this.introDim = this.add.graphics().setDepth(45); this.introDim.fillStyle(0x10210a, 0.62); this.introDim.fillRect(0, 0, W, H);
+      this.introBig = this.add.image(W / 2, H * 0.34, "unko").setScale(0.78).setDepth(47);
       this.introBob = this.tweens.add({ targets: this.introBig, y: H * 0.34 - 14, duration: 900, yoyo: true, repeat: -1, ease: "Sine.inOut" });
       const bx = W / 2, by = H * 0.62;
-      this.introBg = this.add.graphics().setDepth(46); this.introBg.fillStyle(0xffffff, 0.97); this.introBg.fillRoundedRect(bx - 332, by - 104, 664, 208, 24); this.introBg.lineStyle(5, 0x2a3a1e, 1); this.introBg.strokeRoundedRect(bx - 332, by - 104, 664, 208, 24);
-      this.introText = this.add.text(bx, by, "ワシ は スティンク ぐんそう だ！\nめいれい を よく きけ！\n「Jump!」 みたいな めいれい なら、\nタップ して したがえ！\nでも 「Don't」 が ついたら… うごくな！\nうごいたら クサい バクダン だ ぞ！", { fontFamily: '"Zen Maru Gothic"', fontSize: "22px", color: "#2a3a1e", fontStyle: "700", align: "center", lineSpacing: 6 }).setOrigin(0.5).setDepth(47);
-      this.skipBtn = this.add.text(W - 56, 92, "スキップ", { fontFamily: '"Zen Maru Gothic"', fontSize: "24px", color: "#d8f08a", fontStyle: "700" }).setOrigin(1, 0.5).setDepth(48).setInteractive({ useHandCursor: true }).setStroke("#2a3a1e", 5);
+      this.introBg = this.add.graphics().setDepth(46); this.introBg.fillStyle(0xffffff, 0.97); this.introBg.fillRoundedRect(bx - 332, by - 110, 664, 220, 24); this.introBg.lineStyle(5, 0x10210a, 1); this.introBg.strokeRoundedRect(bx - 332, by - 110, 664, 220, 24);
+      this.introText = this.add.text(bx, by, "ワシ は スティンク ぐんそう だ！\nどうろ を わたれ！ スワイプ で ぴょん と とべ。\nくるま に ぶつかる な よ！\nワシ が めいれい したら、 その とおり に うごけ。\nでも 「Don't move!」 の ときは… うごくな！ うごいたら バクダン だ ぞ！", { fontFamily: '"Zen Maru Gothic"', fontSize: "22px", color: "#10210a", fontStyle: "700", align: "center", lineSpacing: 6 }).setOrigin(0.5).setDepth(47);
+      this.skipBtn = this.add.text(W - 56, 92, "スキップ", { fontFamily: '"Zen Maru Gothic"', fontSize: "24px", color: "#d8f08a", fontStyle: "700" }).setOrigin(1, 0.5).setDepth(48).setInteractive({ useHandCursor: true }).setStroke("#10210a", 5);
       this.skipChev = this.add.triangle(W - 34, 92, 0, 0, 18, 11, 0, 22, 0xb6d96a).setDepth(48).setInteractive({ useHandCursor: true });
       let advanced = false; this.advIntro = () => { if (advanced) return; advanced = true; this.endIntro(); };
       this.skipBtn.on("pointerdown", this.advIntro); this.skipChev.on("pointerdown", this.advIntro);
@@ -208,12 +269,12 @@
       [this.skipBtn, this.skipChev].forEach((o) => { if (o) o.destroy(); }); this.skipBtn = null; this.skipChev = null;
       if (this.introBob) this.introBob.stop();
       this.tweens.add({ targets: [this.introDim, this.introBg, this.introText], alpha: 0, duration: 420, onComplete: () => { [this.introDim, this.introBg, this.introText].forEach((o) => { if (o) o.destroy(); }); } });
-      this.tweens.add({ targets: this.introBig, x: 140, y: 250, scaleX: 0.62, scaleY: 0.62, duration: 600, ease: "Cubic.inOut", onComplete: () => { if (this.introBig) { this.introBig.destroy(); this.introBig = null; } this.unko.setVisible(true); this.showSquad(); } });
+      this.tweens.add({ targets: this.introBig, x: 96, y: 150, scaleX: 0.5, scaleY: 0.5, duration: 600, ease: "Cubic.inOut", onComplete: () => { if (this.introBig) { this.introBig.destroy(); this.introBig = null; } this.reveal(); } });
       this.time.delayedCall(700, () => this.startPlay());
     }
   }
 
   let booted = false;
-  function boot() { if (booted) return; booted = true; new Phaser.Game({ type: Phaser.CANVAS, parent: "game", backgroundColor: "#7a9466", scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH, width: W, height: H }, scene: [Play] }); }
+  function boot() { if (booted) return; booted = true; new Phaser.Game({ type: Phaser.CANVAS, parent: "game", backgroundColor: "#5f9a48", scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH, width: W, height: H }, scene: [Play] }); }
   if (document.fonts && document.fonts.load) { Promise.all([document.fonts.load('800 30px "Baloo 2"'), document.fonts.load('700 22px "Zen Maru Gothic"')]).then(boot, boot); setTimeout(boot, 1500); } else boot();
 })();

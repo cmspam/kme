@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 96" width="110" height="96">
+  <defs>
+    <radialGradient id="pod" cx="0.4" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#9be8c0"/><stop offset="0.55" stop-color="#3fbf86"/><stop offset="1" stop-color="#1d7a52"/>
+    </radialGradient>
+    <radialGradient id="eye" cx="0.45" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#fff"/><stop offset="0.5" stop-color="#ffd24d"/><stop offset="1" stop-color="#e07a1a"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="55" cy="86" rx="40" ry="7" fill="#06140d" opacity="0.25"/>
+  <!-- dome -->
+  <path d="M16 56 Q16 22 55 22 Q94 22 94 56 Z" fill="url(#pod)" stroke="#13593a" stroke-width="3"/>
+  <ellipse cx="42" cy="40" rx="14" ry="8" fill="#fff" opacity="0.22"/>
+  <!-- saucer base -->
+  <ellipse cx="55" cy="58" rx="48" ry="16" fill="#2a9468" stroke="#13593a" stroke-width="3"/>
+  <ellipse cx="55" cy="56" rx="48" ry="12" fill="#3fbf86"/>
+  <!-- lights -->
+  <circle cx="22" cy="58" r="4" fill="#ffe08a"/><circle cx="40" cy="62" r="4" fill="#ff8a8a"/><circle cx="70" cy="62" r="4" fill="#8ad6ff"/><circle cx="88" cy="58" r="4" fill="#ffe08a"/>
+  <!-- eye -->
+  <circle cx="55" cy="42" r="12" fill="url(#eye)" stroke="#b3601a" stroke-width="2"/>
+  <circle cx="55" cy="42" r="5" fill="#1a1a2a"/><circle cx="58" cy="39" r="2" fill="#fff"/>
+</svg>

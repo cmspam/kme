@@ -1,0 +1,419 @@
+<svg class="boss-art" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;display:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 640" width="760" height="640">
+  <defs>
+    <!-- ===== Body / frame metallic-plastic gradients ===== -->
+    <linearGradient id="catcherski_frameBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="#f06ee8"/>
+      <stop offset="0.18" stop-color="#e84ad8"/>
+      <stop offset="0.55" stop-color="#a02ab5"/>
+      <stop offset="0.85" stop-color="#6a1490"/>
+      <stop offset="1"    stop-color="#3a0a58"/>
+    </linearGradient>
+    <linearGradient id="catcherski_frameSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"   stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="0.2" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.8" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1"   stop-color="#1a0030" stop-opacity="0.5"/>
+    </linearGradient>
+    <linearGradient id="catcherski_chromeRail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#ffffff"/>
+      <stop offset="0.4" stop-color="#cfd6e2"/>
+      <stop offset="0.55" stop-color="#7c8596"/>
+      <stop offset="1"   stop-color="#2a2f3a"/>
+    </linearGradient>
+    <linearGradient id="catcherski_chromeArm" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"   stop-color="#2a2f3a"/>
+      <stop offset="0.35" stop-color="#c8d0dc"/>
+      <stop offset="0.5" stop-color="#ffffff"/>
+      <stop offset="0.65" stop-color="#9aa3b3"/>
+      <stop offset="1"   stop-color="#34404f"/>
+    </linearGradient>
+    <linearGradient id="catcherski_clawMetal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#eef2f8"/>
+      <stop offset="0.45" stop-color="#aab4c4"/>
+      <stop offset="0.7" stop-color="#5a6678"/>
+      <stop offset="1"   stop-color="#2a3140"/>
+    </linearGradient>
+    <!-- glass chamber -->
+    <linearGradient id="catcherski_glassBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#16284a"/>
+      <stop offset="1"   stop-color="#0a1428"/>
+    </linearGradient>
+    <linearGradient id="catcherski_glassSheen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"    stop-color="#bfe9ff" stop-opacity="0.55"/>
+      <stop offset="0.25" stop-color="#bfe9ff" stop-opacity="0.05"/>
+      <stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.7"  stop-color="#7fc7ff" stop-opacity="0.18"/>
+      <stop offset="1"    stop-color="#4a90c4" stop-opacity="0.3"/>
+    </linearGradient>
+    <!-- CRT screen face -->
+    <radialGradient id="catcherski_crtGlow" cx="0.5" cy="0.45" r="0.75">
+      <stop offset="0"   stop-color="#1f5e1f"/>
+      <stop offset="0.6" stop-color="#0d3a12"/>
+      <stop offset="1"   stop-color="#031803"/>
+    </radialGradient>
+    <linearGradient id="catcherski_scanlines" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#0fff0f" stop-opacity="0.0"/>
+      <stop offset="0.5" stop-color="#0fff0f" stop-opacity="0.22"/>
+      <stop offset="1"   stop-color="#0fff0f" stop-opacity="0.0"/>
+    </linearGradient>
+    <linearGradient id="catcherski_bezel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#3a3f4a"/>
+      <stop offset="0.5" stop-color="#1a1d24"/>
+      <stop offset="1"   stop-color="#05070a"/>
+    </linearGradient>
+    <!-- control panel -->
+    <linearGradient id="catcherski_panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#5a1488"/>
+      <stop offset="1"   stop-color="#280645"/>
+    </linearGradient>
+    <linearGradient id="catcherski_joystick" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#ff5a66"/>
+      <stop offset="0.5" stop-color="#ee2233"/>
+      <stop offset="1"   stop-color="#8a0a14"/>
+    </linearGradient>
+    <radialGradient id="catcherski_coin" cx="0.4" cy="0.35" r="0.8">
+      <stop offset="0"   stop-color="#ffe9a0"/>
+      <stop offset="0.6" stop-color="#d4a532"/>
+      <stop offset="1"   stop-color="#7a5a12"/>
+    </radialGradient>
+    <linearGradient id="catcherski_legMetal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#7a3aa8"/>
+      <stop offset="0.5" stop-color="#4a1080"/>
+      <stop offset="1"   stop-color="#1a0530"/>
+    </linearGradient>
+    <radialGradient id="catcherski_topGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"   stop-color="#ff8cf2" stop-opacity="0.9"/>
+      <stop offset="1"   stop-color="#ff8cf2" stop-opacity="0"/>
+    </radialGradient>
+    <!-- soft drop-shadow for whole machine -->
+    <filter id="catcherski_softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <filter id="catcherski_neonBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="catcherski_eyeGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.2"/>
+    </filter>
+  </defs>
+
+  <!-- subtle backdrop wash -->
+  
+
+  <!-- ground shadow -->
+  <ellipse cx="380" cy="592" rx="248" ry="26" fill="#000" opacity="0.34"/>
+  <ellipse cx="380" cy="588" rx="180" ry="16" fill="#000" opacity="0.22"/>
+
+  <!-- ================= LEFT KAIJU ARM (reaching out) ================= -->
+  <g id="catcherski_part-arm-left">
+    <!-- shoulder joint -->
+    <circle cx="172" cy="300" r="26" fill="url(#catcherski_clawMetal)" stroke="#1a2028" stroke-width="3"/>
+    <circle cx="172" cy="300" r="11" fill="#2a3140"/>
+    <circle cx="167" cy="295" r="4" fill="#ffffff" opacity="0.8"/>
+    <!-- segmented arm -->
+    <g stroke="#1a2028" stroke-width="3">
+      <rect x="92" y="290" width="86" height="26" rx="12" fill="url(#catcherski_chromeArm)" transform="rotate(-8 135 303)"/>
+      <rect x="44" y="322" width="78" height="24" rx="11" fill="url(#catcherski_chromeArm)" transform="rotate(22 83 334)"/>
+    </g>
+    <circle cx="100" cy="312" r="14" fill="url(#catcherski_clawMetal)" stroke="#1a2028" stroke-width="3"/>
+    <circle cx="96" cy="308" r="4" fill="#fff" opacity="0.7"/>
+    <!-- pincer claw (left) -->
+    <g id="catcherski_P-clawL" transform="translate(54 354)">
+      <path d="M 0 0 Q -22 4 -30 26 Q -32 40 -22 44 L -14 36 Q -18 22 -6 12 Z"
+            fill="url(#catcherski_clawMetal)" stroke="#0e141c" stroke-width="3"/>
+      <path d="M 0 0 Q 18 8 20 30 Q 20 44 10 46 L 4 36 Q 8 22 -2 12 Z"
+            fill="url(#catcherski_clawMetal)" stroke="#0e141c" stroke-width="3"/>
+      <path d="M -22 8 Q -14 18 -10 30" stroke="#fff" stroke-width="2" fill="none" opacity="0.55"/>
+      <circle cx="-3" cy="2" r="9" fill="#3a4150" stroke="#0e141c" stroke-width="2"/>
+      <circle cx="-6" cy="-1" r="3" fill="#fff" opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- ================= RIGHT KAIJU ARM (reaching out) ================= -->
+  <g id="catcherski_part-arm-right">
+    <circle cx="588" cy="300" r="26" fill="url(#catcherski_clawMetal)" stroke="#1a2028" stroke-width="3"/>
+    <circle cx="588" cy="300" r="11" fill="#2a3140"/>
+    <circle cx="583" cy="295" r="4" fill="#ffffff" opacity="0.8"/>
+    <g stroke="#1a2028" stroke-width="3">
+      <rect x="582" y="290" width="86" height="26" rx="12" fill="url(#catcherski_chromeArm)" transform="rotate(8 625 303)"/>
+      <rect x="638" y="322" width="78" height="24" rx="11" fill="url(#catcherski_chromeArm)" transform="rotate(-22 677 334)"/>
+    </g>
+    <circle cx="660" cy="312" r="14" fill="url(#catcherski_clawMetal)" stroke="#1a2028" stroke-width="3"/>
+    <circle cx="656" cy="308" r="4" fill="#fff" opacity="0.7"/>
+    <g id="catcherski_P-clawR" transform="translate(706 354) scale(-1 1)">
+      <path d="M 0 0 Q -22 4 -30 26 Q -32 40 -22 44 L -14 36 Q -18 22 -6 12 Z"
+            fill="url(#catcherski_clawMetal)" stroke="#0e141c" stroke-width="3"/>
+      <path d="M 0 0 Q 18 8 20 30 Q 20 44 10 46 L 4 36 Q 8 22 -2 12 Z"
+            fill="url(#catcherski_clawMetal)" stroke="#0e141c" stroke-width="3"/>
+      <path d="M -22 8 Q -14 18 -10 30" stroke="#fff" stroke-width="2" fill="none" opacity="0.55"/>
+      <circle cx="-3" cy="2" r="9" fill="#3a4150" stroke="#0e141c" stroke-width="2"/>
+      <circle cx="-6" cy="-1" r="3" fill="#fff" opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- ================= CABINET BODY ================= -->
+  <g id="catcherski_part-body" filter="url(#catcherski_softShadow)">
+    <!-- outer dark edge -->
+    <rect x="184" y="48" width="392" height="500" rx="22" fill="#160028"/>
+    <!-- main plastic shell -->
+    <rect x="190" y="54" width="380" height="488" rx="18" fill="url(#catcherski_frameBody)"/>
+    <!-- side shading overlay -->
+    <rect x="190" y="54" width="380" height="488" rx="18" fill="url(#catcherski_frameSide)"/>
+    <!-- inner rim highlight -->
+    <rect x="198" y="62" width="364" height="472" rx="14" fill="none" stroke="#ffb3f4" stroke-width="2" opacity="0.45"/>
+    <!-- neon trim (glow + line) -->
+    <rect x="190" y="54" width="380" height="488" rx="18" fill="none" stroke="#ff66ee" stroke-width="6" opacity="0.5" filter="url(#catcherski_neonBlur)"/>
+    <rect x="190" y="54" width="380" height="488" rx="18" fill="none" stroke="#ff8cf2" stroke-width="2.5" opacity="0.95"/>
+  </g>
+
+  <!-- ================= TOP SIGN / MARQUEE ================= -->
+  <g id="catcherski_part-sign">
+    <ellipse cx="380" cy="92" rx="170" ry="34" fill="url(#catcherski_topGlow)"/>
+    <rect x="216" y="66" width="328" height="56" rx="10" fill="#12002a" stroke="#ff66ee" stroke-width="2.5"/>
+    <rect x="222" y="72" width="316" height="20" rx="6" fill="#ff66ee" opacity="0.08"/>
+    <text x="380" y="96" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="24" font-weight="900" fill="#ffe45c" style="letter-spacing:4px;">UFO CATCHER</text>
+    <text x="380" y="113" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="11" font-weight="900" fill="#5cffd0" style="letter-spacing:6px;">XAKHYTO</text>
+  </g>
+
+  <!-- ================= GLASS PRIZE CHAMBER ================= -->
+  <g id="catcherski_part-glass">
+    <!-- chamber back -->
+    <rect x="214" y="138" width="332" height="196" rx="8" fill="url(#catcherski_glassBack)"/>
+    <!-- claw rail across top -->
+    <rect x="226" y="150" width="308" height="9" rx="3" fill="url(#catcherski_chromeRail)" stroke="#0e141c" stroke-width="1.5"/>
+    <rect x="226" y="151" width="308" height="3" rx="1.5" fill="#fff" opacity="0.6"/>
+
+    <!-- ===== DANGLING GRABBER CLAW inside the chamber ===== -->
+    <g id="catcherski_part-grabber">
+      <!-- carriage on rail -->
+      <rect x="356" y="153" width="48" height="13" rx="3" fill="url(#catcherski_chromeRail)" stroke="#0e141c" stroke-width="1.5"/>
+      <!-- cable -->
+      <line x1="380" y1="166" x2="380" y2="188" stroke="#1a2028" stroke-width="3"/>
+      <!-- claw hub -->
+      <ellipse cx="380" cy="194" rx="20" ry="11" fill="url(#catcherski_clawMetal)" stroke="#0e141c" stroke-width="2.5"/>
+      <ellipse cx="374" cy="190" rx="7" ry="3" fill="#fff" opacity="0.6"/>
+      <!-- three prongs -->
+      <path d="M 364 200 Q 354 218 358 234 L 366 232 Q 364 216 372 204 Z" fill="url(#catcherski_clawMetal)" stroke="#0e141c" stroke-width="2.5"/>
+      <path d="M 380 202 L 376 236 L 384 236 L 380 202 Z" fill="url(#catcherski_clawMetal)" stroke="#0e141c" stroke-width="2.5"/>
+      <path d="M 396 200 Q 406 218 402 234 L 394 232 Q 396 216 388 204 Z" fill="url(#catcherski_clawMetal)" stroke="#0e141c" stroke-width="2.5"/>
+      <path d="M 366 206 Q 360 218 362 230" stroke="#fff" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <circle cx="380" cy="194" r="4" fill="#2a3140"/>
+    </g>
+
+    <!-- ===== PRIZE PLUSHES inside ===== -->
+    <g id="catcherski_part-prizes">
+      <!-- back row -->
+      <g>
+        <!-- cat plush -->
+        <g id="catcherski_P-neko" transform="translate(270 238)">
+          <ellipse cx="-15" cy="-20" rx="9" ry="11" fill="#ffe6a8" stroke="#5a3a10" stroke-width="2"/>
+          <ellipse cx="15" cy="-20" rx="9" ry="11" fill="#ffe6a8" stroke="#5a3a10" stroke-width="2"/>
+          <circle cx="0" cy="2" r="26" fill="#ffe6a8" stroke="#5a3a10" stroke-width="2.5"/>
+          <ellipse cx="-8" cy="-8" rx="12" ry="7" fill="#fff" opacity="0.5"/>
+          <circle cx="-9" cy="0" r="3.5" fill="#3a2410"/><circle cx="9" cy="0" r="3.5" fill="#3a2410"/>
+          <path d="M -7 12 Q 0 18 7 12" stroke="#3a2410" stroke-width="2" fill="none"/>
+          <path d="M -20 4 L -32 1 M -20 9 L -32 9 M 20 4 L 32 1 M 20 9 L 32 9" stroke="#5a3a10" stroke-width="1.4"/>
+        </g>
+        <!-- sakura plush -->
+        <g id="catcherski_P-sakura" transform="translate(424 218)">
+          <g fill="#ffd6f0" stroke="#a04a78" stroke-width="2">
+            <ellipse cx="0" cy="-16" rx="9" ry="13"/>
+            <ellipse cx="15" cy="-5" rx="9" ry="13" transform="rotate(72 15 -5)"/>
+            <ellipse cx="9" cy="13" rx="9" ry="13" transform="rotate(144 9 13)"/>
+            <ellipse cx="-9" cy="13" rx="9" ry="13" transform="rotate(216 -9 13)"/>
+            <ellipse cx="-15" cy="-5" rx="9" ry="13" transform="rotate(288 -15 -5)"/>
+          </g>
+          <circle cx="0" cy="0" r="8" fill="#ffe45c" stroke="#a04a78" stroke-width="1.5"/>
+        </g>
+        <!-- dango plush (3 balls) -->
+        <g id="catcherski_P-dango" transform="translate(486 240)">
+          <line x1="-2" y1="-22" x2="2" y2="24" stroke="#caa15a" stroke-width="2.5"/>
+          <circle cx="0" cy="-14" r="13" fill="#d6e6ff" stroke="#4a6a9a" stroke-width="2"/>
+          <circle cx="0" cy="6" r="13" fill="#ffd6e8" stroke="#9a4a6a" stroke-width="2"/>
+          <circle cx="0" cy="26" r="13" fill="#d8f0d0" stroke="#4a8a4a" stroke-width="2"/>
+          <ellipse cx="-4" cy="-18" rx="5" ry="3" fill="#fff" opacity="0.6"/>
+        </g>
+      </g>
+      <!-- front row (overlapping, lower) -->
+      <g>
+        <!-- sushi plush -->
+        <g id="catcherski_P-sushi" transform="translate(322 296)">
+          <ellipse cx="0" cy="6" rx="30" ry="20" fill="#fff3ea" stroke="#b08a5a" stroke-width="2.5"/>
+          <ellipse cx="0" cy="-6" rx="26" ry="13" fill="#ff8aa8" stroke="#c04a68" stroke-width="2"/>
+          <ellipse cx="-8" cy="-8" rx="10" ry="4" fill="#ffd0dc" opacity="0.8"/>
+          <rect x="-30" y="2" width="60" height="9" rx="3" fill="#2c8a4a" stroke="#155028" stroke-width="1.5"/>
+          <circle cx="-9" cy="-4" r="2.5" fill="#2a1010"/><circle cx="9" cy="-4" r="2.5" fill="#2a1010"/>
+        </g>
+        <!-- unko (smiling poop) plush -->
+        <g id="catcherski_P-unko" transform="translate(434 300)">
+          <path d="M -28 22 Q -30 0 -16 -2 Q -22 -16 -6 -18 Q -2 -32 12 -24 Q 26 -26 20 -8 Q 32 -2 24 14 Q 30 24 0 24 Z"
+                fill="#a8742e" stroke="#5a3a10" stroke-width="2.5"/>
+          <path d="M -22 16 Q -24 2 -12 0" stroke="#fff" stroke-width="2" fill="none" opacity="0.4"/>
+          <circle cx="-7" cy="2" r="3.5" fill="#2a1505"/><circle cx="9" cy="2" r="3.5" fill="#2a1505"/>
+          <path d="M -7 12 Q 1 18 9 12" stroke="#2a1505" stroke-width="2" fill="none"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- ===== GLASS FRONT (over the prizes) ===== -->
+    <rect x="214" y="138" width="332" height="196" rx="8" fill="url(#catcherski_glassSheen)"/>
+    <!-- diagonal glass streaks -->
+    <path d="M 240 150 L 340 150 L 250 326 L 222 326 Z" fill="#ffffff" opacity="0.10"/>
+    <path d="M 360 150 L 392 150 L 300 326 L 270 326 Z" fill="#ffffff" opacity="0.06"/>
+    <path d="M 234 150 L 234 322" stroke="#fff" stroke-width="2.5" opacity="0.45"/>
+    <path d="M 242 150 L 242 250" stroke="#fff" stroke-width="1.5" opacity="0.28"/>
+    <!-- glass frame -->
+    <rect x="214" y="138" width="332" height="196" rx="8" fill="none" stroke="#6a3ab0" stroke-width="4"/>
+    <rect x="214" y="138" width="332" height="196" rx="8" fill="none" stroke="#c79bff" stroke-width="1.5" opacity="0.6"/>
+    <!-- glitchy cyrillic floating in glass -->
+    <text x="520" y="162" font-family="monospace" font-size="11" fill="#5cffaf" opacity="0.6">0x4A</text>
+    <text x="228" y="328" font-family="monospace" font-size="10" fill="#5cffaf" opacity="0.5">CЛABA</text>
+    <text x="492" y="328" font-family="monospace" font-size="10" fill="#5cffaf" opacity="0.5">XAKEP</text>
+  </g>
+
+  <!-- ================= CRT SCREEN FACE ================= -->
+  <g id="catcherski_part-face">
+    <!-- bezel -->
+    <rect x="232" y="352" width="296" height="120" rx="14" fill="url(#catcherski_bezel)" stroke="#000" stroke-width="3"/>
+    <rect x="238" y="358" width="284" height="108" rx="10" fill="#0a0d12"/>
+    <!-- screen glow -->
+    <rect x="246" y="364" width="268" height="96" rx="8" fill="url(#catcherski_crtGlow)"/>
+
+    <!-- ===== GLITCHY EYES (angry, scheming) ===== -->
+    <g id="catcherski_part-eyes">
+      <!-- LEFT eye -->
+      <g filter="url(#catcherski_eyeGlow)">
+        <path d="M 290 398 L 338 388 L 338 416 L 290 416 Z" fill="#0aff4a" opacity="0.3"/>
+      </g>
+      <!-- eye socket, angled down-inward (angry) -->
+      <path d="M 292 398 L 336 390 L 336 414 L 292 414 Z" fill="#031803" stroke="#0aff4a" stroke-width="1.5"/>
+      <!-- glowing pupil block -->
+      <rect x="304" y="399" width="20" height="13" rx="2" fill="#0aff4a"/>
+      <rect x="309" y="402" width="9" height="7" fill="#063a12"/>
+      <rect x="310" y="403" width="3" height="3" fill="#bfffd0"/>
+      <!-- RIGHT eye (mirror) -->
+      <g filter="url(#catcherski_eyeGlow)">
+        <path d="M 470 388 L 518 398 L 518 416 L 470 416 Z" fill="#0aff4a" opacity="0.3"/>
+      </g>
+      <path d="M 472 390 L 516 398 L 516 414 L 472 414 Z" fill="#031803" stroke="#0aff4a" stroke-width="1.5"/>
+      <rect x="436" y="399" width="0" height="0"/>
+      <rect x="484" y="399" width="20" height="13" rx="2" fill="#0aff4a"/>
+      <rect x="490" y="402" width="9" height="7" fill="#063a12"/>
+      <rect x="491" y="403" width="3" height="3" fill="#bfffd0"/>
+      <!-- glitch displacement slice across right eye -->
+      <rect x="474" y="404" width="22" height="3" fill="#ff3df0" opacity="0.7"/>
+    </g>
+
+    <!-- ===== SINISTER DIGITAL GRIN ===== -->
+    <g id="catcherski_part-mouth">
+      <!-- dark mouth slot -->
+      <path d="M 304 426 Q 380 440 456 426 L 452 448 Q 380 458 308 448 Z" fill="#021a02" stroke="#0aff4a" stroke-width="1.5"/>
+      <!-- jagged glowing pixel teeth -->
+      <g fill="#0aff4a">
+        <rect x="318" y="430" width="9" height="12"/>
+        <rect x="330" y="435" width="9" height="9"/>
+        <rect x="342" y="430" width="9" height="14"/>
+        <rect x="354" y="437" width="9" height="9"/>
+        <rect x="366" y="431" width="9" height="13"/>
+        <rect x="380" y="438" width="9" height="9"/>
+        <rect x="392" y="431" width="9" height="13"/>
+        <rect x="404" y="437" width="9" height="9"/>
+        <rect x="416" y="430" width="9" height="12"/>
+      </g>
+      <!-- upturned scheming corners -->
+      <path d="M 300 422 L 312 428 M 460 422 L 448 428" stroke="#0aff4a" stroke-width="2.5" fill="none"/>
+    </g>
+
+    <!-- scrolling cyrillic/jp readout lines -->
+    <text x="380" y="380" text-anchor="middle" font-family="monospace" font-size="10" fill="#5cffaf" opacity="0.85" style="letter-spacing:1px;">BBEДИ 100 ЙEH</text>
+    <text x="252" y="455" font-family="monospace" font-size="9" fill="#5cffaf" opacity="0.7">&gt;_ KRANOV.exe</text>
+    <text x="468" y="455" text-anchor="end" font-family="monospace" font-size="9" fill="#5cffaf" opacity="0.7">БИП!</text>
+
+    <!-- scanline overlay -->
+    <rect x="246" y="364" width="268" height="96" rx="8" fill="url(#catcherski_scanlines)" opacity="0.5"/>
+    <g stroke="#000" stroke-width="1" opacity="0.18">
+      <line x1="246" y1="370" x2="514" y2="370"/>
+      <line x1="246" y1="378" x2="514" y2="378"/>
+      <line x1="246" y1="386" x2="514" y2="386"/>
+      <line x1="246" y1="394" x2="514" y2="394"/>
+      <line x1="246" y1="402" x2="514" y2="402"/>
+      <line x1="246" y1="410" x2="514" y2="410"/>
+      <line x1="246" y1="418" x2="514" y2="418"/>
+      <line x1="246" y1="426" x2="514" y2="426"/>
+      <line x1="246" y1="434" x2="514" y2="434"/>
+      <line x1="246" y1="442" x2="514" y2="442"/>
+      <line x1="246" y1="450" x2="514" y2="450"/>
+      <line x1="246" y1="458" x2="514" y2="458"/>
+    </g>
+    <!-- big horizontal glitch tear -->
+    <rect x="246" y="407" width="268" height="5" fill="#ff3df0" opacity="0.35"/>
+    <rect x="246" y="411" width="200" height="2" fill="#3df0ff" opacity="0.4"/>
+    <!-- crt screen curvature highlight -->
+    <path d="M 252 366 Q 380 360 508 366" stroke="#fff" stroke-width="2" fill="none" opacity="0.18"/>
+  </g>
+
+  <!-- ================= CONTROL PANEL / CHIN ================= -->
+  <g id="catcherski_part-controls">
+    <rect x="214" y="480" width="332" height="56" rx="10" fill="url(#catcherski_panel)" stroke="#000" stroke-width="2.5"/>
+    <rect x="214" y="480" width="332" height="14" rx="6" fill="#ffffff" opacity="0.10"/>
+    <!-- coin slot -->
+    <rect x="232" y="494" width="58" height="26" rx="4" fill="#05070a" stroke="#9aa3b3" stroke-width="2"/>
+    <rect x="240" y="502" width="42" height="4" rx="2" fill="#9aa3b3"/>
+    <text x="261" y="532" text-anchor="middle" font-family="Arial Black, Arial" font-size="11" font-weight="900" fill="#ffe45c">100</text>
+    <!-- buttons -->
+    <circle cx="332" cy="508" r="11" fill="#2cd0ff" stroke="#063a4a" stroke-width="2"/>
+    <circle cx="328" cy="504" r="3.5" fill="#fff" opacity="0.7"/>
+    <circle cx="372" cy="508" r="11" fill="#ffd62c" stroke="#5a4a06" stroke-width="2"/>
+    <circle cx="368" cy="504" r="3.5" fill="#fff" opacity="0.7"/>
+    <!-- red joystick -->
+    <g transform="translate(470 506)">
+      <ellipse cx="0" cy="18" rx="26" ry="9" fill="#000" opacity="0.4"/>
+      <rect x="-5" y="-22" width="10" height="34" rx="5" fill="#7c8596"/>
+      <rect x="-5" y="-22" width="4" height="34" rx="2" fill="#dfe5ee"/>
+      <circle cx="0" cy="-26" r="17" fill="url(#catcherski_joystick)" stroke="#000" stroke-width="2.5"/>
+      <ellipse cx="-6" cy="-32" rx="6" ry="4" fill="#fff" opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- ================= LEGS / FEET ================= -->
+  <g id="catcherski_part-legs">
+    <!-- left leg -->
+    <rect x="244" y="536" width="46" height="40" rx="8" fill="url(#catcherski_legMetal)" stroke="#000" stroke-width="2.5"/>
+    <rect x="232" y="568" width="70" height="20" rx="9" fill="#3a1568" stroke="#000" stroke-width="2.5"/>
+    <circle cx="258" cy="552" r="3" fill="#caa0ff"/><circle cx="276" cy="552" r="3" fill="#caa0ff"/>
+    <!-- right leg -->
+    <rect x="470" y="536" width="46" height="40" rx="8" fill="url(#catcherski_legMetal)" stroke="#000" stroke-width="2.5"/>
+    <rect x="458" y="568" width="70" height="20" rx="9" fill="#3a1568" stroke="#000" stroke-width="2.5"/>
+    <circle cx="484" cy="552" r="3" fill="#caa0ff"/><circle cx="502" cy="552" r="3" fill="#caa0ff"/>
+  </g>
+
+  <!-- ================= SIDE TAG (matryoshka hack-crew sticker) ================= -->
+  <g id="catcherski_part-tag" transform="translate(556 224)">
+    <ellipse cx="0" cy="2" rx="22" ry="28" fill="#10182a"/>
+    <path d="M 0 -22 Q 16 -22 16 -2 Q 16 22 0 24 Q -16 22 -16 -2 Q -16 -22 0 -22 Z" fill="#ee2233" stroke="#3a0008" stroke-width="2"/>
+    <ellipse cx="0" cy="-6" rx="11" ry="12" fill="#ffe8d0" stroke="#3a0008" stroke-width="1.5"/>
+    <circle cx="-4" cy="-7" r="1.8" fill="#2a1010"/><circle cx="4" cy="-7" r="1.8" fill="#2a1010"/>
+    <path d="M -3 -1 Q 0 1 3 -1" stroke="#2a1010" stroke-width="1.2" fill="none"/>
+    <path d="M -12 8 Q 0 22 12 8" stroke="#ffe45c" stroke-width="2.5" fill="none"/>
+    <circle cx="0" cy="14" r="3" fill="#ffe45c"/>
+  </g>
+
+  <!-- ================= SCATTERED 100-YEN COINS ================= -->
+  <g id="catcherski_part-coins">
+    <g transform="translate(196 596)">
+      <ellipse cx="0" cy="0" rx="15" ry="6" fill="url(#catcherski_coin)" stroke="#5a3a0a" stroke-width="1.5"/>
+      <text x="0" y="3" text-anchor="middle" font-family="Arial" font-size="8" font-weight="900" fill="#7a5a12">100</text>
+    </g>
+    <g transform="translate(560 600)">
+      <ellipse cx="0" cy="0" rx="15" ry="6" fill="url(#catcherski_coin)" stroke="#5a3a0a" stroke-width="1.5"/>
+      <text x="0" y="3" text-anchor="middle" font-family="Arial" font-size="8" font-weight="900" fill="#7a5a12">100</text>
+    </g>
+    <g transform="translate(606 588)">
+      <ellipse cx="0" cy="0" rx="13" ry="5" fill="url(#catcherski_coin)" stroke="#5a3a0a" stroke-width="1.5"/>
+    </g>
+    <g transform="translate(150 582)">
+      <ellipse cx="0" cy="0" rx="12" ry="5" fill="url(#catcherski_coin)" stroke="#5a3a0a" stroke-width="1.5"/>
+    </g>
+  </g>
+
+</svg>

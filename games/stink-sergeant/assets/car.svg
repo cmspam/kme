@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 88" width="150" height="88">
+  <defs>
+    <linearGradient id="cbody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff8a5c"/><stop offset="0.5" stop-color="#ef5a3a"/><stop offset="1" stop-color="#c0341f"/>
+    </linearGradient>
+    <linearGradient id="cglass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cfeeff"/><stop offset="1" stop-color="#7fb8d8"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="75" cy="80" rx="62" ry="8" fill="#0a0a16" opacity="0.22"/>
+  <!-- body -->
+  <path d="M10 64 Q8 44 22 42 L46 40 Q58 22 78 22 L104 24 Q120 26 130 42 L140 46 Q146 50 144 62 L142 66 Q140 72 132 72 L18 72 Q12 72 10 64 Z" fill="url(#cbody)" stroke="#8f2614" stroke-width="3"/>
+  <!-- windows -->
+  <path d="M52 40 Q60 28 76 28 L98 30 Q110 32 118 42 Z" fill="url(#cglass)" stroke="#5a8aa6" stroke-width="2"/>
+  <line x1="84" y1="29" x2="86" y2="42" stroke="#5a8aa6" stroke-width="2"/>
+  <!-- sheen -->
+  <path d="M22 48 Q60 44 120 50" stroke="#fff" stroke-width="3" fill="none" opacity="0.35" stroke-linecap="round"/>
+  <!-- headlight -->
+  <circle cx="138" cy="58" r="5" fill="#fff3b0" stroke="#c9a23a" stroke-width="1.5"/>
+  <!-- wheels -->
+  <circle cx="42" cy="72" r="15" fill="#1c1c28" stroke="#000" stroke-width="2"/><circle cx="42" cy="72" r="6" fill="#9aa0b0"/>
+  <circle cx="110" cy="72" r="15" fill="#1c1c28" stroke="#000" stroke-width="2"/><circle cx="110" cy="72" r="6" fill="#9aa0b0"/>
+</svg>
